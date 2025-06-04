@@ -1,0 +1,5 @@
+C:\Users\PC\Desktop\AutoSkola\Common\obj\Debug\net8.0-windows\Common.csproj.AssemblyReference.cache
+C:\Users\PC\Desktop\AutoSkola\Common\obj\Debug\net8.0-windows\Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\PC\Desktop\AutoSkola\Common\obj\Debug\net8.0-windows\Common.AssemblyInfoInputs.cache
+C:\Users\PC\Desktop\AutoSkola\Common\obj\Debug\net8.0-windows\Common.AssemblyInfo.cs
+C:\Users\PC\Desktop\AutoSkola\Common\obj\Debug\net8.0-windows\Common.csproj.CoreCompileInputs.cache
