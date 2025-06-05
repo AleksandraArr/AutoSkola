@@ -36,12 +36,22 @@ namespace DBBroker
             connection.OpenConnection();
         }
 
-        public void Add(IEntity entity)
+        public IEntity Add(IEntity entity)
         {
-            SqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = $"INSERT INTO {entity.TableName} VALUES({entity.Values} )";
-            cmd.ExecuteNonQuery();
-            cmd.Dispose();
+            using (SqlCommand cmd = connection.CreateCommand())
+            {
+                cmd.CommandText = $"INSERT INTO {entity.TableName} OUTPUT inserted.{entity.IdColumn} VALUES({entity.Values})";
+                object result = cmd.ExecuteScalar();
+
+                if (result == null || result == DBNull.Value)
+                {
+                    throw new Exception("Nije moguće dobiti ID nakon ubacivanja.");
+                }
+
+                entity.SetId(Convert.ToInt32(result));
+                return entity;
+
+            }
         }
         public void Delete(IEntity entity)
         {

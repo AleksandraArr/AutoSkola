@@ -69,5 +69,8 @@ C:\Users\PC\Desktop\AutoSkola\Client\obj\Debug\net8.0-windows\Client.FrmMain.res
 C:\Users\PC\Desktop\AutoSkola\Client\obj\Debug\net8.0-windows\Client.UserControls.Kategorija_vozacke.UCUbaciKategorijaVozacke.resources
 C:\Users\PC\Desktop\AutoSkola\Client\obj\Debug\net8.0-windows\Client.UserControls.Polaznik.UCPolaznici.resources
 C:\Users\PC\Desktop\AutoSkola\Client\obj\Debug\net8.0-windows\Client.UserControls.EvidencioniObrazac.UCEvidencioniObrazac.resources
-C:\Users\PC\Desktop\AutoSkola\Client\obj\Debug\net8.0-windows\Client.UserControls.Polaznik.UCKreirajEvidencioniObrazac.resources
 C:\Users\PC\Desktop\AutoSkola\Client\obj\Debug\net8.0-windows\Client.Properties.Resources.resources
+C:\Users\PC\Desktop\AutoSkola\Client\obj\Debug\net8.0-windows\Client.FrmKreiraj.resources
+C:\Users\PC\Desktop\AutoSkola\Client\obj\Debug\net8.0-windows\Client.UserControls.Polaznik.UCKreirajPolaznik.resources
+C:\Users\PC\Desktop\AutoSkola\Client\obj\Debug\net8.0-windows\Client.sourcelink.json
+C:\Users\PC\Desktop\AutoSkola\Client\obj\Debug\net8.0-windows\Client.UserControls.EvidencioniObrazac.UCKreirajEvidencioniObrazac.resources

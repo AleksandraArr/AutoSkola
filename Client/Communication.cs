@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
+using System.Numerics;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -22,10 +23,7 @@ namespace Client
                 return _instance;
             } 
         }
-        private Communication()
-        {
-            
-        }
+        private Communication() { }
 
         private Socket socket;
        private JsonNetworkSerializer serializer;
@@ -37,65 +35,57 @@ namespace Client
             serializer = new JsonNetworkSerializer(socket);
         }
 
-        internal Response PrijaviInstruktor(Instruktor instruktor)
-        {
-            return SendRequest<Instruktor, Instruktor>(Operation.PrijaviInstruktor, instruktor);
-        }
+        // Polaznik
+        internal Response KreirajPolaznik() => SendRequest<object, Polaznik>(Operation.KreirajPolaznik);
+        
 
-        internal Response UbaciKategorijaVozacke(KategorijaVozacke kategorija)
-        {
-            return SendRequest<KategorijaVozacke, VoidType>(Operation.UbaciKategorijaVozacke, kategorija);
-        }
+        internal Response VratiListuPolaznik(Polaznik polaznik) =>  SendRequest<Polaznik, List<Polaznik>>(Operation.VratiListuPolaznik, polaznik);
+        
 
-        internal Response VratiListuSviPolaznik()
-        {
-            return SendRequest<object, List<Polaznik>>(Operation.VratiListuSviPolaznik);
-        }
-        internal Response VratiListuPolaznik(Polaznik polaznik)
-        {
-            return SendRequest<Polaznik, List<Polaznik>>(Operation.VratiListuPolaznik, polaznik);
-        }
-        internal Response VratiListuSviInstruktor()
-        {
-            return SendRequest<object, List<Instruktor>>(Operation.VratiListuSviInstruktor);
-        }
-        internal Response VratiListuSviEvidencioniObrazac()
-        {
-            return SendRequest<object, List<EvidencioniObrazac>>(Operation.VratiListuSviEvidencioniObrazac);
-        }
-        internal Response VratiListuEvidencioniObrazac(EvidencioniObrazac obrazac)
-        {
-            return SendRequest<EvidencioniObrazac, List<EvidencioniObrazac>>(Operation.VratiListuEvidencioniObrazac, obrazac);
-        }
-        internal Response VratiListuSviAutomobil()
-        {
-            return SendRequest<object, List<Automobil>>(Operation.VratiListuSviAutomobil);
-        }
-        internal Response PromeniPolaznik(Polaznik polaznik)
-        {
-            return SendRequest<Polaznik, VoidType>(Operation.PromeniPolaznik, polaznik);
-        }
-        internal Response PromeniEvidencioniObrazac(EvidencioniObrazac obrazac)
-        {
-            return SendRequest<EvidencioniObrazac, VoidType>(Operation.PromeniEvidencioniObrazac, obrazac);
-        }
-        internal Response ObrisiPolaznik(Polaznik polaznik)
-        {
-            return SendRequest<Polaznik, VoidType>(Operation.ObrisiPolaznik, polaznik);
-        }
-        internal Response ObrisiEvidencioniObrazac(EvidencioniObrazac obrazac)
-        {
-            return SendRequest<EvidencioniObrazac, VoidType>(Operation.ObrisiEvidencioniObrazac, obrazac);
-        }
-        internal Response PretraziEvidencioniObrazac(EvidencioniObrazacKriterijumiDTO entities)
-        {
-            return SendRequest<EvidencioniObrazacKriterijumiDTO, List<EvidencioniObrazac>>(Operation.PretraziEvidencioniObrazac, entities);
-        }
-        internal Response PretraziPolaznik(string tekst)
-        {
-            return SendRequest<string, List<Polaznik>>(Operation.PretraziPolaznik, tekst);
-        }
-        private Response SendRequest<TRequest, TResponse>(Operation operation, TRequest data = default) where TResponse : class
+        internal Response VratiListuSviPolaznik() => SendRequest<object, List<Polaznik>>(Operation.VratiListuSviPolaznik);
+
+        internal Response PromeniPolaznik(Polaznik polaznik) => SendRequest<Polaznik, VoidType>(Operation.PromeniPolaznik, polaznik);
+        
+
+        internal Response ObrisiPolaznik(Polaznik polaznik) => SendRequest<Polaznik, VoidType>(Operation.ObrisiPolaznik, polaznik);
+        
+
+        internal Response PretraziPolaznik(string tekst) => SendRequest<string, List<Polaznik>>(Operation.PretraziPolaznik, tekst);
+        
+
+        // Kategorija vozacke
+        internal Response UbaciKategorijaVozacke(KategorijaVozacke kategorija) => SendRequest<KategorijaVozacke, VoidType>(Operation.UbaciKategorijaVozacke, kategorija);
+
+        // Instruktor
+        internal Response PrijaviInstruktor(Instruktor instruktor) => SendRequest<Instruktor, Instruktor>(Operation.PrijaviInstruktor, instruktor);
+        
+
+        internal Response VratiListuSviInstruktor() => SendRequest<object, List<Instruktor>>(Operation.VratiListuSviInstruktor);
+        
+
+        // Automobil
+        internal Response VratiListuSviAutomobil() => SendRequest<object, List<Automobil>>(Operation.VratiListuSviAutomobil);
+
+
+        // Evidencioni obrazac
+        internal Response KreirajEvidencioniObrazac() => SendRequest<object, EvidencioniObrazac>(Operation.KreirajEvidencioniObrazac);
+        internal Response VratiListuEvidencioniObrazac(EvidencioniObrazac obrazac) => SendRequest<EvidencioniObrazac, List<EvidencioniObrazac>>(Operation.VratiListuEvidencioniObrazac, obrazac);
+        
+
+        internal Response VratiListuSviEvidencioniObrazac() => SendRequest<object, List<EvidencioniObrazac>>(Operation.VratiListuSviEvidencioniObrazac);
+        
+
+        internal Response PromeniEvidencioniObrazac(EvidencioniObrazac obrazac) => SendRequest<EvidencioniObrazac, VoidType>(Operation.PromeniEvidencioniObrazac, obrazac);
+        
+
+        internal Response ObrisiEvidencioniObrazac(EvidencioniObrazac obrazac) => SendRequest<EvidencioniObrazac, VoidType>(Operation.ObrisiEvidencioniObrazac, obrazac);
+        
+
+        internal Response PretraziEvidencioniObrazac(EvidencioniObrazacKriterijumiDTO entities) => SendRequest<EvidencioniObrazacKriterijumiDTO, List<EvidencioniObrazac>>(Operation.PretraziEvidencioniObrazac, entities);
+
+        //TRequest - which type being send, TResponse - which type is receiver
+        private Response SendRequest<TRequest, TResponse>(Operation operation, TRequest data = default)
+            where TResponse : class
         {
             //var req = new Request
             //{

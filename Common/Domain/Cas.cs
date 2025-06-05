@@ -19,6 +19,7 @@ namespace Common.Domain
         public string Values => $"{Obrazac.IdObrazac}, '{Datum:yyyy-MM-dd}', {Trajanje}, {Automobil.IdAutomobil}";
         public string UpdateText => $"IdObrazac = {Obrazac.IdObrazac}, Datum = '{Datum:yyyy-MM-dd}', Trajanje = {Trajanje}, IdAutomobil = {Automobil.IdAutomobil}";
         public string WhereCondition => $"IdCas = {IdCas}";
+        public string IdColumn => $"IdCas";
 
         public List<IEntity> GetReaderList(SqlDataReader reader)
         {
@@ -36,6 +37,10 @@ namespace Common.Domain
                 casovi.Add(cas);
             }
             return casovi;
+        }
+        public void SetId(int id)
+        {
+            IdCas = id;
         }
     }
 }

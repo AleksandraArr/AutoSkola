@@ -13,3 +13,4 @@ C:\Users\PC\Desktop\AutoSkola\Broker\obj\Debug\net8.0\DBBroker.dll
 C:\Users\PC\Desktop\AutoSkola\Broker\obj\Debug\net8.0\refint\DBBroker.dll
 C:\Users\PC\Desktop\AutoSkola\Broker\obj\Debug\net8.0\DBBroker.pdb
 C:\Users\PC\Desktop\AutoSkola\Broker\obj\Debug\net8.0\ref\DBBroker.dll
+C:\Users\PC\Desktop\AutoSkola\Broker\obj\Debug\net8.0\DBBroker.sourcelink.json

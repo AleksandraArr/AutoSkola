@@ -25,6 +25,8 @@ namespace Common.Domain
 
         public string WhereCondition => $"IdLicenca = {IdLicenca}";
 
+        public string IdColumn => $"IdLicenca";
+
         public List<IEntity> GetReaderList(SqlDataReader reader)
         {
             List<IEntity> licence = new List<IEntity>();
@@ -41,6 +43,10 @@ namespace Common.Domain
                 licence.Add(licenca);
             }
             return licence;
+        }
+        public void SetId(int id)
+        {
+            IdLicenca = id;
         }
     }
 }

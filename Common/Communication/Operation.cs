@@ -8,19 +8,32 @@ namespace Common.Communication
 {
     public enum Operation
     {
-        PrijaviInstruktor,
-        UbaciKategorijaVozacke,
-        VratiListuSviPolaznik,
-        VratiListuSviInstruktor,
-        VratiListuSviAutomobil,
-        VratiListuSviEvidencioniObrazac,
-        VratiListuEvidencioniObrazac,
+        // Polaznik
+        KreirajPolaznik,
         VratiListuPolaznik,
+        VratiListuSviPolaznik,
         PromeniPolaznik,
         ObrisiPolaznik,
-        PretraziEvidencioniObrazac,
         PretraziPolaznik,
+
+        // Kategorija vozacke
+        UbaciKategorijaVozacke,
+
+        // Instruktor
+        PrijaviInstruktor,
+        VratiListuInstruktor,
+        VratiListuSviInstruktor,
+
+        // Automobil
+        VratiListuSviAutomobil,
+
+        // Evidencioni obrazac
+        KreirajEvidencioniObrazac,
+        VratiListuEvidencioniObrazac,
+        VratiListuSviEvidencioniObrazac,
         PromeniEvidencioniObrazac,
         ObrisiEvidencioniObrazac,
+        PretraziEvidencioniObrazac
     }
+
 }

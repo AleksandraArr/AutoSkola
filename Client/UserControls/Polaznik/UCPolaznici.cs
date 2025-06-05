@@ -35,6 +35,7 @@ namespace Client.UserControls.Polaznik
                 dgvPolaznici.Columns["Values"].Visible = false;
                 dgvPolaznici.Columns["WhereCondition"].Visible = false;
                 dgvPolaznici.Columns["UpdateText"].Visible = false;
+                dgvPolaznici.Columns["IdColumn"].Visible = false;
             }
         }
 
@@ -94,5 +95,15 @@ namespace Client.UserControls.Polaznik
             return true;
         }
 
+        private void btnKreirajPolaznik_Click(object sender, EventArgs e)
+        {
+            FrmKreiraj frm = new FrmKreiraj(FormType.KreirajPolaznik);
+            frm.ShowDialog();
+        }
+
+        private void UCPolaznici_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

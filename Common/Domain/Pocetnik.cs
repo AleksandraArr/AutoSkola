@@ -22,7 +22,7 @@ namespace Common.Domain
             $"DatumIzdavanjaLekarskog = '{DatumIzdavanjaLekarskog:yyyy-MM-dd}', " +
             $"BrojPoenaNaTeoriji = {BrojPoenaNaTeoriji}";
 
-        public string WhereCondition => $"IdPolaznik = {IdPolaznik}";
+
         public List<IEntity> GetReaderList(SqlDataReader reader)
         {
             List<IEntity> pocetnici = new List<IEntity>();

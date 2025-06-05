@@ -22,7 +22,7 @@ namespace Common.Domain
         public string Values => $"'{Ime}', '{Prezime}', '{DatumZaposlenja:yyyy-MM-dd}', '{Telefon}', '{KorisnickoIme}','{Sifra}'";
         public string UpdateText => $"Ime = '{Ime}', Prezime = '{Prezime}', DatumZaposlenja = '{DatumZaposlenja:yyyy-MM-dd}', Telefon = '{Telefon}', KorisnickoIme = '{KorisnickoIme}', Sifra = '{Sifra}'";
         public string WhereCondition => $"IdInstruktor = {IdInstruktor}";
-
+        public string IdColumn => $"IdInstruktor";
         public List<IEntity> GetReaderList(SqlDataReader reader)
         {
             List<IEntity> instruktori = new List<IEntity>();
@@ -49,6 +49,9 @@ namespace Common.Domain
         {
             return $"{Ime} {Prezime}";
         }
-
+        public void SetId(int id)
+        {
+            IdInstruktor = id;
+        }
     }
 }

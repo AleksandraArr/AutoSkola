@@ -19,6 +19,8 @@ namespace Common.Domain
         public string UpdateText => $"Model = '{Model}', Godiste = {Godiste}, RegistracioniBroj = '{RegistracioniBroj}'";
         public string WhereCondition => $"IdAutomobil = {IdAutomobil}";
 
+        public string IdColumn => $"IdAutomobil";
+
         public List<IEntity> GetReaderList(SqlDataReader reader)
         {
             List<IEntity> automobili = new List<IEntity>();
@@ -34,6 +36,10 @@ namespace Common.Domain
                 automobili.Add(automobil);
             }
             return automobili;
+        }
+
+        public void SetId(int id) {
+            IdAutomobil = id;
         }
     }
 }

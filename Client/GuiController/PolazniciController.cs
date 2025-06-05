@@ -55,7 +55,7 @@ namespace Client.GuiController
                 PostaviPolaznik(polaznici);
             }
             else
-                MessageBox.Show("Sistem je ne može da nađe evidencione obrasce po zadatim kriterijumima", "Pronađeni obrasci", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Sistem je ne može da nađe polaznike po zadatim kriterijumima", "Pronađeni obrasci", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         public void PretraziPolaznikaChanged()
         {
@@ -66,7 +66,7 @@ namespace Client.GuiController
                 PostaviPolaznik(polaznici);
             }
             else
-                MessageBox.Show("Sistem je ne može da nađe evidencione obrasce po zadatim kriterijumima", "Pronađeni obrasci", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Sistem je ne može da nađe polaznike po zadatim kriterijumima", "Pronađeni obrasci", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         internal void PrikaziPolaznika()
         {
@@ -87,7 +87,7 @@ namespace Client.GuiController
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Sistem ne može da prikaže evidencioni obrazac.\n" + ex.Message);
+                MessageBox.Show("Sistem ne može da prikaže polaznika.\n" + ex.Message);
             }
         }
 

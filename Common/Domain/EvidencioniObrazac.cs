@@ -19,7 +19,7 @@ namespace Common.Domain
         public string Values => $"'{DatumPocetka:yyyy-MM-dd}', {BrojCasova}, {Instruktor.IdInstruktor}, {Polaznik.IdPolaznik}";
         public string UpdateText => $"DatumPocetka = '{DatumPocetka:yyyy-MM-dd}', BrojCasova = {BrojCasova}, IdInstruktor = {Instruktor.IdInstruktor}, IdPolaznik = {Polaznik.IdPolaznik}";
         public string WhereCondition => $"IdObrazac = {IdObrazac}";
-
+        public string IdColumn => $"IdObrazac";
         public List<IEntity> GetReaderList(SqlDataReader reader)
         {
             List<IEntity> obrasci = new List<IEntity>();
@@ -36,6 +36,10 @@ namespace Common.Domain
                 obrasci.Add(obrazac);
             }
             return obrasci;
+        }
+        public void SetId(int id)
+        {
+            IdObrazac = id;
         }
     }
 }

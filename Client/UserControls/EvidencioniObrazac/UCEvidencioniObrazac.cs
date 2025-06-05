@@ -87,7 +87,7 @@ namespace Client.UserControls.EvidencioniObrazac
         {
             if (dgvEvidencioniObrasci.SelectedRows.Count == 0)
                 return;
-            
+
             obrazacController.PrikaziEvidencioniObrazac();
         }
 
@@ -112,12 +112,18 @@ namespace Client.UserControls.EvidencioniObrazac
         }
 
         private void btnUkloniKriterijume_Click(object sender, EventArgs e)
-        { 
+        {
             obrazacController.VratiListuSviEvidencioniObrazac();
             gpbKriterijumi.Visible = false;
             cmbAutomobilKriterijum.SelectedIndex = -1;
             cmbInstruktorKriterijum.SelectedIndex = -1;
             cmbPolaznikKriterijum.SelectedIndex = -1;
+        }
+
+        private void btnKreirajPolaznik_Click(object sender, EventArgs e)
+        {
+            FrmKreiraj frm = new FrmKreiraj(FormType.KreirajEvidencioniObrazac);
+            frm.ShowDialog();
         }
     }
 }

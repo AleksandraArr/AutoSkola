@@ -61,48 +61,69 @@ namespace Server
             {
                 switch (req.Operation)
                 {
-                    case Operation.PrijaviInstruktor:
-                        r.Data = Controller.Instance.PrijaviInstruktor(serializer.ReadType<Instruktor>(req.Data));
-                        r.IsSuccess = true;
-                        break;
-                    case Operation.UbaciKategorijaVozacke:
-                        Controller.Instance.UbaciKategorijaVozacke(serializer.ReadType<KategorijaVozacke>(req.Data));
-                        r.IsSuccess = true;
-                        break;
-                    case Operation.VratiListuSviInstruktor:
-                        r.Data = Controller.Instance.VratiListuSviInstruktor();
-                        r.IsSuccess = true;
-                        break;
-                    case Operation.VratiListuSviPolaznik:
-                        r.Data = Controller.Instance.VratiListuSviPolaznik();
+                    // Polaznik
+                    case Operation.KreirajPolaznik:
+                        r.Data = Controller.Instance.KreirajPolaznik();
                         r.IsSuccess = true;
                         break;
                     case Operation.VratiListuPolaznik:
                         r.Data = Controller.Instance.VratiListuPolaznik(serializer.ReadType<Polaznik>(req.Data));
                         r.IsSuccess = true;
                         break;
-                    case Operation.VratiListuSviEvidencioniObrazac:
-                        r.Data = Controller.Instance.VratiListuSviEvidencioniObrazac();
-                        r.IsSuccess = true;
-                        break;
-                    case Operation.VratiListuEvidencioniObrazac:
-                        r.Data = Controller.Instance.VratiListuEvidencioniObrazac(serializer.ReadType<EvidencioniObrazac>(req.Data));
-                        r.IsSuccess = true;
-                        break;
-                    case Operation.VratiListuSviAutomobil:
-                        r.Data = Controller.Instance.VratiListuSviAutomobil();
+                    case Operation.VratiListuSviPolaznik:
+                        r.Data = Controller.Instance.VratiListuSviPolaznik();
                         r.IsSuccess = true;
                         break;
                     case Operation.PromeniPolaznik:
                         r.Data = Controller.Instance.PromeniPolaznik(serializer.ReadType<Polaznik>(req.Data));
                         r.IsSuccess = true;
                         break;
-                    case Operation.PromeniEvidencioniObrazac:
-                        r.Data = Controller.Instance.PromeniEvidencioniObrazac(serializer.ReadType<EvidencioniObrazac>(req.Data));
-                        r.IsSuccess = true;
-                        break;
                     case Operation.ObrisiPolaznik:
                         Controller.Instance.ObrisiPolaznik(serializer.ReadType<Polaznik>(req.Data));
+                        r.IsSuccess = true;
+                        break;
+                    case Operation.PretraziPolaznik:
+                        r.Data = Controller.Instance.PretraziPolaznik(serializer.ReadType<string>(req.Data));
+                        r.IsSuccess = true;
+                        break;
+
+                    // Vozacka kategorija
+                    case Operation.UbaciKategorijaVozacke:
+                        Controller.Instance.UbaciKategorijaVozacke(serializer.ReadType<KategorijaVozacke>(req.Data));
+                        r.IsSuccess = true;
+                        break;
+
+                    // Instruktor
+                    case Operation.PrijaviInstruktor:
+                        r.Data = Controller.Instance.PrijaviInstruktor(serializer.ReadType<Instruktor>(req.Data));
+                        r.IsSuccess = true;
+                        break;
+                    case Operation.VratiListuSviInstruktor:
+                        r.Data = Controller.Instance.VratiListuSviInstruktor();
+                        r.IsSuccess = true;
+                        break;
+
+                    // Automobil
+                    case Operation.VratiListuSviAutomobil:
+                        r.Data = Controller.Instance.VratiListuSviAutomobil();
+                        r.IsSuccess = true;
+                        break;
+
+                    // Evidencioni obrazac
+                    case Operation.KreirajEvidencioniObrazac:
+                        r.Data = Controller.Instance.KreirajEvidencioniObrazac();
+                        r.IsSuccess = true;
+                        break;
+                    case Operation.VratiListuEvidencioniObrazac:
+                        r.Data = Controller.Instance.VratiListuEvidencioniObrazac(serializer.ReadType<EvidencioniObrazac>(req.Data));
+                        r.IsSuccess = true;
+                        break;
+                    case Operation.VratiListuSviEvidencioniObrazac:
+                        r.Data = Controller.Instance.VratiListuSviEvidencioniObrazac();
+                        r.IsSuccess = true;
+                        break;
+                    case Operation.PromeniEvidencioniObrazac:
+                        r.Data = Controller.Instance.PromeniEvidencioniObrazac(serializer.ReadType<EvidencioniObrazac>(req.Data));
                         r.IsSuccess = true;
                         break;
                     case Operation.ObrisiEvidencioniObrazac:
@@ -113,12 +134,11 @@ namespace Server
                         r.Data = Controller.Instance.PretraziEvidencioniObrazac(serializer.ReadType<EvidencioniObrazacKriterijumiDTO>(req.Data));
                         r.IsSuccess = true;
                         break;
-                    case Operation.PretraziPolaznik:
-                        r.Data = Controller.Instance.PretraziPolaznik(serializer.ReadType<string>(req.Data));
-                        r.IsSuccess = true;
-                        break;
-                    default: throw new Exception("Nepoznat zahtev");
+
+                    default:
+                        throw new Exception("Nepoznat zahtev");
                 }
+
             }
             catch (Exception ex)
             {

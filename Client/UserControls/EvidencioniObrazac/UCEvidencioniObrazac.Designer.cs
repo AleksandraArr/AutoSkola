@@ -46,6 +46,7 @@ namespace Client.UserControls.EvidencioniObrazac
             dgvEvidencioniObrasci = new DataGridView();
             label1 = new Label();
             gpbKriterijumi = new GroupBox();
+            btnUkloniKriterijume = new Button();
             btnExit = new Button();
             btnPretrazi = new Button();
             cmbAutomobilKriterijum = new ComboBox();
@@ -55,7 +56,7 @@ namespace Client.UserControls.EvidencioniObrazac
             label5 = new Label();
             label6 = new Label();
             btnKriterijumi = new Button();
-            btnUkloniKriterijume = new Button();
+            btnKreirajPolaznik = new Button();
             gbPodaciObrazca.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvEvidencioniObrasci).BeginInit();
             gpbKriterijumi.SuspendLayout();
@@ -203,9 +204,9 @@ namespace Client.UserControls.EvidencioniObrazac
             label1.Font = new Font("Segoe UI", 15F);
             label1.Location = new Point(32, 37);
             label1.Name = "label1";
-            label1.Size = new Size(272, 41);
+            label1.Size = new Size(271, 41);
             label1.TabIndex = 16;
-            label1.Text = "Evidencioni obrazci";
+            label1.Text = "Evidencioni obrasci";
             // 
             // gpbKriterijumi
             // 
@@ -224,6 +225,16 @@ namespace Client.UserControls.EvidencioniObrazac
             gpbKriterijumi.TabIndex = 24;
             gpbKriterijumi.TabStop = false;
             gpbKriterijumi.Text = "Kriterijumi evidencionog obrasca";
+            // 
+            // btnUkloniKriterijume
+            // 
+            btnUkloniKriterijume.Location = new Point(41, 225);
+            btnUkloniKriterijume.Name = "btnUkloniKriterijume";
+            btnUkloniKriterijume.Size = new Size(216, 45);
+            btnUkloniKriterijume.TabIndex = 14;
+            btnUkloniKriterijume.Text = "Ukloni kriterijume";
+            btnUkloniKriterijume.UseVisualStyleBackColor = true;
+            btnUkloniKriterijume.Click += btnUkloniKriterijume_Click;
             // 
             // btnExit
             // 
@@ -307,21 +318,23 @@ namespace Client.UserControls.EvidencioniObrazac
             btnKriterijumi.UseVisualStyleBackColor = true;
             btnKriterijumi.Click += btnKriterijumi_Click;
             // 
-            // btnUkloniKriterijume
+            // btnKreirajPolaznik
             // 
-            btnUkloniKriterijume.Location = new Point(41, 225);
-            btnUkloniKriterijume.Name = "btnUkloniKriterijume";
-            btnUkloniKriterijume.Size = new Size(216, 45);
-            btnUkloniKriterijume.TabIndex = 14;
-            btnUkloniKriterijume.Text = "Ukloni kriterijume";
-            btnUkloniKriterijume.UseVisualStyleBackColor = true;
-            btnUkloniKriterijume.Click += btnUkloniKriterijume_Click;
+            btnKreirajPolaznik.Font = new Font("Segoe UI", 9F);
+            btnKreirajPolaznik.Location = new Point(587, 306);
+            btnKreirajPolaznik.Name = "btnKreirajPolaznik";
+            btnKreirajPolaznik.Size = new Size(53, 43);
+            btnKreirajPolaznik.TabIndex = 26;
+            btnKreirajPolaznik.Text = "+";
+            btnKreirajPolaznik.UseVisualStyleBackColor = true;
+            btnKreirajPolaznik.Click += btnKreirajPolaznik_Click;
             // 
             // UCEvidencioniObrazac
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(gpbKriterijumi);
+            Controls.Add(btnKreirajPolaznik);
             Controls.Add(btnKriterijumi);
             Controls.Add(btnIzmeni);
             Controls.Add(btnObrisi);
@@ -371,14 +384,10 @@ namespace Client.UserControls.EvidencioniObrazac
         private Button btnPretrazi;
         private Button btnExit;
         private Button btnUkloniKriterijume;
+        private Button btnKreirajPolaznik;
 
-        public Button BtnIzmeni { get => btnIzmeni; set => btnIzmeni = value; }
-        public Button BtnObrisi { get => btnObrisi; set => btnObrisi = value; }
-        public GroupBox GbPodaciObrazca { get => gbPodaciObrazca; set => gbPodaciObrazca = value; }
         public DateTimePicker DateTimePickerDatumRodjenja { get => dtpDatumPocetka; set => dtpDatumPocetka = value; }
         public TextBox TxtBrCasova { get => txtBrCasova; set => txtBrCasova = value; }
-        public TextBox TxtIme { get => txtIme; set => txtIme = value; }
-        public Button BtnPrikaziPolaznike { get => btnPrikaziObrasce; set => btnPrikaziObrasce = value; }
         public DataGridView DgvEvidencioniObrasci { get => dgvEvidencioniObrasci; set => dgvEvidencioniObrasci = value; }
         public ComboBox CmbPolaznik { get => cmbPolaznik; set => cmbPolaznik = value; }
         public ComboBox CmbInstruktor { get => cmbInstruktor; set => cmbInstruktor = value; }

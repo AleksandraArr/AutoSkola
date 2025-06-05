@@ -45,6 +45,7 @@
             label2 = new Label();
             txtImeIPrezime = new TextBox();
             btnPretrazi = new Button();
+            btnKreirajPolaznik = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPolaznici).BeginInit();
             gbPodaciPolaznika.SuspendLayout();
             SuspendLayout();
@@ -212,10 +213,22 @@
             btnPretrazi.UseVisualStyleBackColor = true;
             btnPretrazi.Click += btnPretrazi_Click;
             // 
+            // btnKreirajPolaznik
+            // 
+            btnKreirajPolaznik.Font = new Font("Segoe UI", 9F);
+            btnKreirajPolaznik.Location = new Point(589, 312);
+            btnKreirajPolaznik.Name = "btnKreirajPolaznik";
+            btnKreirajPolaznik.Size = new Size(53, 43);
+            btnKreirajPolaznik.TabIndex = 16;
+            btnKreirajPolaznik.Text = "+";
+            btnKreirajPolaznik.UseVisualStyleBackColor = true;
+            btnKreirajPolaznik.Click += btnKreirajPolaznik_Click;
+            // 
             // UCPolaznici
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnKreirajPolaznik);
             Controls.Add(btnPretrazi);
             Controls.Add(txtImeIPrezime);
             Controls.Add(label2);
@@ -227,6 +240,7 @@
             Controls.Add(label1);
             Name = "UCPolaznici";
             Size = new Size(1105, 674);
+            Load += UCPolaznici_Load;
             ((System.ComponentModel.ISupportInitialize)dgvPolaznici).EndInit();
             gbPodaciPolaznika.ResumeLayout(false);
             gbPodaciPolaznika.PerformLayout();
@@ -253,6 +267,7 @@
         private Label label2;
         private TextBox txtImeIPrezime;
         private Button btnPretrazi;
+        private Button btnKreirajPolaznik;
 
         public DataGridView DgvPolaznici { get => dgvPolaznici; set => dgvPolaznici = value; }
         public TextBox TxtKontaktTelefon { get => txtKontaktTelefon; set => txtKontaktTelefon = value; }

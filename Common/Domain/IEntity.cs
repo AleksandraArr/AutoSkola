@@ -13,6 +13,9 @@ namespace Common.Domain
         string Values { get; }
         string UpdateText { get; }
         string WhereCondition { get; }
+        string IdColumn { get; }
+
+        void SetId(int id);
 
         List<IEntity> GetReaderList(SqlDataReader reader);
     }
