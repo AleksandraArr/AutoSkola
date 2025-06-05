@@ -46,6 +46,7 @@
             Controls.Add(pnlMain);
             Name = "FrmKreiraj";
             Text = "FrmKreiraj";
+            FormClosed += FrmKreiraj_FormClosed;
             ResumeLayout(false);
         }
 

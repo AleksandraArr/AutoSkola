@@ -14,6 +14,7 @@ namespace Client.GuiController
     {
         private UCKreirajEvidencioniObrazac ucObrazac;
         private int idObrasca;
+        public Boolean ZavrsenoKreiranje { get; private set; } = true;
 
         public KreirajEvidencioniObrazacController(UCKreirajEvidencioniObrazac ucObrazac)
         {
@@ -45,6 +46,7 @@ namespace Client.GuiController
                     ucObrazac.DtpDatumPocetka.Enabled = true;
                     ucObrazac.BtnUbaci.Enabled = true;
                     ucObrazac.BtnKreiraj.Enabled = false;
+                    ZavrsenoKreiranje = false;
                 }
             }
             catch (Exception ex)
@@ -69,7 +71,7 @@ namespace Client.GuiController
 
                 Communication.Instance.PromeniEvidencioniObrazac(obrazac);
                 MessageBox.Show("Sistem je zapamtio evidencioni obrazac!", "Operacija uspešno izvršena!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                ZavrsenoKreiranje = true;
             }
             catch (Exception ex)
             {
@@ -129,6 +131,18 @@ namespace Client.GuiController
             {
                 MessageBox.Show("Sistem ne može da učita instruktore.\n" + ex.Message);
 
+            }
+        }
+
+        internal void ObrisiEvidencioniObrazac()
+        {
+            try
+            {
+                Communication.Instance.ObrisiEvidencioniObrazac(new EvidencioniObrazac() { IdObrazac = idObrasca, Instruktor = new Instruktor(), Polaznik = new Polaznik() });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sistem ne može da obrise evidencioni obrazac.\n" + ex.Message);
             }
         }
     }

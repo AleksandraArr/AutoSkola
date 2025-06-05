@@ -58,8 +58,11 @@ namespace Client.UserControls.Polaznik
             return true;
         }
 
-        public Boolean ZavrsenoKreiranje() {
-            return polaznikController.ZavrsenoKreiranje;
+
+        public void UCKreirajPolaznik_Leave()
+        {
+            if (!polaznikController.ZavrsenoKreiranje)
+                polaznikController.ObrisiPolaznik();
         }
     }
 }

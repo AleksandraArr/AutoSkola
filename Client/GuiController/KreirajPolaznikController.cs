@@ -12,7 +12,7 @@ namespace Client.GuiController
     public class KreirajPolaznikController
     {
         private UCKreirajPolaznik ucPolaznik;
-        private int idKorisnika;
+        private int idPolaznik;
         public Boolean ZavrsenoKreiranje { get; private set; } = true;
 
         public KreirajPolaznikController(UCKreirajPolaznik ucPolaznik)
@@ -27,7 +27,7 @@ namespace Client.GuiController
             {
                 if (response.IsSuccess)
                 {
-                    idKorisnika = ((Polaznik)response.Data).IdPolaznik;
+                    idPolaznik = ((Polaznik)response.Data).IdPolaznik;
                     MessageBox.Show("Sistem je kreirao polaznika!", "Operacija uspešno izvršena!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ucPolaznik.TxtIme.Enabled = true;
                     ucPolaznik.TxtPrezime.Enabled = true;
@@ -52,7 +52,7 @@ namespace Client.GuiController
                     MessageBox.Show("Molim vas unesite sva polja!");
                 }
                 Polaznik polaznik = new Polaznik();
-                polaznik.IdPolaznik = idKorisnika;
+                polaznik.IdPolaznik = idPolaznik;
                 polaznik.Ime = ucPolaznik.TxtIme.Text;
                 polaznik.Prezime = ucPolaznik.TxtPrezime.Text;
                 polaznik.DatumRodjenja = ucPolaznik.DtpDatumRodjenja.Value;
@@ -65,6 +65,18 @@ namespace Client.GuiController
             catch (Exception ex)
             {
                 MessageBox.Show("Sistem ne može da zapamti polaznika.\n" + ex.Message);
+            }
+        }
+
+        internal void ObrisiPolaznik()
+        {
+            try
+            {
+                Communication.Instance.ObrisiPolaznik(new Polaznik() { IdPolaznik = idPolaznik });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sistem ne može da obrisao polaznika.\n" + ex.Message);
             }
         }
     }

@@ -18,13 +18,24 @@ namespace Client
     }
     public partial class FrmKreiraj : Form
     {
+        UCKreirajEvidencioniObrazac ucKreirajEvidencioniObrazac;
+        UCKreirajPolaznik ucKreirajPolaznik;
+        FormType formType;
         public FrmKreiraj(FormType formType)
         {
             InitializeComponent();
             if (formType == FormType.KreirajPolaznik)
-                ChangePanel(new UCKreirajPolaznik());
+            {
+                ucKreirajPolaznik = new UCKreirajPolaznik();
+                this.formType = FormType.KreirajPolaznik;
+                ChangePanel(ucKreirajPolaznik);
+            }
             if (formType == FormType.KreirajEvidencioniObrazac)
-                ChangePanel(new UCKreirajEvidencioniObrazac());
+            {
+                ucKreirajEvidencioniObrazac = new UCKreirajEvidencioniObrazac();
+                this.formType = FormType.KreirajEvidencioniObrazac;
+                ChangePanel(ucKreirajEvidencioniObrazac);
+            }
         }
 
         private void ChangePanel(UserControl userControl)
@@ -39,6 +50,12 @@ namespace Client
             {
                 throw;
             }
+        }
+
+        private void FrmKreiraj_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (formType == FormType.KreirajPolaznik) ucKreirajPolaznik.UCKreirajPolaznik_Leave();
+            if (formType == FormType.KreirajEvidencioniObrazac) ucKreirajEvidencioniObrazac.UCKreirajEvidencioniObrazac_Leave();
         }
     }
 }

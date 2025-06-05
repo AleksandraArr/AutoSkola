@@ -65,5 +65,10 @@ namespace Client.UserControls.EvidencioniObrazac
         {
             obrazacController.PromeniEvidencioniObrazac();
         }
+        public void UCKreirajEvidencioniObrazac_Leave()
+        {
+            if (!obrazacController.ZavrsenoKreiranje)
+                obrazacController.ObrisiEvidencioniObrazac();
+        }
     }
 }

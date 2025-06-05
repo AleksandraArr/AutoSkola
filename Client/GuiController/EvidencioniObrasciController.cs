@@ -197,7 +197,6 @@ namespace Client.GuiController
                 return null;
             }
         }
-
         internal void ObrisiEvidencioniObrazac()
         {
 
@@ -214,7 +213,6 @@ namespace Client.GuiController
                 MessageBox.Show("Sistem ne može da obriše evidencioni obrazac.\n" + ex.Message);
             }
         }
-
         internal void PromeniEvidencioniObrazac()
         {
             try
@@ -240,8 +238,6 @@ namespace Client.GuiController
                 MessageBox.Show("Sistem ne može da zapamti evidencioni obrazac.\n" + ex.Message);
             }
         }
-
-
         private void PostaviEvidencioniObrazac(List<EvidencioniObrazac> obrasci)
         {
             DovrsiObjekte(obrasci);
@@ -262,7 +258,6 @@ namespace Client.GuiController
                 o.Instruktor = sviInstruktori.FirstOrDefault(i => i.IdInstruktor == o.Instruktor.IdInstruktor);
             }
         }
-
         private List<EvidencioniObrazac> VratiListuEvidencioniObrazac() {
             if (ucObrazac.DgvEvidencioniObrasci.SelectedRows.Count == 0)
             {
