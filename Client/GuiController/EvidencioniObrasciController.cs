@@ -252,6 +252,7 @@ namespace Client.GuiController
             ucObrazac.DgvEvidencioniObrasci.Columns["Values"].Visible = false;
             ucObrazac.DgvEvidencioniObrasci.Columns["UpdateText"].Visible = false;
             ucObrazac.DgvEvidencioniObrasci.Columns["WhereCondition"].Visible = false;
+            ucObrazac.DgvEvidencioniObrasci.Columns["IdColumn"].Visible = false;
         }
         private void DovrsiObjekte(List<EvidencioniObrazac> obrasci)
         {

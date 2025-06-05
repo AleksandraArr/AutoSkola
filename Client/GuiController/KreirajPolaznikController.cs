@@ -22,7 +22,7 @@ namespace Client.GuiController
 
         internal void KreirajPolaznika()
         {
-            Response response = Communication.Instance.KreirajPolaznik();
+            Response response = Communication.Instance.KreirajPolaznik(new Polaznik());
             try
             {
                 if (response.IsSuccess)

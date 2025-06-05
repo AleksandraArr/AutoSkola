@@ -36,7 +36,7 @@ namespace Client
         }
 
         // Polaznik
-        internal Response KreirajPolaznik() => SendRequest<object, Polaznik>(Operation.KreirajPolaznik);
+        internal Response KreirajPolaznik(Polaznik polaznik) => SendRequest<Polaznik, Polaznik>(Operation.KreirajPolaznik, polaznik);
         
 
         internal Response VratiListuPolaznik(Polaznik polaznik) =>  SendRequest<Polaznik, List<Polaznik>>(Operation.VratiListuPolaznik, polaznik);
@@ -68,7 +68,7 @@ namespace Client
 
 
         // Evidencioni obrazac
-        internal Response KreirajEvidencioniObrazac() => SendRequest<object, EvidencioniObrazac>(Operation.KreirajEvidencioniObrazac);
+        internal Response KreirajEvidencioniObrazac(EvidencioniObrazac obrazac) => SendRequest<EvidencioniObrazac, EvidencioniObrazac>(Operation.KreirajEvidencioniObrazac, obrazac);
         internal Response VratiListuEvidencioniObrazac(EvidencioniObrazac obrazac) => SendRequest<EvidencioniObrazac, List<EvidencioniObrazac>>(Operation.VratiListuEvidencioniObrazac, obrazac);
         
 

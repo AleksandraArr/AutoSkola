@@ -23,7 +23,16 @@ namespace Client.GuiController
 
         internal void KreirajEvidencioniObrazac()
         {
-            Response response = Communication.Instance.KreirajEvidencioniObrazac();
+            if (ucObrazac.CmbInstruktor.Items?.Count == 0 || ucObrazac.CmbPolaznik.Items?.Count == 0) {
+                MessageBox.Show("Neophodno je da postoje instruktore i polaznici da biste kreirali evidencioni obrazac!", "Upozorenje",MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                return;
+            }
+            EvidencioniObrazac obrazac = new EvidencioniObrazac()
+            {
+                Instruktor = (Instruktor)ucObrazac.CmbInstruktor.Items[0],
+                Polaznik = (Polaznik)ucObrazac.CmbPolaznik.Items[0]
+            };
+            Response response = Communication.Instance.KreirajEvidencioniObrazac(obrazac);
             try
             {
                 if (response.IsSuccess)
@@ -52,6 +61,7 @@ namespace Client.GuiController
                     MessageBox.Show("Molim vas unesite sva polja!");
                 }
                 EvidencioniObrazac obrazac = new EvidencioniObrazac();
+                obrazac.IdObrazac = idObrasca;
                 obrazac.Polaznik = (Polaznik)ucObrazac.CmbPolaznik.SelectedItem;
                 obrazac.Instruktor = (Instruktor)ucObrazac.CmbInstruktor.SelectedItem;
                 obrazac.BrojCasova = int.Parse(ucObrazac.TxtBrCasova.Text);

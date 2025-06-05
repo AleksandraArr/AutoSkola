@@ -10,11 +10,15 @@ namespace Server.SystemOperation
     
     public class KreirajPolaznikSO : SystemOperationBase
     {
+        private readonly Polaznik polaznik;
         public Polaznik Result { get; set; }
+        public KreirajPolaznikSO(Polaznik polaznik)
+        {
+            this.polaznik = polaznik;
+        }
         protected override void ExecuteConcreteOperation()
         {
-            // Result = (Polaznik)broker.Add(new Polaznik());
-            Result = new Polaznik();
+            Result = (Polaznik)broker.Add(polaznik);
         }
     }
 }

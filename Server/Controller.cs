@@ -46,8 +46,8 @@ namespace Server
             so.ExecuteTemplate();
         }
         //POLAZNIK
-        public Polaznik KreirajPolaznik() {
-            KreirajPolaznikSO so = new KreirajPolaznikSO();
+        public Polaznik KreirajPolaznik(Polaznik polaznik) {
+            KreirajPolaznikSO so = new KreirajPolaznikSO(polaznik);
             so.ExecuteTemplate();
             return so.Result;
         }
@@ -81,9 +81,9 @@ namespace Server
             return so.Result;
         }
         //EVIDENCIONI OBRAZAC
-        public EvidencioniObrazac KreirajEvidencioniObrazac()
+        public EvidencioniObrazac KreirajEvidencioniObrazac(EvidencioniObrazac obrazac)
         {
-            KreirajEvidencioniObrazacSO so = new KreirajEvidencioniObrazacSO();
+            KreirajEvidencioniObrazacSO so = new KreirajEvidencioniObrazacSO(obrazac);
             so.ExecuteTemplate();
             return so.Result;
         }

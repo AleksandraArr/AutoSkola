@@ -3,28 +3,60 @@
   "WorkspaceRootPath": "C:\\Users\\PC\\Desktop\\AutoSkola\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D6369D7B-504D-4309-B7D8-BB0B3578BA81}|Server\\Server.csproj|c:\\users\\pc\\desktop\\autoskola\\server\\controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6369D7B-504D-4309-B7D8-BB0B3578BA81}|Server\\Server.csproj|solutionrelative:server\\controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|c:\\users\\pc\\desktop\\autoskola\\client\\usercontrols\\evidencioniobrazac\\ucevidencioniobrazac.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|solutionrelative:client\\usercontrols\\evidencioniobrazac\\ucevidencioniobrazac.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|c:\\users\\pc\\desktop\\autoskola\\client\\guicontroller\\kreirajpolaznikcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|solutionrelative:client\\guicontroller\\kreirajpolaznikcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|c:\\users\\pc\\desktop\\autoskola\\client\\usercontrols\\polaznik\\ucpolaznici.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|solutionrelative:client\\usercontrols\\polaznik\\ucpolaznici.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|c:\\users\\pc\\desktop\\autoskola\\client\\usercontrols\\polaznik\\uckreirajpolaznik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|solutionrelative:client\\usercontrols\\polaznik\\uckreirajpolaznik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|c:\\users\\pc\\desktop\\autoskola\\client\\communication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|solutionrelative:client\\communication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6369D7B-504D-4309-B7D8-BB0B3578BA81}|Server\\Server.csproj|c:\\users\\pc\\desktop\\autoskola\\server\\clienthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6369D7B-504D-4309-B7D8-BB0B3578BA81}|Server\\Server.csproj|solutionrelative:server\\clienthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6369D7B-504D-4309-B7D8-BB0B3578BA81}|Server\\Server.csproj|c:\\users\\pc\\desktop\\autoskola\\server\\controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6369D7B-504D-4309-B7D8-BB0B3578BA81}|Server\\Server.csproj|solutionrelative:server\\controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6369D7B-504D-4309-B7D8-BB0B3578BA81}|Server\\Server.csproj|c:\\users\\pc\\desktop\\autoskola\\server\\systemoperation\\kreirajpolaznikso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6369D7B-504D-4309-B7D8-BB0B3578BA81}|Server\\Server.csproj|solutionrelative:server\\systemoperation\\kreirajpolaznikso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6369D7B-504D-4309-B7D8-BB0B3578BA81}|Server\\Server.csproj|c:\\users\\pc\\desktop\\autoskola\\server\\systemoperation\\kreirajevidencioniobrazacso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6369D7B-504D-4309-B7D8-BB0B3578BA81}|Server\\Server.csproj|solutionrelative:server\\systemoperation\\kreirajevidencioniobrazacso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|c:\\users\\pc\\desktop\\autoskola\\client\\guicontroller\\evidencioniobrascicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|solutionrelative:client\\guicontroller\\evidencioniobrascicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|c:\\users\\pc\\desktop\\autoskola\\client\\usercontrols\\evidencioniobrazac\\ucevidencioniobrazac.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|solutionrelative:client\\usercontrols\\evidencioniobrazac\\ucevidencioniobrazac.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|c:\\users\\pc\\desktop\\autoskola\\client\\guicontroller\\kreirajevidencioniobrazaccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|solutionrelative:client\\guicontroller\\kreirajevidencioniobrazaccontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE95B8E8-2FE3-4433-B6B0-910E89A95AC2}|Broker\\DBBroker.csproj|c:\\users\\pc\\desktop\\autoskola\\broker\\broker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EE95B8E8-2FE3-4433-B6B0-910E89A95AC2}|Broker\\DBBroker.csproj|solutionrelative:broker\\broker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|c:\\users\\pc\\desktop\\autoskola\\client\\usercontrols\\evidencioniobrazac\\uckreirajevidencioniobrazac.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|solutionrelative:client\\usercontrols\\evidencioniobrazac\\uckreirajevidencioniobrazac.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|c:\\users\\pc\\desktop\\autoskola\\client\\guicontroller\\evidencioniobrascicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|solutionrelative:client\\guicontroller\\evidencioniobrascicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D6369D7B-504D-4309-B7D8-BB0B3578BA81}|Server\\Server.csproj|c:\\users\\pc\\desktop\\autoskola\\server\\systemoperation\\promenievidencioniobrazacso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6369D7B-504D-4309-B7D8-BB0B3578BA81}|Server\\Server.csproj|solutionrelative:server\\systemoperation\\promenievidencioniobrazacso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|C:\\Users\\PC\\Desktop\\AutoSkola\\client\\usercontrols\\evidencioniobrazac\\uckreirajevidencioniobrazac.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -39,22 +71,6 @@
       "RelativeMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|solutionrelative:client\\usercontrols\\evidencioniobrazac\\uckreirajevidencioniobrazac.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D6369D7B-504D-4309-B7D8-BB0B3578BA81}|Server\\Server.csproj|c:\\users\\pc\\desktop\\autoskola\\server\\systemoperation\\kreirajevidencioniobrazacso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6369D7B-504D-4309-B7D8-BB0B3578BA81}|Server\\Server.csproj|solutionrelative:server\\systemoperation\\kreirajevidencioniobrazacso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D6369D7B-504D-4309-B7D8-BB0B3578BA81}|Server\\Server.csproj|c:\\users\\pc\\desktop\\autoskola\\server\\clienthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6369D7B-504D-4309-B7D8-BB0B3578BA81}|Server\\Server.csproj|solutionrelative:server\\clienthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EE95B8E8-2FE3-4433-B6B0-910E89A95AC2}|Broker\\DBBroker.csproj|c:\\users\\pc\\desktop\\autoskola\\broker\\broker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EE95B8E8-2FE3-4433-B6B0-910E89A95AC2}|Broker\\DBBroker.csproj|solutionrelative:broker\\broker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D6369D7B-504D-4309-B7D8-BB0B3578BA81}|Server\\Server.csproj|c:\\users\\pc\\desktop\\autoskola\\server\\systemoperation\\kreirajpolaznikso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D6369D7B-504D-4309-B7D8-BB0B3578BA81}|Server\\Server.csproj|solutionrelative:server\\systemoperation\\kreirajpolaznikso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|c:\\users\\pc\\desktop\\autoskola\\client\\frmkreiraj.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|solutionrelative:client\\frmkreiraj.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -63,20 +79,8 @@
       "RelativeMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|solutionrelative:client\\frmkreiraj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|c:\\users\\pc\\desktop\\autoskola\\client\\usercontrols\\polaznik\\uckreirajpolaznik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|solutionrelative:client\\usercontrols\\polaznik\\uckreirajpolaznik.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|C:\\Users\\PC\\Desktop\\AutoSkola\\client\\frmkreiraj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|solutionrelative:client\\frmkreiraj.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|c:\\users\\pc\\desktop\\autoskola\\client\\guicontroller\\kreirajpolaznikcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|solutionrelative:client\\guicontroller\\kreirajpolaznikcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|c:\\users\\pc\\desktop\\autoskola\\client\\communication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|solutionrelative:client\\communication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{97F6B158-AA40-4546-96ED-A07FED923712}|Client\\Client.csproj|c:\\users\\pc\\desktop\\autoskola\\client\\usercontrols\\evidencioniobrazac\\ucevidencioniobrazac.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -106,17 +110,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 16,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 13,
+              "Title": "PromeniEvidencioniObrazacSO.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Server\\SystemOperation\\PromeniEvidencioniObrazacSO.cs",
+              "RelativeDocumentMoniker": "Server\\SystemOperation\\PromeniEvidencioniObrazacSO.cs",
+              "ToolTip": "C:\\Users\\PC\\Desktop\\AutoSkola\\Server\\SystemOperation\\PromeniEvidencioniObrazacSO.cs",
+              "RelativeToolTip": "Server\\SystemOperation\\PromeniEvidencioniObrazacSO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-05T21:55:54.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "UCPolaznici.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\UserControls\\Polaznik\\UCPolaznici.cs",
               "RelativeDocumentMoniker": "Client\\UserControls\\Polaznik\\UCPolaznici.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\UserControls\\Polaznik\\UCPolaznici.cs",
               "RelativeToolTip": "Client\\UserControls\\Polaznik\\UCPolaznici.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACUAAABBAAAAAAAAAA==",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAvwGQAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T21:39:37.532Z",
               "EditorCaption": ""
@@ -129,53 +146,53 @@
               "RelativeDocumentMoniker": "Broker\\Broker.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\AutoSkola\\Broker\\Broker.cs",
               "RelativeToolTip": "Broker\\Broker.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAYwB8AAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAAB8AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T21:29:46.199Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 4,
               "Title": "ClientHandler.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Server\\ClientHandler.cs",
               "RelativeDocumentMoniker": "Server\\ClientHandler.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\AutoSkola\\Server\\ClientHandler.cs",
               "RelativeToolTip": "Server\\ClientHandler.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAADgvyMAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAQwEEAAABsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T21:27:33.377Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "Controller.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Server\\Controller.cs",
               "RelativeDocumentMoniker": "Server\\Controller.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\AutoSkola\\Server\\Controller.cs",
               "RelativeToolTip": "Server\\Controller.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAADwv2AAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAACYAAAAAAAAAAAAiwDMAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T21:24:22.853Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 6,
               "Title": "KreirajPolaznikSO.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Server\\SystemOperation\\KreirajPolaznikSO.cs",
               "RelativeDocumentMoniker": "Server\\SystemOperation\\KreirajPolaznikSO.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\AutoSkola\\Server\\SystemOperation\\KreirajPolaznikSO.cs",
               "RelativeToolTip": "Server\\SystemOperation\\KreirajPolaznikSO.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAqwBAAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T21:21:44.366Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "FrmKreiraj.Designer.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\FrmKreiraj.Designer.cs",
               "RelativeDocumentMoniker": "Client\\FrmKreiraj.Designer.cs",
@@ -183,37 +200,37 @@
               "RelativeToolTip": "Client\\FrmKreiraj.Designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T16:28:10.476Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T16:28:10.476Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 7,
               "Title": "KreirajEvidencioniObrazacSO.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Server\\SystemOperation\\KreirajEvidencioniObrazacSO.cs",
               "RelativeDocumentMoniker": "Server\\SystemOperation\\KreirajEvidencioniObrazacSO.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\AutoSkola\\Server\\SystemOperation\\KreirajEvidencioniObrazacSO.cs",
               "RelativeToolTip": "Server\\SystemOperation\\KreirajEvidencioniObrazacSO.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAADgvxYAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T16:00:28.51Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 3,
               "Title": "Communication.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\Communication.cs",
               "RelativeDocumentMoniker": "Client\\Communication.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\Communication.cs",
               "RelativeToolTip": "Client\\Communication.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAAAjwC4AAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T16:00:24.337Z"
+              "WhenOpened": "2025-06-05T16:00:24.337Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "UCEvidencioniObrazac.Designer.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\UserControls\\EvidencioniObrazac\\UCEvidencioniObrazac.Designer.cs",
               "RelativeDocumentMoniker": "Client\\UserControls\\EvidencioniObrazac\\UCEvidencioniObrazac.Designer.cs",
@@ -226,19 +243,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "UCPolaznici.cs [Design]",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\UserControls\\Polaznik\\UCPolaznici.cs",
               "RelativeDocumentMoniker": "Client\\UserControls\\Polaznik\\UCPolaznici.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\UserControls\\Polaznik\\UCPolaznici.cs [Design]",
               "RelativeToolTip": "Client\\UserControls\\Polaznik\\UCPolaznici.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T15:50:09.774Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-06-05T15:50:09.774Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "UCUbaciKategorijaVozacke.cs [Design]",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\UserControls\\Kategorija vozacke\\UCUbaciKategorijaVozacke.cs",
               "RelativeDocumentMoniker": "Client\\UserControls\\Kategorija vozacke\\UCUbaciKategorijaVozacke.cs",
@@ -249,7 +265,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "UCEvidencioniObrazac.cs [Design]",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\UserControls\\EvidencioniObrazac\\UCEvidencioniObrazac.cs",
               "RelativeDocumentMoniker": "Client\\UserControls\\EvidencioniObrazac\\UCEvidencioniObrazac.cs",
@@ -261,7 +277,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 18,
               "Title": "FrmKreiraj.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\FrmKreiraj.cs",
               "RelativeDocumentMoniker": "Client\\FrmKreiraj.cs",
@@ -274,7 +290,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "FrmKreiraj.cs [Design]",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\FrmKreiraj.cs",
               "RelativeDocumentMoniker": "Client\\FrmKreiraj.cs",
@@ -285,32 +301,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "EvidencioniObrasciController.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\GuiController\\EvidencioniObrasciController.cs",
               "RelativeDocumentMoniker": "Client\\GuiController\\EvidencioniObrasciController.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\GuiController\\EvidencioniObrasciController.cs",
               "RelativeToolTip": "Client\\GuiController\\EvidencioniObrasciController.cs",
-              "ViewState": "AgIAAMwAAAAAAAAAAAAIwOUAAABaAAAAAAAAAA==",
+              "ViewState": "AgIAAOIAAAAAAAAAAAAEwAkBAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T15:46:49.101Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 0,
               "Title": "KreirajPolaznikController.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\GuiController\\KreirajPolaznikController.cs",
               "RelativeDocumentMoniker": "Client\\GuiController\\KreirajPolaznikController.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\GuiController\\KreirajPolaznikController.cs",
               "RelativeToolTip": "Client\\GuiController\\KreirajPolaznikController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAACoAAAAAAAAAAAArwDUAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T15:43:19.671Z"
+              "WhenOpened": "2025-06-05T15:43:19.671Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 15,
               "Title": "UCKreirajPolaznik.Designer.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\UserControls\\Polaznik\\UCKreirajPolaznik.Designer.cs",
               "RelativeDocumentMoniker": "Client\\UserControls\\Polaznik\\UCKreirajPolaznik.Designer.cs",
@@ -318,12 +335,11 @@
               "RelativeToolTip": "Client\\UserControls\\Polaznik\\UCKreirajPolaznik.Designer.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAAADMAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T15:41:45.013Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T15:41:45.013Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 16,
               "Title": "UCKreirajEvidencioniObrazac.Designer.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\UserControls\\EvidencioniObrazac\\UCKreirajEvidencioniObrazac.Designer.cs",
               "RelativeDocumentMoniker": "Client\\UserControls\\EvidencioniObrazac\\UCKreirajEvidencioniObrazac.Designer.cs",
@@ -331,64 +347,63 @@
               "RelativeToolTip": "Client\\UserControls\\EvidencioniObrazac\\UCKreirajEvidencioniObrazac.Designer.cs",
               "ViewState": "AgIAAGwAAAAAAAAAAAAAAIEAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T15:37:36.748Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T15:37:36.748Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 9,
               "Title": "UCEvidencioniObrazac.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\UserControls\\EvidencioniObrazac\\UCEvidencioniObrazac.cs",
               "RelativeDocumentMoniker": "Client\\UserControls\\EvidencioniObrazac\\UCEvidencioniObrazac.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\UserControls\\EvidencioniObrazac\\UCEvidencioniObrazac.cs",
               "RelativeToolTip": "Client\\UserControls\\EvidencioniObrazac\\UCEvidencioniObrazac.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAswBsAAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACAAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T15:35:14.776Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 10,
               "Title": "KreirajEvidencioniObrazacController.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\GuiController\\KreirajEvidencioniObrazacController.cs",
               "RelativeDocumentMoniker": "Client\\GuiController\\KreirajEvidencioniObrazacController.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\GuiController\\KreirajEvidencioniObrazacController.cs",
               "RelativeToolTip": "Client\\GuiController\\KreirajEvidencioniObrazacController.cs",
-              "ViewState": "AgIAAEYAAAAAAAAAAAAIwFcAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAYwD8AAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T15:31:20.658Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 12,
               "Title": "UCKreirajEvidencioniObrazac.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\UserControls\\EvidencioniObrazac\\UCKreirajEvidencioniObrazac.cs",
               "RelativeDocumentMoniker": "Client\\UserControls\\EvidencioniObrazac\\UCKreirajEvidencioniObrazac.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\UserControls\\EvidencioniObrazac\\UCKreirajEvidencioniObrazac.cs",
               "RelativeToolTip": "Client\\UserControls\\EvidencioniObrazac\\UCKreirajEvidencioniObrazac.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T15:31:05.708Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 2,
               "Title": "UCKreirajPolaznik.cs",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\UserControls\\Polaznik\\UCKreirajPolaznik.cs",
               "RelativeDocumentMoniker": "Client\\UserControls\\Polaznik\\UCKreirajPolaznik.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\UserControls\\Polaznik\\UCKreirajPolaznik.cs",
               "RelativeToolTip": "Client\\UserControls\\Polaznik\\UCKreirajPolaznik.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBAAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAnwBkAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T15:31:03.428Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "UCKreirajPolaznik.cs [Design]",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\UserControls\\Polaznik\\UCKreirajPolaznik.cs",
               "RelativeDocumentMoniker": "Client\\UserControls\\Polaznik\\UCKreirajPolaznik.cs",
@@ -399,15 +414,14 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 14,
               "Title": "UCKreirajEvidencioniObrazac.cs [Design]",
               "DocumentMoniker": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\UserControls\\EvidencioniObrazac\\UCKreirajEvidencioniObrazac.cs",
               "RelativeDocumentMoniker": "Client\\UserControls\\EvidencioniObrazac\\UCKreirajEvidencioniObrazac.cs",
               "ToolTip": "C:\\Users\\PC\\Desktop\\AutoSkola\\Client\\UserControls\\EvidencioniObrazac\\UCKreirajEvidencioniObrazac.cs [Design]",
               "RelativeToolTip": "Client\\UserControls\\EvidencioniObrazac\\UCKreirajEvidencioniObrazac.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T15:30:57.59Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-06-05T15:30:57.59Z"
             }
           ]
         }

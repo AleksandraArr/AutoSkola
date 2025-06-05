@@ -63,7 +63,7 @@ namespace Server
                 {
                     // Polaznik
                     case Operation.KreirajPolaznik:
-                        r.Data = Controller.Instance.KreirajPolaznik();
+                        r.Data = Controller.Instance.KreirajPolaznik(serializer.ReadType<Polaznik>(req.Data));
                         r.IsSuccess = true;
                         break;
                     case Operation.VratiListuPolaznik:
@@ -111,7 +111,7 @@ namespace Server
 
                     // Evidencioni obrazac
                     case Operation.KreirajEvidencioniObrazac:
-                        r.Data = Controller.Instance.KreirajEvidencioniObrazac();
+                        r.Data = Controller.Instance.KreirajEvidencioniObrazac(serializer.ReadType<EvidencioniObrazac>(req.Data));
                         r.IsSuccess = true;
                         break;
                     case Operation.VratiListuEvidencioniObrazac:
