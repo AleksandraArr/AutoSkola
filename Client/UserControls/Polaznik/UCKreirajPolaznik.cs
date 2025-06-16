@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Client.UserControls.Polaznik
 {
-    public partial class UCKreirajPolaznik : UserControl
+    public partial class UCKreirajPolaznik : UserControl, IKreirajUC
     {
         KreirajPolaznikController polaznikController;
         public UCKreirajPolaznik()
@@ -59,7 +59,7 @@ namespace Client.UserControls.Polaznik
         }
 
 
-        public void UCKreirajPolaznik_Leave()
+        public void OnLeave()
         {
             if (!polaznikController.ZavrsenoKreiranje)
                 polaznikController.ObrisiPolaznik();

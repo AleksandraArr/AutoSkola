@@ -1,4 +1,5 @@
-﻿using Client.UserControls.EvidencioniObrazac;
+﻿using Client.UserControls;
+using Client.UserControls.EvidencioniObrazac;
 using Client.UserControls.Polaznik;
 using System;
 using System.Collections.Generic;
@@ -18,24 +19,20 @@ namespace Client
     }
     public partial class FrmKreiraj : Form
     {
-        UCKreirajEvidencioniObrazac ucKreirajEvidencioniObrazac;
-        UCKreirajPolaznik ucKreirajPolaznik;
+        IKreirajUC aktivniUC;
+        //UCKreirajEvidencioniObrazac ucKreirajEvidencioniObrazac;
+        //UCKreirajPolaznik ucKreirajPolaznik;
         FormType formType;
         public FrmKreiraj(FormType formType)
         {
             InitializeComponent();
+            this.formType = formType;
             if (formType == FormType.KreirajPolaznik)
-            {
-                ucKreirajPolaznik = new UCKreirajPolaznik();
-                this.formType = FormType.KreirajPolaznik;
-                ChangePanel(ucKreirajPolaznik);
-            }
+                aktivniUC = new UCKreirajPolaznik();
             if (formType == FormType.KreirajEvidencioniObrazac)
-            {
-                ucKreirajEvidencioniObrazac = new UCKreirajEvidencioniObrazac();
-                this.formType = FormType.KreirajEvidencioniObrazac;
-                ChangePanel(ucKreirajEvidencioniObrazac);
-            }
+                aktivniUC = new UCKreirajEvidencioniObrazac();
+            ChangePanel((UserControl)aktivniUC);
+
         }
 
         private void ChangePanel(UserControl userControl)
@@ -54,8 +51,7 @@ namespace Client
 
         private void FrmKreiraj_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (formType == FormType.KreirajPolaznik) ucKreirajPolaznik.UCKreirajPolaznik_Leave();
-            if (formType == FormType.KreirajEvidencioniObrazac) ucKreirajEvidencioniObrazac.UCKreirajEvidencioniObrazac_Leave();
+            aktivniUC.OnLeave();
         }
     }
 }

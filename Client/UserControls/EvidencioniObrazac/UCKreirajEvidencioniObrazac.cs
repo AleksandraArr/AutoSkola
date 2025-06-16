@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Client.UserControls.EvidencioniObrazac
 {
-    public partial class UCKreirajEvidencioniObrazac : UserControl
+    public partial class UCKreirajEvidencioniObrazac : UserControl, IKreirajUC
     {
 
         KreirajEvidencioniObrazacController obrazacController;
@@ -65,7 +65,8 @@ namespace Client.UserControls.EvidencioniObrazac
         {
             obrazacController.PromeniEvidencioniObrazac();
         }
-        public void UCKreirajEvidencioniObrazac_Leave()
+
+        public void OnLeave()
         {
             if (!obrazacController.ZavrsenoKreiranje)
                 obrazacController.ObrisiEvidencioniObrazac();

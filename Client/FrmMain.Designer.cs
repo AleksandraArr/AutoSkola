@@ -32,12 +32,6 @@
             menuStrip1 = new MenuStrip();
             evidencioniObrazacMenuItem = new ToolStripMenuItem();
             kategorijaVozackeToolStripMenuItem = new ToolStripMenuItem();
-            ubaciToolStripMenuItem = new ToolStripMenuItem();
-            obrisiToolStripMenuItem = new ToolStripMenuItem();
-            promeniToolStripMenuItem = new ToolStripMenuItem();
-            pretraziToolStripMenuItem = new ToolStripMenuItem();
-            vratiListuToolStripMenuItem = new ToolStripMenuItem();
-            vratiListuSviToolStripMenuItem = new ToolStripMenuItem();
             polazniciToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -68,47 +62,10 @@
             // 
             // kategorijaVozackeToolStripMenuItem
             // 
-            kategorijaVozackeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ubaciToolStripMenuItem, obrisiToolStripMenuItem, promeniToolStripMenuItem, pretraziToolStripMenuItem, vratiListuToolStripMenuItem, vratiListuSviToolStripMenuItem });
             kategorijaVozackeToolStripMenuItem.Name = "kategorijaVozackeToolStripMenuItem";
             kategorijaVozackeToolStripMenuItem.Size = new Size(176, 29);
             kategorijaVozackeToolStripMenuItem.Text = "Kategorija Vozacke";
-            // 
-            // ubaciToolStripMenuItem
-            // 
-            ubaciToolStripMenuItem.Name = "ubaciToolStripMenuItem";
-            ubaciToolStripMenuItem.Size = new Size(212, 34);
-            ubaciToolStripMenuItem.Text = "Ubaci";
-            ubaciToolStripMenuItem.Click += ubaciToolStripMenuItem_Click;
-            // 
-            // obrisiToolStripMenuItem
-            // 
-            obrisiToolStripMenuItem.Name = "obrisiToolStripMenuItem";
-            obrisiToolStripMenuItem.Size = new Size(212, 34);
-            obrisiToolStripMenuItem.Text = "Obrisi";
-            // 
-            // promeniToolStripMenuItem
-            // 
-            promeniToolStripMenuItem.Name = "promeniToolStripMenuItem";
-            promeniToolStripMenuItem.Size = new Size(212, 34);
-            promeniToolStripMenuItem.Text = "Promeni";
-            // 
-            // pretraziToolStripMenuItem
-            // 
-            pretraziToolStripMenuItem.Name = "pretraziToolStripMenuItem";
-            pretraziToolStripMenuItem.Size = new Size(212, 34);
-            pretraziToolStripMenuItem.Text = "Pretrazi";
-            // 
-            // vratiListuToolStripMenuItem
-            // 
-            vratiListuToolStripMenuItem.Name = "vratiListuToolStripMenuItem";
-            vratiListuToolStripMenuItem.Size = new Size(212, 34);
-            vratiListuToolStripMenuItem.Text = "Vrati listu ";
-            // 
-            // vratiListuSviToolStripMenuItem
-            // 
-            vratiListuSviToolStripMenuItem.Name = "vratiListuSviToolStripMenuItem";
-            vratiListuSviToolStripMenuItem.Size = new Size(212, 34);
-            vratiListuSviToolStripMenuItem.Text = "Vrati listu svi";
+            kategorijaVozackeToolStripMenuItem.Click += kategorijaVozackeToolStripMenuItem_Click;
             // 
             // polazniciToolStripMenuItem
             // 
@@ -138,12 +95,6 @@
         private Panel pnlMain;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem kategorijaVozackeToolStripMenuItem;
-        private ToolStripMenuItem ubaciToolStripMenuItem;
-        private ToolStripMenuItem obrisiToolStripMenuItem;
-        private ToolStripMenuItem promeniToolStripMenuItem;
-        private ToolStripMenuItem pretraziToolStripMenuItem;
-        private ToolStripMenuItem vratiListuToolStripMenuItem;
-        private ToolStripMenuItem vratiListuSviToolStripMenuItem;
         private ToolStripMenuItem polazniciToolStripMenuItem;
         private ToolStripMenuItem evidencioniObrazacMenuItem;
     }

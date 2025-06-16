@@ -19,7 +19,7 @@ namespace Client
         public FrmMain()
         {
             InitializeComponent();
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("sr-Latn-RS"); 
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("sr-Latn-RS");
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("sr-Latn-RS");
             ChangePanel(new UCEvidencioniObrazac());
         }
@@ -36,13 +36,6 @@ namespace Client
                 throw;
             }
         }
-
-        private void ubaciToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChangePanel(new UCUbaciKategorijaVozacke());
-            this.Text = "Kategorije vozacke";
-        }
-
         private void polazniciToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChangePanel(new UCPolaznici());
@@ -53,6 +46,12 @@ namespace Client
         {
             ChangePanel(new UCEvidencioniObrazac());
             this.Text = "Evidencioni obrasci";
+        }
+
+        private void kategorijaVozackeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangePanel(new UCUbaciKategorijaVozacke());
+            this.Text = "Kategorije vozacke";
         }
     }
 }

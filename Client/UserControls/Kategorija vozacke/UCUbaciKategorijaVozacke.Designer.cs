@@ -33,12 +33,13 @@
             txtKategorija = new TextBox();
             txtJacinaMotora = new TextBox();
             btnUbaci = new Button();
+            label5 = new Label();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(45, 70);
+            label1.Location = new Point(46, 104);
             label1.Name = "label1";
             label1.Size = new Size(142, 25);
             label1.TabIndex = 0;
@@ -47,39 +48,50 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(45, 130);
+            label2.Location = new Point(46, 164);
             label2.Name = "label2";
             label2.Size = new Size(126, 25);
             label2.TabIndex = 1;
-            label2.Text = "Jacina motora:";
+            label2.Text = "Jačina motora:";
             // 
             // txtKategorija
             // 
-            txtKategorija.Location = new Point(220, 70);
+            txtKategorija.Location = new Point(221, 104);
             txtKategorija.Name = "txtKategorija";
             txtKategorija.Size = new Size(300, 31);
             txtKategorija.TabIndex = 2;
             // 
             // txtJacinaMotora
             // 
-            txtJacinaMotora.Location = new Point(220, 130);
+            txtJacinaMotora.Location = new Point(221, 164);
             txtJacinaMotora.Name = "txtJacinaMotora";
             txtJacinaMotora.Size = new Size(300, 31);
             txtJacinaMotora.TabIndex = 3;
             // 
             // btnUbaci
             // 
-            btnUbaci.Location = new Point(220, 190);
+            btnUbaci.Location = new Point(221, 224);
             btnUbaci.Name = "btnUbaci";
             btnUbaci.Size = new Size(300, 40);
             btnUbaci.TabIndex = 4;
             btnUbaci.Text = "Ubaci";
             btnUbaci.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 13F);
+            label5.Location = new Point(46, 28);
+            label5.Name = "label5";
+            label5.Size = new Size(299, 36);
+            label5.TabIndex = 20;
+            label5.Text = "Ubaci kategoriju vozačke";
+            // 
             // UCUbaciKategorijaVozacke
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label5);
             Controls.Add(btnUbaci);
             Controls.Add(txtJacinaMotora);
             Controls.Add(txtKategorija);
@@ -98,6 +110,7 @@
         private TextBox txtKategorija;
         private TextBox txtJacinaMotora;
         private Button btnUbaci;
+        private Label label5;
 
         public TextBox TxtKategorija { get => txtKategorija; set => txtKategorija = value; }
         public TextBox TxtJacinaMotora { get => txtJacinaMotora; set => txtJacinaMotora = value; }

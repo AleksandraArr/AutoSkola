@@ -40,6 +40,14 @@ namespace Client.GuiController
                 frmLogin.AutoSize = true;
                 Application.Run(frmLogin);
             }
+            catch (SocketException ex) when (ex.SocketErrorCode == SocketError.ConnectionRefused)
+            {
+                MessageBox.Show(
+                    "Neuspešno povezivanje sa serverom.\nProverite da li je server pokrenut.",
+                    "Server nije dostupan",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
             catch (SocketException ex)
             {
                 MessageBox.Show(ex.Message);
@@ -62,7 +70,9 @@ namespace Client.GuiController
             Response response = Communication.Instance.PrijaviInstruktor(instruktor);
             if (response.IsSuccess)
             {
-                MessageBox.Show("Korisnicko ime i sifra su ispravni.");
+                MessageBox.Show("Korisnicko ime i sifra su ispravni.", "Uspešna prijava",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
                 frmLogin.Visible = false;
                 MainCoordinator.Instance.ShowFrmMain();
 
