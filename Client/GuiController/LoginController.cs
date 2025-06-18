@@ -57,10 +57,7 @@ namespace Client.GuiController
         public void Login(object sender, EventArgs e)
         {
             if (!frmLogin.Validacija())
-            {
-                MessageBox.Show("Molimo popunite sva polja.");
                 return;
-            }
 
             Instruktor instruktor = new Instruktor
             {
@@ -70,17 +67,12 @@ namespace Client.GuiController
             Response response = Communication.Instance.PrijaviInstruktor(instruktor);
             if (response.IsSuccess)
             {
-                MessageBox.Show("Korisnicko ime i sifra su ispravni.", "Uspešna prijava",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                MessageBox.Show("Korisničko ime i šifra su ispravni.", "Prijava", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 frmLogin.Visible = false;
                 MainCoordinator.Instance.ShowFrmMain();
-
             }
             else
-            {
-                MessageBox.Show(">>>" + response.ExceptionMessage);
-            }
+                MessageBox.Show("Korisničko ime i šifra nisu ispravni.", "Prijava", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

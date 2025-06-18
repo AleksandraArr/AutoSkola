@@ -23,61 +23,51 @@ namespace Client.GuiController
         internal void KreirajPolaznika()
         {
             Response response = Communication.Instance.KreirajPolaznik(new Polaznik());
-            try
+      
+            if (response.IsSuccess)
             {
-                if (response.IsSuccess)
-                {
-                    idPolaznik = ((Polaznik)response.Data).IdPolaznik;
-                    MessageBox.Show("Sistem je kreirao polaznika!", "Operacija uspešno izvršena!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ucPolaznik.TxtIme.Enabled = true;
-                    ucPolaznik.TxtPrezime.Enabled = true;
-                    ucPolaznik.TxtKontaktTelefon.Enabled = true;
-                    ucPolaznik.DtpDatumRodjenja.Enabled = true;
-                    ucPolaznik.BtnUbaci.Enabled = true;
-                    ucPolaznik.BtnKreiraj.Enabled = false;
-                    ZavrsenoKreiranje = false;
-                }
+                idPolaznik = ((Polaznik)response.Data).IdPolaznik;
+                MessageBox.Show("Sistem je kreirao polaznika!", "Kreiranje polaznika", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ucPolaznik.TxtIme.Enabled = true;
+                ucPolaznik.TxtPrezime.Enabled = true;
+                ucPolaznik.TxtKontaktTelefon.Enabled = true;
+                ucPolaznik.DtpDatumRodjenja.Enabled = true;
+                ucPolaznik.BtnUbaci.Enabled = true;
+                ucPolaznik.BtnKreiraj.Enabled = false;
+                ZavrsenoKreiranje = false;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Sistem ne može da kreirao polaznika.\n" + ex.Message);
-            }
+            else MessageBox.Show("Sistem ne može da kreira polaznika.", "Kreiranje polaznika", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
         }
         internal void PromeniPolaznik()
         {
-            try
+            if (!ucPolaznik.Validacija())
             {
-                if (!ucPolaznik.Validacija())
-                {
-                    MessageBox.Show("Molim vas unesite sva polja!");
-                }
-                Polaznik polaznik = new Polaznik();
-                polaznik.IdPolaznik = idPolaznik;
-                polaznik.Ime = ucPolaznik.TxtIme.Text;
-                polaznik.Prezime = ucPolaznik.TxtPrezime.Text;
-                polaznik.DatumRodjenja = ucPolaznik.DtpDatumRodjenja.Value;
-                polaznik.Telefon = ucPolaznik.TxtKontaktTelefon.Text;
+                MessageBox.Show("Molim vas unesite sva polja!");
+                return;
+            }
+            Polaznik polaznik = new Polaznik();
+            polaznik.IdPolaznik = idPolaznik;
+            polaznik.Ime = ucPolaznik.TxtIme.Text;
+            polaznik.Prezime = ucPolaznik.TxtPrezime.Text;
+            polaznik.DatumRodjenja = ucPolaznik.DtpDatumRodjenja.Value;
+            polaznik.Telefon = ucPolaznik.TxtKontaktTelefon.Text;
 
-                Communication.Instance.PromeniPolaznik(polaznik);
+            Response response = Communication.Instance.PromeniPolaznik(polaznik);
+            if (response.IsSuccess) { 
                 ZavrsenoKreiranje = true;
-                MessageBox.Show("Sistem je zapamtio polaznika!", "Operacija uspešno izvršena!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Sistem je zapamtio polaznika!", "Izmena polaznika", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Sistem ne može da zapamti polaznika.\n" + ex.Message);
-            }
+            else MessageBox.Show("Sistem ne može da zapamti polaznika.", "Izmena polaznika", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
         }
 
         internal void ObrisiPolaznik()
         {
-            try
-            {
-                Communication.Instance.ObrisiPolaznik(new Polaznik() { IdPolaznik = idPolaznik });
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Sistem ne može da obrisao polaznika.\n" + ex.Message);
-            }
+            Response response = Communication.Instance.ObrisiPolaznik(new Polaznik() { IdPolaznik = idPolaznik });
+
+            if (response.IsSuccess) return;
+            else MessageBox.Show("Sistem ne može da obriše polaznika.");
         }
     }
 }

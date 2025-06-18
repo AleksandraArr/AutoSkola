@@ -100,10 +100,5 @@ namespace Client.UserControls.Polaznik
             FrmKreiraj frm = new FrmKreiraj(FormType.KreirajPolaznik);
             frm.ShowDialog();
         }
-
-        private void UCPolaznici_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -18,15 +18,10 @@ namespace Client.GuiController
 
         private UCUbaciKategorijaVozacke ucUbaciKategorijaVozacke;
 
-
         public void UbaciKategorijaVozacke(object sender, EventArgs e)
         {
             if (!ucUbaciKategorijaVozacke.Validacija())
-            {
-                MessageBox.Show("Molimo popunite sva polja.");
                 return;
-            }
-
             KategorijaVozacke kategorija = new KategorijaVozacke
             {
                 JacinaMotora = ucUbaciKategorijaVozacke.TxtJacinaMotora.Text,
@@ -34,13 +29,10 @@ namespace Client.GuiController
             };
             Response response = Communication.Instance.UbaciKategorijaVozacke(kategorija);
             if (response.IsSuccess)
-            {
-                MessageBox.Show("Sistem je zapamtio kategoriju vozačke.");
-            }
+                MessageBox.Show("Sistem je zapamtio kategoriju vozačke.", "Ubaci kategoriju vozačke", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
-            {
-                MessageBox.Show(">>>" + response.ExceptionMessage);
-            }
+                MessageBox.Show("Sistem ne može da zapamti kategoriju vozačke.", "Ubaci kategoriju vozačke", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
         }
     }
 }

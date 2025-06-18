@@ -37,14 +37,8 @@ namespace Client.GuiController
                 frmMain.ShowDialog();
             }
             catch {
-                MessageBox.Show("Ne moze da se otvori glavna forma i meni");
+                MessageBox.Show("Ne može da se otvori glavna forma i meni");
             }
         }
-
-        internal void ShowAddPersonPanel()
-        {
-        }
-
-
     }
 }

@@ -21,116 +21,94 @@ namespace Client.GuiController
 
         internal void VratiListuSviPolaznik()
         {
-            try
-            {
-                List<Polaznik> polaznici = (List<Polaznik>)Communication.Instance.VratiListuSviPolaznik().Data;
-
-                if (polaznici == null | polaznici.Count == 0)
-                {
+            Response response = Communication.Instance.VratiListuSviPolaznik();
+            if (response.IsSuccess) { 
+                List<Polaznik> polaznici = (List<Polaznik>)response.Data;
+                if (polaznici == null | polaznici.Count == 0) {
                     MessageBox.Show("Trenutno nema unetih korisnika.");
                     ucPolaznici.DgvPolaznici.DataSource = null;
                     return;
                 }
                 PostaviPolaznik(polaznici);
             }
-            catch (NullReferenceException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Sistem ne može da učita korisnike.\n" + ex.Message);
+            else MessageBox.Show("Sistem ne može da nađe polaznike!", "Polaznici", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            }
         }
         public void PretraziPolaznika()
         {
             Response response = Communication.Instance.PretraziPolaznik(ucPolaznici.TxtImeIPrezime.Text);
-            List<Polaznik> polaznici = (List<Polaznik>)response.Data;
-            if (response.IsSuccess)
-            {
+
+            if (response.IsSuccess) {
+                List<Polaznik> polaznici = (List<Polaznik>)response.Data;
                 if (polaznici.Count == 0)
                     MessageBox.Show("Sistem nije našao polaznike po zadatim kriterijumima", "Pronađeni obrasci", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else { MessageBox.Show("Sistem je našao polaznike po zadatim kriterijumima", "Pronađeni obrasci", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                else MessageBox.Show("Sistem je našao polaznike po zadatim kriterijumima", "Pronađeni obrasci", MessageBoxButtons.OK, MessageBoxIcon.Information); 
                 PostaviPolaznik(polaznici);
             }
             else
-                MessageBox.Show("Sistem je ne može da nađe polaznike po zadatim kriterijumima", "Pronađeni obrasci", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Sistem ne može da nađe polaznike po zadatim kriterijumima", "Pronađeni obrasci", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         public void PretraziPolaznikaChanged()
         {
             Response response = Communication.Instance.PretraziPolaznik(ucPolaznici.TxtImeIPrezime.Text);
-            List<Polaznik> polaznici = (List<Polaznik>)response.Data;
-            if (response.IsSuccess)
-            {
+            
+            if (response.IsSuccess) {
+                List<Polaznik> polaznici = (List<Polaznik>)response.Data;
                 PostaviPolaznik(polaznici);
             }
-            else
-                MessageBox.Show("Sistem je ne može da nađe polaznike po zadatim kriterijumima", "Pronađeni obrasci", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else MessageBox.Show("Sistem ne može da nađe polaznike po zadatim kriterijumima", "Pronađeni obrasci", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         internal void PrikaziPolaznika()
         {
-            try
-            {
-                List<Polaznik> polaznici = VratiListuPolaznik();
-                if (polaznici == null || polaznici.Count == 0)
-                {
-                    MessageBox.Show("Sistem ne može da nađe polaznika.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                };
-                    MessageBox.Show("Sistem je našao polaznika.", "Obaveštenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Polaznik polaznik = polaznici[0];
-                    ucPolaznici.TxtIme.Text = polaznik.Ime;
-                    ucPolaznici.TxtPrezime.Text = polaznik.Prezime;
-                    ucPolaznici.DateTimePicker1.Value = polaznik.DatumRodjenja;
-                    ucPolaznici.TxtKontaktTelefon.Text = polaznik.Telefon;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Sistem ne može da prikaže polaznika.\n" + ex.Message);
-            }
+            List<Polaznik> polaznici = VratiListuPolaznik();
+            if (polaznici == null || polaznici.Count == 0) 
+                return;
+
+            MessageBox.Show("Sistem je našao polaznika.", "Obaveštenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Polaznik polaznik = polaznici[0];
+            ucPolaznici.TxtIme.Text = polaznik.Ime;
+            ucPolaznici.TxtPrezime.Text = polaznik.Prezime;
+            ucPolaznici.DateTimePicker1.Value = polaznik.DatumRodjenja;
+            ucPolaznici.TxtKontaktTelefon.Text = polaznik.Telefon;
         }
 
         internal void PromeniPolaznik()
         {
-            try
+            List<Polaznik> polaznici = VratiListuPolaznik();
+            if (polaznici == null || polaznici.Count == 0)
             {
-                List<Polaznik> polaznici = VratiListuPolaznik();
-                if (polaznici == null) return;
-                if (!ucPolaznici.Validacija()) {
-                    MessageBox.Show("Molim vas unesite sva polja!");
-                    return;
-                }
-                Polaznik polaznik = polaznici[0];
-                polaznik.Ime = ucPolaznici.TxtIme.Text;
-                polaznik.Prezime = ucPolaznici.TxtPrezime.Text;
-                polaznik.DatumRodjenja = ucPolaznici.DateTimePicker1.Value;
-                polaznik.Telefon = ucPolaznici.TxtKontaktTelefon.Text;
+                MessageBox.Show("Sistem ne može da nađe polaznika!", "Brisanje polaznika", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!ucPolaznici.Validacija()) {
+                MessageBox.Show("Molim vas unesite sva polja!");
+                return;
+            }
+            Polaznik polaznik = polaznici[0];
+            polaznik.Ime = ucPolaznici.TxtIme.Text;
+            polaznik.Prezime = ucPolaznici.TxtPrezime.Text;
+            polaznik.DatumRodjenja = ucPolaznici.DateTimePicker1.Value;
+            polaznik.Telefon = ucPolaznici.TxtKontaktTelefon.Text;
 
-                Communication.Instance.PromeniPolaznik(polaznik);
-                MessageBox.Show("Sistem je promenio polaznika!", "Operacija uspešno izvršena!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Sistem ne može da promeni polaznika.\n" + ex.Message);
-            }
+            Response response = Communication.Instance.PromeniPolaznik(polaznik);
+            if (response.IsSuccess)
+                MessageBox.Show("Sistem je promenio polaznika!", "Izmena polaznika", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else MessageBox.Show("Sistem ne može da promeni polaznika!", "Izmena polaznika", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
         }
 
         internal void ObrisiPolaznik()
         {
             List<Polaznik> polaznici = VratiListuPolaznik();
-            try
-            {
-                if (polaznici != null)
-                {
-                    Communication.Instance.ObrisiPolaznik(polaznici[0]);
-                    MessageBox.Show("Sistem je obrisao polaznika!", "Operacija uspešno izvršena!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+            if (polaznici == null || polaznici.Count == 0) {
+                MessageBox.Show("Sistem ne može da nađe polaznika!", "Brisanje polaznika", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Sistem ne može da obrisao polaznika.\n" + ex.Message);
-            }
+
+            Response response = Communication.Instance.ObrisiPolaznik(polaznici[0]);
+
+            if (response.IsSuccess) MessageBox.Show("Sistem je obrisao polaznika!", "Brisanje polaznika", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else MessageBox.Show("Sistem ne može da obriše polaznika!", "Brisanje polaznika", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void PostaviPolaznik(List<Polaznik> polaznici)
@@ -156,7 +134,10 @@ namespace Client.GuiController
             DataGridViewRow red = ucPolaznici.DgvPolaznici.SelectedRows[0];
             Polaznik polaznik = (Polaznik)red.DataBoundItem;
             Response response = Communication.Instance.VratiListuPolaznik(polaznik);
-            return (List<Polaznik>)response.Data;
+            if(response.IsSuccess)
+                return (List<Polaznik>)response.Data;
+            MessageBox.Show("Sistem ne može da nađe polaznika.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return null;
         }
     }
 }

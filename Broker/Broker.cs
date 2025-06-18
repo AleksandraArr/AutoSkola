@@ -41,19 +41,19 @@ namespace DBBroker
             return Execute(() =>
             {
                 using (SqlCommand cmd = connection.CreateCommand())
-            {
-                cmd.CommandText = $"INSERT INTO {entity.TableName} OUTPUT inserted.{entity.IdColumn} VALUES({entity.Values})";
-                object result = cmd.ExecuteScalar();
-
-                if (result == null || result == DBNull.Value)
                 {
-                    throw new Exception("Nije moguće dobiti ID nakon ubacivanja.");
+                    cmd.CommandText = $"INSERT INTO {entity.TableName} OUTPUT inserted.{entity.IdColumn} VALUES({entity.Values})";
+                    object result = cmd.ExecuteScalar();
+
+                    if (result == null || result == DBNull.Value)
+                    {
+                        throw new Exception("Nije moguće dobiti ID nakon ubacivanja.");
+                    }
+
+                    entity.SetId(Convert.ToInt32(result));
+                    return entity;
+
                 }
-
-                entity.SetId(Convert.ToInt32(result));
-                return entity;
-
-            }
             }, "Add");
         }
         public void Delete(IEntity entity)
@@ -62,7 +62,6 @@ namespace DBBroker
             {
                 SqlCommand cmd = connection.CreateCommand();
                 cmd.CommandText = $"DELETE FROM {entity.TableName} WHERE {entity.WhereCondition}";
-                Debug.WriteLine(cmd.CommandText);
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
                 return true;
@@ -75,7 +74,6 @@ namespace DBBroker
             {
                 SqlCommand cmd = connection.CreateCommand();
                 cmd.CommandText = $"SELECT * FROM {entity.TableName} {join} WHERE {condition}";
-                Debug.WriteLine(cmd.CommandText);
                 using SqlDataReader reader = cmd.ExecuteReader();
                 List<IEntity> list = entity.GetReaderList(reader);
                 cmd.Dispose();
@@ -100,7 +98,6 @@ namespace DBBroker
             {
                 SqlCommand cmd = connection.CreateCommand();
                 cmd.CommandText = $"UPDATE {obj.TableName} SET {obj.UpdateText} WHERE {obj.WhereCondition}";
-                Debug.WriteLine( cmd.CommandText );
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
                 return obj;

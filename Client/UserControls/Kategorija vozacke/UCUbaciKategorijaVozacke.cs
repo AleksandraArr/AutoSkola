@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace Client.UserControls.Kategorija_vozacke
 {
@@ -23,12 +24,10 @@ namespace Client.UserControls.Kategorija_vozacke
 
         public bool Validacija()
         {
-            txtJacinaMotora.BackColor = Color.White;
-            txtKategorija.BackColor = Color.White;
             bool isValid = true;
             if (string.IsNullOrWhiteSpace(txtJacinaMotora.Text))
             {
-                txtJacinaMotora.BackColor = Color.Salmon;
+                MessageBox.Show("Morate uneti jacinu motora.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 isValid = false;
             }
             else if (!IspravnaJedinica(txtJacinaMotora.Text))
@@ -37,13 +36,14 @@ namespace Client.UserControls.Kategorija_vozacke
                     txtJacinaMotora.Text = $"{broj}kW";
                 else
                 {
-                    txtJacinaMotora.BackColor = Color.Salmon;
+                    MessageBox.Show("Morate uneti jedinicu KW motora.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     isValid = false;
                 }
             }
             if (string.IsNullOrEmpty(txtKategorija.Text))
             {
-                txtKategorija.BackColor = Color.Salmon;
+                MessageBox.Show("Morate uneti kategoriju vozacke dozvole.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                 isValid = false;
             }
             return isValid;

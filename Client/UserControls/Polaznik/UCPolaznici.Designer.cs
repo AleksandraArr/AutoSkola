@@ -240,7 +240,6 @@
             Controls.Add(label1);
             Name = "UCPolaznici";
             Size = new Size(1105, 674);
-            Load += UCPolaznici_Load;
             ((System.ComponentModel.ISupportInitialize)dgvPolaznici).EndInit();
             gbPodaciPolaznika.ResumeLayout(false);
             gbPodaciPolaznika.PerformLayout();

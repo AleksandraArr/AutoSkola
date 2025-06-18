@@ -14,17 +14,15 @@ namespace Client
         }
         public bool Validacija()
         {
-            txtKorisnickoIme.BackColor = Color.White;
-            txtKorisnickoIme.BackColor = Color.White;
             bool isValid = true;
             if (string.IsNullOrEmpty(txtKorisnickoIme.Text))
             {
-                txtKorisnickoIme.BackColor = Color.Salmon;
+                MessageBox.Show("Morate uneti korisnicko ime.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 isValid = false;
             }
             if (string.IsNullOrEmpty(txtSifra.Text))
             {
-                txtSifra.BackColor = Color.Salmon;
+                MessageBox.Show("Morate uneti sifru.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 isValid = false;
             }
             return isValid;

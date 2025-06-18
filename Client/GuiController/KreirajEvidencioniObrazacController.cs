@@ -25,8 +25,8 @@ namespace Client.GuiController
 
         internal void KreirajEvidencioniObrazac()
         {
-            if (ucObrazac.CmbInstruktor.Items?.Count == 0 || ucObrazac.CmbPolaznik.Items?.Count == 0) {
-                MessageBox.Show("Neophodno je da postoje instruktore i polaznici da biste kreirali evidencioni obrazac!", "Upozorenje",MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            if (ucObrazac.CmbInstruktor.Items?.Count == 0 || ucObrazac.CmbPolaznik.Items?.Count == 0 || ucObrazac.CmbAutomobil.Items?.Count == 0) {
+                MessageBox.Show("Neophodno je da postoje instruktore, automobili i polaznici da biste kreirali evidencioni obrazac!", "Upozorenje",MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 return;
             }
             EvidencioniObrazac obrazac = new EvidencioniObrazac()
@@ -37,60 +37,53 @@ namespace Client.GuiController
                 Polaznik = null
             };
             Response response = Communication.Instance.KreirajEvidencioniObrazac(obrazac);
-            try
+            
+            if (response.IsSuccess)
             {
-                if (response.IsSuccess)
-                {
-                    idObrasca = ((EvidencioniObrazac)response.Data).IdObrazac;
-                    MessageBox.Show("Sistem je kreirao evidencioni obrazac!", "Operacija uspešno izvršena!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ucObrazac.TxtBrCasova.Enabled = true;
-                    ucObrazac.CmbInstruktor.Enabled = true;
-                    ucObrazac.CmbPolaznik.Enabled = true;
-                    ucObrazac.DtpDatumPocetka.Enabled = true;
-                    ucObrazac.BtnUbaci.Enabled = true;
-                    ucObrazac.DtpDatum.Enabled = true;
-                    ucObrazac.TxtTrajanje.Enabled = true;
-                    ucObrazac.CmbAutomobil.Enabled = true;
-                    ucObrazac.BtnDodajCas.Enabled = true;
-                    ucObrazac.BtnKreiraj.Enabled = false;
-                    ZavrsenoKreiranje = false;
-                }
+                idObrasca = ((EvidencioniObrazac)response.Data).IdObrazac;
+                MessageBox.Show("Sistem je kreirao evidencioni obrazac!", "Kreiranje evidencionog obrasca", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ucObrazac.TxtBrCasova.Enabled = true;
+                ucObrazac.CmbInstruktor.Enabled = true;
+                ucObrazac.CmbPolaznik.Enabled = true;
+                ucObrazac.DtpDatumPocetka.Enabled = true;
+                ucObrazac.BtnUbaci.Enabled = true;
+                ucObrazac.DtpDatum.Enabled = true;
+                ucObrazac.TxtTrajanje.Enabled = true;
+                ucObrazac.CmbAutomobil.Enabled = true;
+                ucObrazac.BtnDodajCas.Enabled = true;
+                ucObrazac.BtnKreiraj.Enabled = false;
+                ZavrsenoKreiranje = false;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Sistem ne može da kreira evidencioni obrazac.\n" + ex.Message);
-            }
+            else MessageBox.Show("Sistem ne moze da kreira evidencioni obrazac!", "Kreiranje evidencionog obrasca", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
         internal void PromeniEvidencioniObrazac()
         {
-            try
+
+            if (!ucObrazac.Validacija())
+                return;
+            EvidencioniObrazac obrazac = new EvidencioniObrazac();
+            obrazac.IdObrazac = idObrasca;
+            obrazac.Polaznik = (Polaznik)ucObrazac.CmbPolaznik.SelectedItem;
+            obrazac.Instruktor = (Instruktor)ucObrazac.CmbInstruktor.SelectedItem;
+            obrazac.BrojCasova = int.Parse(ucObrazac.TxtBrCasova.Text);
+            obrazac.DatumPocetka = ucObrazac.DtpDatumPocetka.Value;
+            obrazac.Casovi = casovi;
+            Response response = Communication.Instance.PromeniEvidencioniObrazac(obrazac);
+            if (response.IsSuccess)
             {
-                if (!ucObrazac.Validacija())
-                {
-                    MessageBox.Show("Molim vas unesite sva polja!");
-                    return;
-                }
-                EvidencioniObrazac obrazac = new EvidencioniObrazac();
-                obrazac.IdObrazac = idObrasca;
-                obrazac.Polaznik = (Polaznik)ucObrazac.CmbPolaznik.SelectedItem;
-                obrazac.Instruktor = (Instruktor)ucObrazac.CmbInstruktor.SelectedItem;
-                obrazac.BrojCasova = int.Parse(ucObrazac.TxtBrCasova.Text);
-                obrazac.DatumPocetka = ucObrazac.DtpDatumPocetka.Value;
-                obrazac.Casovi = casovi;
-                Communication.Instance.PromeniEvidencioniObrazac(obrazac);
-                MessageBox.Show("Sistem je zapamtio evidencioni obrazac!", "Operacija uspešno izvršena!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Sistem je zapamtio evidencioni obrazac!", "Kreiranje evidencionog obrasca", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ZavrsenoKreiranje = true;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Sistem ne može da zapamti polaznika.\n" + ex.Message);
-            }
+            else MessageBox.Show("Sistem ne može da zapamti evidencioni obrazac!", "Kreiranje evidencionog obrasca", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
         internal void VratiListuSviPolaznik()
         {
-            try
+            Response response = Communication.Instance.VratiListuSviPolaznik();
+            if (response.IsSuccess)
             {
-                List<Polaznik> polaznici = (List<Polaznik>)Communication.Instance.VratiListuSviPolaznik().Data;
+                List<Polaznik> polaznici = (List<Polaznik>)response.Data;
 
                 if (polaznici == null | polaznici.Count == 0)
                 {
@@ -103,21 +96,16 @@ namespace Client.GuiController
                 ucObrazac.CmbPolaznik.DisplayMember = "ImeIPrezime";
                 ucObrazac.CmbPolaznik.SelectedIndex = -1;
             }
-            catch (NullReferenceException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Sistem ne može da učita korisnike.\n" + ex.Message);
-
-            }
+            else MessageBox.Show("Sistem ne može da učita korisnike.");
+            
         }
         internal void VratiListuSviInstruktor()
         {
-            try
+            
+            Response response = Communication.Instance.VratiListuSviInstruktor();
+            if (response.IsSuccess)
             {
-                List<Instruktor> instruktori = (List<Instruktor>)Communication.Instance.VratiListuSviInstruktor().Data;
+                List<Instruktor> instruktori = (List<Instruktor>)response.Data;
 
                 if (instruktori == null || instruktori.Count == 0)
                 {
@@ -130,21 +118,17 @@ namespace Client.GuiController
                 ucObrazac.CmbInstruktor.DisplayMember = "ImeIPrezime";
                 ucObrazac.CmbInstruktor.SelectedIndex = -1;
             }
-            catch (NullReferenceException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Sistem ne može da učita instruktore.\n" + ex.Message);
-
-            }
+            else MessageBox.Show("Sistem ne može da učita korisnike.");
+             
+           
         }
+ 
         internal void VratiListuSviAutomobil()
         {
-            try
+            Response response = Communication.Instance.VratiListuSviAutomobil();
+            if (response.IsSuccess)
             {
-                List<Automobil> automobili = (List<Automobil>)Communication.Instance.VratiListuSviAutomobil().Data;
+                List<Automobil> automobili = (List<Automobil>)response.Data;
 
                 if (automobili == null || automobili.Count == 0)
                 {
@@ -157,24 +141,15 @@ namespace Client.GuiController
                 ucObrazac.CmbAutomobil.DisplayMember = "Model";
                 ucObrazac.CmbAutomobil.SelectedIndex = -1;
             }
-            catch (NullReferenceException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Sistem ne može da učita automobile.\n" + ex.Message);
+            else MessageBox.Show("Sistem ne može da nađe automobile!", "Automobili", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            }
         }
         internal void DodajCas() {
             try
             {
                 if (!ucObrazac.ValidacijaCas())
-                {
-                    MessageBox.Show("Molim vas unesite sva polja!");
                     return;
-                }
+
                 Cas cas = new Cas();
                 cas.Obrazac.IdObrazac = idObrasca;
                 cas.Automobil = (Automobil)ucObrazac.CmbAutomobil.SelectedItem;
@@ -202,14 +177,9 @@ namespace Client.GuiController
         }
         internal void ObrisiEvidencioniObrazac()
         {
-            try
-            {
-                Communication.Instance.ObrisiEvidencioniObrazac(new EvidencioniObrazac() { IdObrazac = idObrasca, Instruktor = new Instruktor(), Polaznik = new Polaznik() });
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Sistem ne može da obrise evidencioni obrazac.\n" + ex.Message);
-            }
+            Response response = Communication.Instance.ObrisiEvidencioniObrazac(new EvidencioniObrazac() { IdObrazac = idObrasca, Instruktor = new Instruktor(), Polaznik = new Polaznik() });
+            if (response.IsSuccess) return;
+            else MessageBox.Show("Sistem ne može da obriše evidencioni obrazac.");
         }
     }
 }

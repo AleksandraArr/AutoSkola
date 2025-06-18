@@ -134,7 +134,6 @@ namespace Server
                         r.Data = Controller.Instance.PretraziEvidencioniObrazac(serializer.ReadType<EvidencioniObrazacKriterijumiDTO>(req.Data));
                         r.IsSuccess = true;
                         break;
-
                     default:
                         throw new Exception("Nepoznat zahtev");
                 }
