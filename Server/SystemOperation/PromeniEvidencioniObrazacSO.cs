@@ -22,6 +22,12 @@ namespace Server.SystemOperation
 
         protected override void ExecuteConcreteOperation()
         {
+            foreach (var cas in obrazac.Casovi) {
+                if (cas.IdCas == 0)
+                    broker.Add(cas);
+                else
+                    broker.Update(cas);
+            }
             Result = (EvidencioniObrazac)broker.Update(obrazac);
         }
     }

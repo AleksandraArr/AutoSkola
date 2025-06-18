@@ -35,14 +35,14 @@
             // 
             pnlMain.Location = new Point(2, 2);
             pnlMain.Name = "pnlMain";
-            pnlMain.Size = new Size(560, 500);
+            pnlMain.Size = new Size(590, 1194);
             pnlMain.TabIndex = 0;
             // 
             // FrmKreiraj
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(563, 502);
+            ClientSize = new Size(590, 1196);
             Controls.Add(pnlMain);
             Name = "FrmKreiraj";
             Text = "FrmKreiraj";

@@ -17,11 +17,15 @@ namespace Server.SystemOperation
         }
         protected override void ExecuteConcreteOperation()
         {
-            List<IEntity> lista = broker.Get(obrazac);
+            List<EvidencioniObrazac> obrasci = broker.Get(obrazac).Cast<EvidencioniObrazac>().ToList();
 
+            string condition = $"idObrazac = {obrazac.IdObrazac}";
+            List<Cas> casovi = broker.GetByCondition(new Cas(),condition).Cast<Cas>().ToList();
+
+            foreach (EvidencioniObrazac obrazac in obrasci) 
+                obrazac.Casovi = casovi;
             
-            Result = lista.Cast<EvidencioniObrazac>().ToList();
-
+            Result = obrasci;
             if (Result == null)
                 throw new Exception("Ne postoje evidencioni obrasci.");
 

@@ -12,12 +12,20 @@ namespace Common.Domain
         public int IdObrazac { get; set; }
         public DateTime DatumPocetka { get; set; }
         public int BrojCasova { get; set; }
-        public Instruktor Instruktor { get; set; }
-        public Polaznik Polaznik { get; set; }
-
+        public Instruktor? Instruktor { get; set; }
+        public Polaznik? Polaznik { get; set; }
+        public List<Cas> Casovi { get; set; }
         public string TableName => "EvidencioniObrazac";
-        public string Values => $"'{DatumPocetka:yyyy-MM-dd}', {BrojCasova}, {Instruktor.IdInstruktor}, {Polaznik.IdPolaznik}";
-        public string UpdateText => $"DatumPocetka = '{DatumPocetka:yyyy-MM-dd}', BrojCasova = {BrojCasova}, IdInstruktor = {Instruktor.IdInstruktor}, IdPolaznik = {Polaznik.IdPolaznik}";
+        public string Values =>
+            $"'{DatumPocetka:yyyy-MM-dd}', {BrojCasova}, " +
+            $"{(Instruktor != null ? Instruktor.IdInstruktor.ToString() : "null")}, " +
+            $"{(Polaznik != null ? Polaznik.IdPolaznik.ToString() : "null")}";
+
+        public string UpdateText =>
+            $"DatumPocetka = '{DatumPocetka:yyyy-MM-dd}', " +
+            $"BrojCasova = {BrojCasova}, " +
+            $"IdInstruktor = {(Instruktor != null ? Instruktor.IdInstruktor.ToString() : "null")}, " +
+            $"IdPolaznik = {(Polaznik != null ? Polaznik.IdPolaznik.ToString() : "null")}";
         public string WhereCondition => $"IdObrazac = {IdObrazac}";
         public string IdColumn => $"IdObrazac";
         public List<IEntity> GetReaderList(SqlDataReader reader)

@@ -99,6 +99,7 @@ namespace Client.GuiController
                 if (polaznici == null) return;
                 if (!ucPolaznici.Validacija()) {
                     MessageBox.Show("Molim vas unesite sva polja!");
+                    return;
                 }
                 Polaznik polaznik = polaznici[0];
                 polaznik.Ime = ucPolaznici.TxtIme.Text;

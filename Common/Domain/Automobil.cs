@@ -41,5 +41,9 @@ namespace Common.Domain
         public void SetId(int id) {
             IdAutomobil = id;
         }
+        public override string ToString()
+        {
+            return Model;
+        }
     }
 }

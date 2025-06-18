@@ -75,9 +75,31 @@ namespace Client.UserControls.EvidencioniObrazac
                 return false;
             }
 
-            if (DateTimePickerDatumRodjenja.Value.Date < DateTime.Today)
+            if (DtpDatumPocetka.Value.Date < DateTime.Today)
             {
                 MessageBox.Show("Datum početka ne može biti u prošlosti.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+        public bool ValidacijaCas()
+        {
+
+            if (string.IsNullOrWhiteSpace(TxtTrajanje.Text))
+            {
+                MessageBox.Show("Morate uneti trajanje časa.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (!int.TryParse(TxtTrajanje.Text, out int trajanje) || trajanje <= 0)
+            {
+                MessageBox.Show("Broj časova mora biti pozitivan ceo broj.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (DtpDatumPocetka.Value.Date < DateTime.Today)
+            {
+                MessageBox.Show("Datum časa ne može biti u prošlosti.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
@@ -124,6 +146,37 @@ namespace Client.UserControls.EvidencioniObrazac
         {
             FrmKreiraj frm = new FrmKreiraj(FormType.KreirajEvidencioniObrazac);
             frm.ShowDialog();
+        }
+
+        private void dgvCasovi_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvCasovi.SelectedRows.Count == 0)
+                return;
+
+            obrazacController.PrikaziCas();
+            btnDodajCas.Visible = false;
+            btnIzmeniCas.Visible = true;
+            btnIzmeniCas.Enabled = true;
+            btnUkloniPodatke.Enabled = true;
+        }
+
+        private void btnUkloniPodatke_Click(object sender, EventArgs e)
+        {
+            txtTrajanje.Clear();
+            cmbAutomobil.SelectedIndex = -1;
+            btnIzmeniCas.Visible = false;
+            btnUkloniPodatke.Enabled = false;
+            btnDodajCas.Visible = true ;
+        }
+
+        private void btnDodajCas_Click(object sender, EventArgs e)
+        {
+          obrazacController.DodajCas();
+        }
+
+        private void btnIzmeniCas_Click(object sender, EventArgs e)
+        {
+            obrazacController.IzmeniCas();
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Client.GuiController
     {
         private UCKreirajEvidencioniObrazac ucObrazac;
         private int idObrasca;
+        private List<Cas> casovi = new List<Cas>();
         public Boolean ZavrsenoKreiranje { get; private set; } = true;
 
         public KreirajEvidencioniObrazacController(UCKreirajEvidencioniObrazac ucObrazac)
@@ -30,8 +31,10 @@ namespace Client.GuiController
             }
             EvidencioniObrazac obrazac = new EvidencioniObrazac()
             {
-                Instruktor = (Instruktor)ucObrazac.CmbInstruktor.Items[0],
-                Polaznik = (Polaznik)ucObrazac.CmbPolaznik.Items[0]
+                DatumPocetka = DateTime.Now,
+                BrojCasova = 0,
+                Instruktor = null,
+                Polaznik = null
             };
             Response response = Communication.Instance.KreirajEvidencioniObrazac(obrazac);
             try
@@ -45,6 +48,10 @@ namespace Client.GuiController
                     ucObrazac.CmbPolaznik.Enabled = true;
                     ucObrazac.DtpDatumPocetka.Enabled = true;
                     ucObrazac.BtnUbaci.Enabled = true;
+                    ucObrazac.DtpDatum.Enabled = true;
+                    ucObrazac.TxtTrajanje.Enabled = true;
+                    ucObrazac.CmbAutomobil.Enabled = true;
+                    ucObrazac.BtnDodajCas.Enabled = true;
                     ucObrazac.BtnKreiraj.Enabled = false;
                     ZavrsenoKreiranje = false;
                 }
@@ -61,6 +68,7 @@ namespace Client.GuiController
                 if (!ucObrazac.Validacija())
                 {
                     MessageBox.Show("Molim vas unesite sva polja!");
+                    return;
                 }
                 EvidencioniObrazac obrazac = new EvidencioniObrazac();
                 obrazac.IdObrazac = idObrasca;
@@ -68,7 +76,7 @@ namespace Client.GuiController
                 obrazac.Instruktor = (Instruktor)ucObrazac.CmbInstruktor.SelectedItem;
                 obrazac.BrojCasova = int.Parse(ucObrazac.TxtBrCasova.Text);
                 obrazac.DatumPocetka = ucObrazac.DtpDatumPocetka.Value;
-
+                obrazac.Casovi = casovi;
                 Communication.Instance.PromeniEvidencioniObrazac(obrazac);
                 MessageBox.Show("Sistem je zapamtio evidencioni obrazac!", "Operacija uspešno izvršena!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ZavrsenoKreiranje = true;
@@ -78,7 +86,6 @@ namespace Client.GuiController
                 MessageBox.Show("Sistem ne može da zapamti polaznika.\n" + ex.Message);
             }
         }
-
         internal void VratiListuSviPolaznik()
         {
             try
@@ -133,7 +140,66 @@ namespace Client.GuiController
 
             }
         }
+        internal void VratiListuSviAutomobil()
+        {
+            try
+            {
+                List<Automobil> automobili = (List<Automobil>)Communication.Instance.VratiListuSviAutomobil().Data;
 
+                if (automobili == null || automobili.Count == 0)
+                {
+                    MessageBox.Show("Trenutno nema unetih automobila.");
+                    ucObrazac.CmbAutomobil.DataSource = null;
+                    return;
+                }
+                ucObrazac.CmbAutomobil.DataSource = automobili;
+                ucObrazac.CmbAutomobil.ValueMember = "IdAutomobil";
+                ucObrazac.CmbAutomobil.DisplayMember = "Model";
+                ucObrazac.CmbAutomobil.SelectedIndex = -1;
+            }
+            catch (NullReferenceException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sistem ne može da učita automobile.\n" + ex.Message);
+
+            }
+        }
+        internal void DodajCas() {
+            try
+            {
+                if (!ucObrazac.ValidacijaCas())
+                {
+                    MessageBox.Show("Molim vas unesite sva polja!");
+                    return;
+                }
+                Cas cas = new Cas();
+                cas.Obrazac.IdObrazac = idObrasca;
+                cas.Automobil = (Automobil)ucObrazac.CmbAutomobil.SelectedItem;
+                cas.Datum = ucObrazac.DtpDatum.Value;
+                cas.Trajanje = int.Parse(ucObrazac.TxtTrajanje.Text);
+                casovi.Add(cas);
+                PostaviCas(casovi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sistem ne može da doda cas.\n" + ex.Message);
+            }
+        }
+        private void PostaviCas(List<Cas> casovi)
+        {
+            ucObrazac.DgvCasovi.DataSource = null;
+            ucObrazac.DgvCasovi.DataSource = casovi;
+            ucObrazac.DgvCasovi.Columns["Obrazac"].Visible = false;
+            ucObrazac.DgvCasovi.Columns["IdCas"].Visible = false;
+            ucObrazac.DgvCasovi.Columns["TableName"].Visible = false;
+            ucObrazac.DgvCasovi.Columns["Values"].Visible = false;
+            ucObrazac.DgvCasovi.Columns["UpdateText"].Visible = false;
+            ucObrazac.DgvCasovi.Columns["WhereCondition"].Visible = false;
+            ucObrazac.DgvCasovi.Columns["IdColumn"].Visible = false;
+        }
         internal void ObrisiEvidencioniObrazac()
         {
             try

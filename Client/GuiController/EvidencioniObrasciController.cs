@@ -18,12 +18,12 @@ namespace Client.GuiController
         private UCEvidencioniObrazac ucObrazac;
         private List<Polaznik> sviPolaznici = new List<Polaznik>();
         private List<Instruktor> sviInstruktori = new List<Instruktor>();
-
-
+        private List<Automobil> sviAutomobili = new List<Automobil>();
+        private EvidencioniObrazac obrazac;
+        private List<Cas> casovi;
         public EvidencioniObrazciController(UCEvidencioniObrazac ucObrazac) {
             this.ucObrazac = ucObrazac;
         }
-
         internal void VratiListuSviPolaznik()
         {
             try
@@ -100,10 +100,15 @@ namespace Client.GuiController
                     ucObrazac.CmbAutomobilKriterijum.DataSource = null;
                     return;
                 }
-                ucObrazac.CmbAutomobilKriterijum.DataSource = automobili;
+                sviAutomobili = automobili;
+                ucObrazac.CmbAutomobilKriterijum.DataSource = sviAutomobili;
                 ucObrazac.CmbAutomobilKriterijum.ValueMember = "IdAutomobil";
                 ucObrazac.CmbAutomobilKriterijum.DisplayMember = "Model";
                 ucObrazac.CmbAutomobilKriterijum.SelectedIndex = -1;
+                ucObrazac.CmbAutomobil.DataSource = sviAutomobili;
+                ucObrazac.CmbAutomobil.ValueMember = "IdAutomobil";
+                ucObrazac.CmbAutomobil.DisplayMember = "Model";
+                ucObrazac.CmbAutomobil.SelectedIndex = -1;
 
             }
             catch (NullReferenceException ex)
@@ -140,7 +145,6 @@ namespace Client.GuiController
 
             }
         }
-
         public void PretraziEvidencioniObrazac()
         {
             Automobil automobil = (Automobil)ucObrazac.CmbAutomobilKriterijum.SelectedItem;
@@ -169,32 +173,39 @@ namespace Client.GuiController
                 MessageBox.Show("Sistem je ne može da nađe evidencione obrasce po zadatim kriterijumima", "Pronađeni obrasci", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //MessageBox.Show(">>>" + response.ExceptionMessage);
         }
-
-        internal EvidencioniObrazac PrikaziEvidencioniObrazac()
+        internal void PrikaziEvidencioniObrazac()
         {
             try
             {
                 List<EvidencioniObrazac> obrasci = VratiListuEvidencioniObrazac();
-                if (obrasci == null) return null;
-                EvidencioniObrazac obrazac = obrasci[0];
+                if (obrasci == null) return;
                 if (obrasci != null && obrasci.Count > 0)
                 {
                     MessageBox.Show("Sistem je našao evidencioni obrazac", "Obaveštenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    obrazac = obrasci[0];
+                    this.obrazac = obrasci[0];
+                    this.casovi = obrazac.Casovi;
+                    ucObrazac.CmbPolaznik.Enabled = true;
+                    ucObrazac.CmbInstruktor.Enabled = true;
+                    ucObrazac.TxtBrCasova.Enabled = true;
+                    ucObrazac.DtpDatumPocetka.Enabled = true;
+                    ucObrazac.TxtTrajanje.Enabled = true;
+                    ucObrazac.CmbAutomobil.Enabled = true;
+                    ucObrazac.DtpDatumCasa.Enabled = true;
+                    ucObrazac.BtnDodajCas.Enabled = true;
                     ucObrazac.CmbPolaznik.SelectedValue = obrazac.Polaznik.IdPolaznik;
                     ucObrazac.CmbInstruktor.SelectedValue = obrazac.Instruktor.IdInstruktor;
                     ucObrazac.TxtBrCasova.Text = obrazac.BrojCasova.ToString();
-                    ucObrazac.DateTimePickerDatumRodjenja.Value = obrazac.DatumPocetka;
-                    return obrazac;
+                    ucObrazac.DtpDatumPocetka.Value = obrazac.DatumPocetka;
+                    PostaviCas(obrazac.Casovi);
+
                 }
                 else
                     MessageBox.Show("Sistem ne može da nađe evidencioni obrazac", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                return;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Sistem ne može da prikaže evidencioni obrazac.\n" + ex.Message);
-                return null;
             }
         }
         internal void ObrisiEvidencioniObrazac()
@@ -222,15 +233,16 @@ namespace Client.GuiController
                 if (!ucObrazac.Validacija())
                 {
                     MessageBox.Show("Molim vas unesite sva polja!");
+                    return;
                 }
                 EvidencioniObrazac obrazac = obrasci[0];
-                    obrazac.Polaznik = (Polaznik)ucObrazac.CmbPolaznik.SelectedItem;
-                    obrazac.Instruktor = (Instruktor)ucObrazac.CmbInstruktor.SelectedItem;
-                    obrazac.BrojCasova = int.Parse(ucObrazac.TxtBrCasova.Text);
-                    obrazac.DatumPocetka = ucObrazac.DateTimePickerDatumRodjenja.Value;
-
-                    Communication.Instance.PromeniEvidencioniObrazac(obrazac);
-                    MessageBox.Show("Sistem je zapamtio evidencioni obrazac!", "Operacija uspešno izvršena!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                obrazac.Polaznik = (Polaznik)ucObrazac.CmbPolaznik.SelectedItem;
+                obrazac.Instruktor = (Instruktor)ucObrazac.CmbInstruktor.SelectedItem;
+                obrazac.BrojCasova = int.Parse(ucObrazac.TxtBrCasova.Text);
+                obrazac.DatumPocetka = ucObrazac.DtpDatumPocetka.Value;
+                obrazac.Casovi = casovi;
+                Communication.Instance.PromeniEvidencioniObrazac(obrazac);
+                MessageBox.Show("Sistem je zapamtio evidencioni obrazac!", "Operacija uspešno izvršena!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             catch (Exception ex)
@@ -249,6 +261,20 @@ namespace Client.GuiController
             ucObrazac.DgvEvidencioniObrasci.Columns["UpdateText"].Visible = false;
             ucObrazac.DgvEvidencioniObrasci.Columns["WhereCondition"].Visible = false;
             ucObrazac.DgvEvidencioniObrasci.Columns["IdColumn"].Visible = false;
+        }
+        private void PostaviCas(List<Cas> casovi)
+        {
+            ucObrazac.DgvCasovi.DataSource = null;
+            ucObrazac.DgvCasovi.DataSource = casovi;
+             foreach (var c in casovi)
+                    c.Automobil = sviAutomobili.FirstOrDefault(a => a.IdAutomobil == c.Automobil.IdAutomobil);
+            ucObrazac.DgvCasovi.Columns["Obrazac"].Visible = false;
+            ucObrazac.DgvCasovi.Columns["IdCas"].Visible = false;
+            ucObrazac.DgvCasovi.Columns["TableName"].Visible = false;
+            ucObrazac.DgvCasovi.Columns["Values"].Visible = false;
+            ucObrazac.DgvCasovi.Columns["UpdateText"].Visible = false;
+            ucObrazac.DgvCasovi.Columns["WhereCondition"].Visible = false;
+            ucObrazac.DgvCasovi.Columns["IdColumn"].Visible = false;
         }
         private void DovrsiObjekte(List<EvidencioniObrazac> obrasci)
         {
@@ -270,5 +296,77 @@ namespace Client.GuiController
             return (List<EvidencioniObrazac>)response.Data ;
         }
 
+        internal void PrikaziCas()
+        {
+            try
+            {
+                if (this.obrazac == null)
+                {
+                    MessageBox.Show("Nije selektovan  evidencioni obrazac", "Obaveštenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                if (ucObrazac.DgvCasovi.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Odaberite cas za prikaz!");
+                    return;
+                }
+                DataGridViewRow red = ucObrazac.DgvCasovi.SelectedRows[0];
+                Cas cas = (Cas)red.DataBoundItem;
+               
+                ucObrazac.TxtTrajanje.Text = cas.Trajanje.ToString();
+                ucObrazac.DtpDatumCasa.Value = cas.Datum;
+                ucObrazac.CmbAutomobil.SelectedValue = cas.Automobil.IdAutomobil;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sistem ne može da prikaže evidencioni obrazac.\n" + ex.Message);
+                return;
+            }
+        }
+
+        internal void DodajCas() {
+            try
+            {
+                if (!ucObrazac.ValidacijaCas())
+                {
+                    MessageBox.Show("Molim vas unesite sva polja!");
+                    return;
+                }
+                Cas cas = new Cas();
+                cas.Obrazac.IdObrazac = obrazac.IdObrazac;
+                cas.Automobil = (Automobil)ucObrazac.CmbAutomobil.SelectedItem;
+                cas.Datum = ucObrazac.DtpDatumCasa.Value;
+                cas.Trajanje = int.Parse(ucObrazac.TxtTrajanje.Text);
+                casovi.Add(cas);
+                PostaviCas(casovi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sistem ne može da doda cas.\n" + ex.Message);
+            }
+        }
+
+        internal void IzmeniCas() {
+            try
+            {
+                if (!ucObrazac.ValidacijaCas())
+                {
+                    MessageBox.Show("Molim vas unesite sva polja!");
+                    return;
+                }
+                Cas cas = (Cas)ucObrazac.DgvCasovi.SelectedRows[0].DataBoundItem;
+                int indeks = casovi.IndexOf(cas);
+                cas.Obrazac.IdObrazac = obrazac.IdObrazac;
+                cas.Automobil = (Automobil)ucObrazac.CmbAutomobil.SelectedItem;
+                cas.Datum = ucObrazac.DtpDatumCasa.Value;
+                cas.Trajanje = int.Parse(ucObrazac.TxtTrajanje.Text);
+                casovi[indeks] = cas;
+                PostaviCas(casovi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sistem ne može da izmeni cas.\n" + ex.Message);
+            }
+        }
     }
 }

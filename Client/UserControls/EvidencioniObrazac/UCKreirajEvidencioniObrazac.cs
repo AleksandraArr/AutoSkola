@@ -21,6 +21,7 @@ namespace Client.UserControls.EvidencioniObrazac
             obrazacController = new KreirajEvidencioniObrazacController(this);
             obrazacController.VratiListuSviInstruktor();
             obrazacController.VratiListuSviPolaznik();
+            obrazacController.VratiListuSviAutomobil();
         }
         public bool Validacija()
         {
@@ -55,7 +56,28 @@ namespace Client.UserControls.EvidencioniObrazac
             }
             return true;
         }
+        public bool ValidacijaCas()
+        {
+            
+            if (string.IsNullOrWhiteSpace(TxtTrajanje.Text))
+            {
+                MessageBox.Show("Morate uneti trajanje časa.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
 
+            if (!int.TryParse(TxtTrajanje.Text, out int trajanje) || trajanje <= 0)
+            {
+                MessageBox.Show("Broj časova mora biti pozitivan ceo broj.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (DtpDatumPocetka.Value.Date < DateTime.Today)
+            {
+                MessageBox.Show("Datum časa ne može biti u prošlosti.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
         private void btnKreiraj_Click(object sender, EventArgs e)
         {
             obrazacController.KreirajEvidencioniObrazac();
@@ -70,6 +92,11 @@ namespace Client.UserControls.EvidencioniObrazac
         {
             if (!obrazacController.ZavrsenoKreiranje)
                 obrazacController.ObrisiEvidencioniObrazac();
+        }
+
+        private void btnDodajCas_Click(object sender, EventArgs e)
+        {
+            obrazacController.DodajCas();
         }
     }
 }
