@@ -38,11 +38,11 @@ namespace Client.GuiController
                     return;
                 }
                 sviPolaznici = polaznici;
-                ucObrazac.CmbPolaznik.DataSource = sviPolaznici;
-                ucObrazac.CmbPolaznikKriterijum.DataSource = sviPolaznici;
+                ucObrazac.CmbPolaznik.DataSource = new List<Polaznik>(polaznici);
                 ucObrazac.CmbPolaznik.ValueMember = "IdPolaznik";
                 ucObrazac.CmbPolaznik.DisplayMember = "ImeIPrezime";
                 ucObrazac.CmbPolaznik.SelectedIndex = -1;
+                ucObrazac.CmbPolaznikKriterijum.DataSource = new List<Polaznik>(polaznici);
                 ucObrazac.CmbPolaznikKriterijum.ValueMember = "IdPolaznik";
                 ucObrazac.CmbPolaznikKriterijum.DisplayMember = "ImeIPrezime";
                 ucObrazac.CmbPolaznikKriterijum.SelectedIndex = -1;
@@ -65,8 +65,8 @@ namespace Client.GuiController
                     return;
                 }
                 sviInstruktori = instruktori;
-                ucObrazac.CmbInstruktor.DataSource = sviInstruktori;
-                ucObrazac.CmbInstruktorKriterijum.DataSource = sviInstruktori;
+                ucObrazac.CmbInstruktor.DataSource = new List<Instruktor>(instruktori);
+                ucObrazac.CmbInstruktorKriterijum.DataSource = new List<Instruktor>(instruktori);
                 ucObrazac.CmbInstruktor.ValueMember = "IdInstruktor";
                 ucObrazac.CmbInstruktor.DisplayMember = "ImeIPrezime";
                 ucObrazac.CmbInstruktor.SelectedIndex = -1;
@@ -90,11 +90,11 @@ namespace Client.GuiController
                     return;
                 }
                 sviAutomobili = automobili;
-                ucObrazac.CmbAutomobilKriterijum.DataSource = sviAutomobili;
+                ucObrazac.CmbAutomobilKriterijum.DataSource = new List<Automobil>(automobili);
                 ucObrazac.CmbAutomobilKriterijum.ValueMember = "IdAutomobil";
                 ucObrazac.CmbAutomobilKriterijum.DisplayMember = "Model";
                 ucObrazac.CmbAutomobilKriterijum.SelectedIndex = -1;
-                ucObrazac.CmbAutomobil.DataSource = sviAutomobili;
+                ucObrazac.CmbAutomobil.DataSource = new List<Automobil>(automobili);
                 ucObrazac.CmbAutomobil.ValueMember = "IdAutomobil";
                 ucObrazac.CmbAutomobil.DisplayMember = "Model";
                 ucObrazac.CmbAutomobil.SelectedIndex = -1;
@@ -113,7 +113,7 @@ namespace Client.GuiController
                 if (obrasci == null || obrasci.Count == 0)
                 {
                     MessageBox.Show("Trenutno nema unetih obrazaca.");
-                    ucObrazac.CmbInstruktor.DataSource = null;
+                    ucObrazac.DgvEvidencioniObrasci.DataSource = null;
                     return;
                 }
                 PostaviEvidencioniObrazac(obrasci);
@@ -143,11 +143,11 @@ namespace Client.GuiController
             if (response.IsSuccess)
             {
                 List<EvidencioniObrazac> obrasci = (List<EvidencioniObrazac>)response.Data;
-                MessageBox.Show("Sistem je našao evidencione obrasce po zadatim kriterijumima", "Pretraga obrazaca", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Sistem je našao evidencione obrasce po zadatim kriterijumima.", "Pretraga obrazaca", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 PostaviEvidencioniObrazac(obrasci);
             }
             else
-                MessageBox.Show("Sistem ne može da nađe evidencione obrasce po zadatim kriterijumima", "Pretraga obrazaca", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Sistem ne može da nađe evidencione obrasce po zadatim kriterijumima.", "Pretraga obrazaca", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         internal void PrikaziEvidencioniObrazac()
         {
@@ -155,7 +155,7 @@ namespace Client.GuiController
             if (obrasci == null) return;
             if (obrasci.Count > 0)
             {
-                MessageBox.Show("Sistem je našao evidencioni obrazac", "Obaveštenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Sistem je našao evidencioni obrazac.", "Obaveštenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.obrazac = obrasci[0];
                 this.casovi = obrazac.Casovi;
                 ucObrazac.CmbPolaznik.Enabled = true;
@@ -174,7 +174,7 @@ namespace Client.GuiController
 
             }
             else
-                MessageBox.Show("Sistem ne može da nađe evidencioni obrazac", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Sistem ne može da nađe evidencioni obrazac.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         internal void ObrisiEvidencioniObrazac()
         {
@@ -268,7 +268,7 @@ namespace Client.GuiController
             {
                 if (this.obrazac == null)
                 {
-                    MessageBox.Show("Nije selektovan  evidencioni obrazac", "Obaveštenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Nije selektovan  evidencioni obrazac.", "Obaveštenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 if (ucObrazac.DgvCasovi.SelectedRows.Count == 0)
@@ -284,7 +284,7 @@ namespace Client.GuiController
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Sistem ne može da prikaže evidencioni obrazac.\n" + ex.Message);
+                MessageBox.Show("Sistem ne može da prikaže čas.\n" + ex.Message);
                 return;
             }
         }
@@ -307,7 +307,7 @@ namespace Client.GuiController
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Sistem ne može da doda cas.\n" + ex.Message);
+                MessageBox.Show("Sistem ne može da doda čas.\n" + ex.Message);
             }
         }
 
@@ -329,7 +329,7 @@ namespace Client.GuiController
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Sistem ne može da izmeni cas.\n" + ex.Message);
+                MessageBox.Show("Sistem ne može da izmeni čas.\n" + ex.Message);
             }
         }
     }

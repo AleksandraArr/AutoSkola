@@ -86,7 +86,7 @@ namespace Client.UserControls.EvidencioniObrazac
             // 
             // btnIzmeni
             // 
-            btnIzmeni.Location = new Point(1023, 753);
+            btnIzmeni.Location = new Point(992, 753);
             btnIzmeni.Name = "btnIzmeni";
             btnIzmeni.Size = new Size(166, 45);
             btnIzmeni.TabIndex = 22;
@@ -96,7 +96,7 @@ namespace Client.UserControls.EvidencioniObrazac
             // 
             // btnObrisi
             // 
-            btnObrisi.Location = new Point(1219, 753);
+            btnObrisi.Location = new Point(1188, 753);
             btnObrisi.Name = "btnObrisi";
             btnObrisi.Size = new Size(166, 45);
             btnObrisi.TabIndex = 21;
@@ -115,7 +115,7 @@ namespace Client.UserControls.EvidencioniObrazac
             gbPodaciObrazca.Controls.Add(lblDatumPocetka);
             gbPodaciObrazca.Controls.Add(lblPolaznik);
             gbPodaciObrazca.Controls.Add(lblInstruktor);
-            gbPodaciObrazca.Location = new Point(759, 37);
+            gbPodaciObrazca.Location = new Point(728, 37);
             gbPodaciObrazca.Name = "gbPodaciObrazca";
             gbPodaciObrazca.Size = new Size(626, 694);
             gbPodaciObrazca.TabIndex = 19;
@@ -232,11 +232,11 @@ namespace Client.UserControls.EvidencioniObrazac
             dgvCasovi.AllowUserToAddRows = false;
             dgvCasovi.AllowUserToDeleteRows = false;
             dgvCasovi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCasovi.Location = new Point(19, 255);
+            dgvCasovi.Location = new Point(33, 255);
             dgvCasovi.Name = "dgvCasovi";
             dgvCasovi.ReadOnly = true;
             dgvCasovi.RowHeadersWidth = 62;
-            dgvCasovi.Size = new Size(546, 174);
+            dgvCasovi.Size = new Size(518, 174);
             dgvCasovi.TabIndex = 18;
             dgvCasovi.SelectionChanged += dgvCasovi_SelectionChanged;
             // 
@@ -330,7 +330,7 @@ namespace Client.UserControls.EvidencioniObrazac
             dgvEvidencioniObrasci.Name = "dgvEvidencioniObrasci";
             dgvEvidencioniObrasci.ReadOnly = true;
             dgvEvidencioniObrasci.RowHeadersWidth = 62;
-            dgvEvidencioniObrasci.Size = new Size(673, 564);
+            dgvEvidencioniObrasci.Size = new Size(657, 564);
             dgvEvidencioniObrasci.TabIndex = 17;
             dgvEvidencioniObrasci.SelectionChanged += dgvEvidencioniObrasci_SelectionChanged;
             // 
@@ -457,7 +457,7 @@ namespace Client.UserControls.EvidencioniObrazac
             // btnKreirajPolaznik
             // 
             btnKreirajPolaznik.Font = new Font("Segoe UI", 9F);
-            btnKreirajPolaznik.Location = new Point(759, 753);
+            btnKreirajPolaznik.Location = new Point(728, 753);
             btnKreirajPolaznik.Name = "btnKreirajPolaznik";
             btnKreirajPolaznik.Size = new Size(53, 44);
             btnKreirajPolaznik.TabIndex = 26;
@@ -480,7 +480,7 @@ namespace Client.UserControls.EvidencioniObrazac
             Controls.Add(label1);
             Controls.Add(label2);
             Name = "UCEvidencioniObrazac";
-            Size = new Size(1504, 824);
+            Size = new Size(1387, 824);
             Load += UCEvidencioniObrazac_Load;
             gbPodaciObrazca.ResumeLayout(false);
             gbPodaciObrazca.PerformLayout();

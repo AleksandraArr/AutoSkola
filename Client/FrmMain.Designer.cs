@@ -40,7 +40,7 @@
             // 
             pnlMain.Location = new Point(1, 33);
             pnlMain.Name = "pnlMain";
-            pnlMain.Size = new Size(1504, 824);
+            pnlMain.Size = new Size(1387, 824);
             pnlMain.TabIndex = 0;
             // 
             // menuStrip1
@@ -49,7 +49,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { evidencioniObrazacMenuItem, kategorijaVozackeToolStripMenuItem, polazniciToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1510, 33);
+            menuStrip1.Size = new Size(1390, 33);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -78,7 +78,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1510, 862);
+            ClientSize = new Size(1390, 768);
             Controls.Add(pnlMain);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;

@@ -42,10 +42,7 @@ namespace Client.GuiController
         internal void PromeniPolaznik()
         {
             if (!ucPolaznik.Validacija())
-            {
-                MessageBox.Show("Molim vas unesite sva polja!");
                 return;
-            }
             Polaznik polaznik = new Polaznik();
             polaznik.IdPolaznik = idPolaznik;
             polaznik.Ime = ucPolaznik.TxtIme.Text;
