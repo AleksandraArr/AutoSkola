@@ -74,12 +74,6 @@ namespace Client.UserControls.EvidencioniObrazac
                 MessageBox.Show("Broj časova mora biti pozitivan ceo broj.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
-            if (DtpDatumPocetka.Value.Date < DateTime.Today)
-            {
-                MessageBox.Show("Datum početka ne može biti u prošlosti.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
             return true;
         }
         public bool ValidacijaCas()
@@ -93,13 +87,13 @@ namespace Client.UserControls.EvidencioniObrazac
 
             if (!int.TryParse(TxtTrajanje.Text, out int trajanje) || trajanje <= 0)
             {
-                MessageBox.Show("Broj časova mora biti pozitivan ceo broj.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Trajanje mora biti pozitivan ceo broj.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
 
-            if (DtpDatumPocetka.Value.Date < DateTime.Today)
+            if (DtpDatumPocetka.Value.Date < DtpDatumPocetka.Value.Date)
             {
-                MessageBox.Show("Datum časa ne može biti u prošlosti.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Datum časa ne može biti pre početka časova.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;

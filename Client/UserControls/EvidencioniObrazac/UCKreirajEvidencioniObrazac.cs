@@ -76,6 +76,12 @@ namespace Client.UserControls.EvidencioniObrazac
                 MessageBox.Show("Datum časa ne može biti u prošlosti.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+            
+            if (DtpDatumPocetka.Value.Date < DtpDatumPocetka.Value.Date)
+            {
+                MessageBox.Show("Datum časa ne može biti pre početka časova.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
             return true;
         }
         private void btnKreiraj_Click(object sender, EventArgs e)
@@ -97,6 +103,8 @@ namespace Client.UserControls.EvidencioniObrazac
         private void btnDodajCas_Click(object sender, EventArgs e)
         {
             obrazacController.DodajCas();
+            txtTrajanje.Text = "";
+            cmbAutomobil.SelectedIndex = -1;
         }
     }
 }

@@ -187,7 +187,10 @@ namespace Client.GuiController
             }
             Response response = Communication.Instance.ObrisiEvidencioniObrazac(obrasci[0]);
 
-            if (response.IsSuccess) MessageBox.Show("Sistem je obrisao evidencioni obrazac!", "Brisanje  evidencionog obrazca", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (response.IsSuccess){
+                MessageBox.Show("Sistem je obrisao evidencioni obrazac!", "Brisanje  evidencionog obrazca", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                VratiListuSviEvidencioniObrazac();
+            }
             else MessageBox.Show("Sistem ne može da obriše  evidencioni obrazac!", "Brisanje  evidencionog obrazca", MessageBoxButtons.OK, MessageBoxIcon.Warning);
            
         }
@@ -208,10 +211,12 @@ namespace Client.GuiController
             obrazac.BrojCasova = int.Parse(ucObrazac.TxtBrCasova.Text);
             obrazac.DatumPocetka = ucObrazac.DtpDatumPocetka.Value;
             obrazac.Casovi = casovi;
-
             Response response = Communication.Instance.PromeniEvidencioniObrazac(obrazac);
             if (response.IsSuccess)
+            {
                 MessageBox.Show("Sistem je promenio evidencioni obrazac!", "Izmena evidencionog obrazca", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                VratiListuSviEvidencioniObrazac();
+            }
             else MessageBox.Show("Sistem ne može da promeni evidencioni obrazac!", "Izmena evidencionog obrazca", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         private void PostaviEvidencioniObrazac(List<EvidencioniObrazac> obrasci)
@@ -239,6 +244,7 @@ namespace Client.GuiController
             ucObrazac.DgvCasovi.Columns["UpdateText"].Visible = false;
             ucObrazac.DgvCasovi.Columns["WhereCondition"].Visible = false;
             ucObrazac.DgvCasovi.Columns["IdColumn"].Visible = false;
+            ucObrazac.DgvCasovi.Columns["Datum"].DefaultCellStyle.Format = "dd.MM.yyyy";
         }
         private void DovrsiObjekte(List<EvidencioniObrazac> obrasci)
         {
@@ -294,6 +300,11 @@ namespace Client.GuiController
             {
                 if (!ucObrazac.ValidacijaCas())
                     return;
+                if (casovi.Count + 1 > int.Parse(ucObrazac.TxtBrCasova.Text))
+                {
+                    MessageBox.Show("Ne možete dodati više časova od broja časova obrasca.", "Dodavanje časa", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 Cas cas = new Cas();
                 cas.Obrazac.IdObrazac = obrazac.IdObrazac;
                 cas.Automobil = (Automobil)ucObrazac.CmbAutomobil.SelectedItem;

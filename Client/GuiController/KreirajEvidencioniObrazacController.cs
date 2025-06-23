@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Client.GuiController
 {
@@ -149,7 +150,11 @@ namespace Client.GuiController
             {
                 if (!ucObrazac.ValidacijaCas())
                     return;
-
+                if (casovi.Count + 1 > int.Parse(ucObrazac.TxtBrCasova.Text))
+                {
+                    MessageBox.Show("Ne možete dodati više časova od broja časova obrasca.", "Dodavanje časa", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 Cas cas = new Cas();
                 cas.Obrazac.IdObrazac = idObrasca;
                 cas.Automobil = (Automobil)ucObrazac.CmbAutomobil.SelectedItem;
@@ -174,6 +179,8 @@ namespace Client.GuiController
             ucObrazac.DgvCasovi.Columns["UpdateText"].Visible = false;
             ucObrazac.DgvCasovi.Columns["WhereCondition"].Visible = false;
             ucObrazac.DgvCasovi.Columns["IdColumn"].Visible = false;
+            ucObrazac.DgvCasovi.Columns["Datum"].DefaultCellStyle.Format = "dd.MM.yyyy";
+
         }
         internal void ObrisiEvidencioniObrazac()
         {
