@@ -18,6 +18,7 @@ namespace Common.Domain
         public string UpdateText => $"Kategorija = '{Kategorija}',JacinaMotora = '{JacinaMotora}'";
         public string WhereCondition => $"IdKategorijaVozacke = {IdKategorijaVozacke}";
         public string IdColumn => $"IdKategorijaVozacke";
+        public string ColumnName => "IdKategorijaVozacke, Kategorija, JacinaMotora";
         public List<IEntity> GetReaderList(SqlDataReader reader)
         {
             List<IEntity> kategorije = new List<IEntity>();

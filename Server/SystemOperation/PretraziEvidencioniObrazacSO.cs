@@ -29,7 +29,7 @@ namespace Server.SystemOperation
 
             if (objs.Automobil != null)
             {
-                join = $" JOIN Cas ON Cas.IdObrazac = EvidencioniObrazac.IdObrazac\r\n";
+                join = $" JOIN Cas ON Cas.IdObrazac = e.IdObrazac\r\n";
                 conditions.Add($"IdAutomobil = {objs.Automobil.IdAutomobil}");
             }
 
@@ -44,7 +44,6 @@ namespace Server.SystemOperation
             List<IEntity> lista = broker.GetByCondition(new EvidencioniObrazac(), condition, join);
 
             Result = lista.Cast<EvidencioniObrazac>().ToList();
-            Debug.WriteLine(Result[0]);
             if (Result == null)
                 throw new Exception("Ne postoje evidencioni obrasci.");
 

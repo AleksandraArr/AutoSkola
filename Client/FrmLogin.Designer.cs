@@ -43,16 +43,16 @@
             labelKorisnickoIme.Name = "labelKorisnickoIme";
             labelKorisnickoIme.Size = new Size(131, 25);
             labelKorisnickoIme.TabIndex = 0;
-            labelKorisnickoIme.Text = "Korisnicko ime:";
+            labelKorisnickoIme.Text = "Korisničko ime:";
             // 
             // labelSifra
             // 
             labelSifra.AutoSize = true;
-            labelSifra.Location = new Point(120, 243);
+            labelSifra.Location = new Point(120, 236);
             labelSifra.Name = "labelSifra";
             labelSifra.Size = new Size(51, 25);
             labelSifra.TabIndex = 1;
-            labelSifra.Text = "Sifra:";
+            labelSifra.Text = "Šifra:";
             // 
             // btnLogin
             // 
@@ -73,7 +73,7 @@
             // 
             // txtSifra
             // 
-            txtSifra.Location = new Point(309, 237);
+            txtSifra.Location = new Point(309, 230);
             txtSifra.Name = "txtSifra";
             txtSifra.PasswordChar = '*';
             txtSifra.Size = new Size(215, 31);
@@ -93,7 +93,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1178, 744);
+            ClientSize = new Size(728, 446);
             Controls.Add(label1);
             Controls.Add(txtSifra);
             Controls.Add(txtKorisnickoIme);
@@ -101,7 +101,7 @@
             Controls.Add(labelSifra);
             Controls.Add(labelKorisnickoIme);
             Name = "FrmLogin";
-            Text = "Prijavi se";
+            Text = "Prijava";
             ResumeLayout(false);
             PerformLayout();
         }

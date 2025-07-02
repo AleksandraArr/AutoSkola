@@ -23,6 +23,8 @@ namespace Common.Domain
         public string UpdateText => $"Ime = '{Ime}', Prezime = '{Prezime}', DatumZaposlenja = '{DatumZaposlenja:yyyy-MM-dd}', Telefon = '{Telefon}', KorisnickoIme = '{KorisnickoIme}', Sifra = '{Sifra}'";
         public string WhereCondition => $"IdInstruktor = {IdInstruktor}";
         public string IdColumn => $"IdInstruktor";
+        public string ColumnName => "IdInstruktor, Ime, Prezime, DatumZaposlenja, Telefon, KorisnickoIme, Sifra";
+
         public List<IEntity> GetReaderList(SqlDataReader reader)
         {
             List<IEntity> instruktori = new List<IEntity>();
@@ -44,7 +46,6 @@ namespace Common.Domain
         {
             get { return Ime + " " + Prezime; }
         }
-
         public override string ToString()
         {
             return $"{Ime} {Prezime}";

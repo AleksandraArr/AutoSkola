@@ -22,7 +22,6 @@ namespace Server
 
         public void Start()
         {
-            // IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9999);
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ConfigurationManager.AppSettings["ip"]), int.Parse(ConfigurationManager.AppSettings["port"]));
 
             socket.Bind(endPoint);
@@ -54,8 +53,7 @@ namespace Server
 
         public void Stop()
         {
-            List<ClientHandler> copy = new List<ClientHandler>(handlers); // pravi se kopija jer ne smemo da prolazimo kroz listu i izbacujemo iz nje
-            //kada pozovemo CloseSocket() desice se exception u HandleRequest(), tu ce u finally bloku da izbaci sam sebe iz serverske liste
+            List<ClientHandler> copy = new List<ClientHandler>(handlers); 
             foreach (ClientHandler handler in copy)
             {
                 handler.CloseSocket();

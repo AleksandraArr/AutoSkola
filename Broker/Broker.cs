@@ -73,7 +73,7 @@ namespace DBBroker
             return Execute(() =>
             {
                 SqlCommand cmd = connection.CreateCommand();
-                cmd.CommandText = $"SELECT * FROM {entity.TableName} {join} WHERE {condition}";
+                cmd.CommandText = $"SELECT DISTINCT {entity.ColumnName} FROM {entity.TableName} {entity.TableName[0].ToString().ToLower()} {join} WHERE {condition}";
                 using SqlDataReader reader = cmd.ExecuteReader();
                 List<IEntity> list = entity.GetReaderList(reader);
                 cmd.Dispose();
@@ -98,7 +98,9 @@ namespace DBBroker
             {
                 SqlCommand cmd = connection.CreateCommand();
                 cmd.CommandText = $"UPDATE {obj.TableName} SET {obj.UpdateText} WHERE {obj.WhereCondition}";
-                cmd.ExecuteNonQuery();
+                int affectedRows = cmd.ExecuteNonQuery();
+                if (affectedRows == 0)
+                    throw new InvalidOperationException($"Update error - no rows updaated in '{obj.TableName}'.");
                 cmd.Dispose();
                 return obj;
             }, "Update");

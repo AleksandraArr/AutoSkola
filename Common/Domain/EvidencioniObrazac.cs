@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Common.Domain
 {
-    public class EvidencioniObrazac :IEntity
+    public class EvidencioniObrazac : IEntity
     {
         public int IdObrazac { get; set; }
         public DateTime DatumPocetka { get; set; }
@@ -28,6 +28,7 @@ namespace Common.Domain
             $"IdPolaznik = {(Polaznik != null ? Polaznik.IdPolaznik.ToString() : "null")}";
         public string WhereCondition => $"IdObrazac = {IdObrazac}";
         public string IdColumn => $"IdObrazac";
+        public string ColumnName => "e.IdObrazac, e.DatumPocetka, e.BrojCasova, e.IdInstruktor, e.IdPolaznik";
         public List<IEntity> GetReaderList(SqlDataReader reader)
         {
             List<IEntity> obrasci = new List<IEntity>();
@@ -38,8 +39,12 @@ namespace Common.Domain
                     IdObrazac = (int)reader["idObrazac"],
                     DatumPocetka = (DateTime)reader["datumPocetka"],
                     BrojCasova = (int)reader["brojCasova"],
-                    Instruktor = new Instruktor { IdInstruktor = (int)reader["idInstruktor"] },
-                    Polaznik = new Polaznik { IdPolaznik = (int)reader["idPolaznik"] }
+                    Instruktor = reader["idInstruktor"] != DBNull.Value
+                    ? new Instruktor { IdInstruktor = (int)reader["idInstruktor"] }
+                    : null,
+                    Polaznik = reader["idPolaznik"] != DBNull.Value
+                    ? new Polaznik { IdPolaznik = (int)reader["idPolaznik"] }
+                    : null,
                 };
                 obrasci.Add(obrazac);
             }

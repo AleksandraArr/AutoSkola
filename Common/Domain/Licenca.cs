@@ -14,7 +14,6 @@ namespace Common.Domain
         public KategorijaVozacke KategorijaVozacke { get; set; }
         public DateTime DatumIzdavanja { get; set; }
         public DateTime DatumIsteka { get; set; }
-
         public string TableName => "Licenca";
         public string Values => $"{Instruktor.IdInstruktor}, {KategorijaVozacke.IdKategorijaVozacke}, '{DatumIzdavanja:yyyy-MM-dd}', '{DatumIsteka:yyyy-MM-dd}'";
         public string UpdateText =>
@@ -22,10 +21,9 @@ namespace Common.Domain
             $"IdKategorijaVozacke = {KategorijaVozacke.IdKategorijaVozacke}, " +
             $"DatumIzdavanja = '{DatumIzdavanja:yyyy-MM-dd}', " +
             $"DatumIsteka = '{DatumIsteka:yyyy-MM-dd}'";
-
         public string WhereCondition => $"IdLicenca = {IdLicenca}";
-
         public string IdColumn => $"IdLicenca";
+        public string ColumnName => "IdLicenca, IdInstruktor, IdKategorijaVozacke, DatumIzdavanja, DatumIsteka";
 
         public List<IEntity> GetReaderList(SqlDataReader reader)
         {

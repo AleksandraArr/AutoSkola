@@ -13,13 +13,12 @@ namespace Common.Domain
         public string Model { get; set; }
         public int Godiste { get; set; }
         public string RegistracioniBroj { get; set; }
-
         public string TableName => "Automobil";
         public string Values => $"'{Model}', {Godiste}, '{RegistracioniBroj}'";
         public string UpdateText => $"Model = '{Model}', Godiste = {Godiste}, RegistracioniBroj = '{RegistracioniBroj}'";
         public string WhereCondition => $"IdAutomobil = {IdAutomobil}";
-
         public string IdColumn => $"IdAutomobil";
+        public string ColumnName => "IdAutomobil, Model, Godiste, RegistracioniBroj";
 
         public List<IEntity> GetReaderList(SqlDataReader reader)
         {

@@ -14,13 +14,12 @@ namespace Common.Domain
         public string Prezime { get; set; }
         public DateTime DatumRodjenja { get; set; }
         public string Telefon { get; set; }
-
         public string TableName => "Polaznik";
-
         public string Values => $"'{Ime}', '{Prezime}', '{DatumRodjenja:yyyy-MM-dd}', '{Telefon}'";
         public string UpdateText => $"Ime = '{Ime}', Prezime = '{Prezime}', DatumRodjenja = '{DatumRodjenja:yyyy-MM-dd}', Telefon = '{Telefon}'";
         public string WhereCondition => $"IdPolaznik = {IdPolaznik}";
         public string IdColumn => $"IdPolaznik";
+        public string ColumnName => "IdPolaznik, Ime, Prezime, DatumRodjenja, Telefon";
 
         public List<IEntity> GetReaderList(SqlDataReader reader)
         {

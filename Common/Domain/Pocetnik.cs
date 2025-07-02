@@ -13,16 +13,13 @@ namespace Common.Domain
         public Boolean StrahOdVoznje { get; set; }
         public DateTime DatumIzdavanjaLekarskog { get; set; }
         public int BrojPoenaNaTeoriji { get; set; }
-
         public string TableName => "Pocetnik";
-
         public string Values => $"'{StrahOdVoznje}', '{DatumIzdavanjaLekarskog:yyyy-mm-dd}', '{BrojPoenaNaTeoriji}'";
         public string UpdateText =>
             $"StrahOdVoznje = '{StrahOdVoznje}', " +
             $"DatumIzdavanjaLekarskog = '{DatumIzdavanjaLekarskog:yyyy-MM-dd}', " +
             $"BrojPoenaNaTeoriji = {BrojPoenaNaTeoriji}";
-
-
+        public string ColumnName => "IdPolaznik, StrahOdVoznje, DatumIzdavanjaLekarskog, BrojPoenaNaTeoriji";
         public List<IEntity> GetReaderList(SqlDataReader reader)
         {
             List<IEntity> pocetnici = new List<IEntity>();

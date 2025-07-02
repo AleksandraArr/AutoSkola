@@ -15,6 +15,7 @@ namespace Common.Domain
         public DateTime DatumPolaganja { get; set; }
         public string RazlogPovratka { get; set; }
         public int BrojKaznenihBodova { get; set; }
+        public string ColumnName => "IdPolaznik, BrojDozvole, DatumIstekaDozvole, DatumPolaganja, RazlogPovratka, BrojKaznenihBodova";
 
         public string TableName => "Povratnik";
 

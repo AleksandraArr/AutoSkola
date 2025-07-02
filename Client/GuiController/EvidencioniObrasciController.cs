@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -139,12 +140,16 @@ namespace Client.GuiController
             }
 
             Response response = Communication.Instance.PretraziEvidencioniObrazac(kriterijumi);
-            
             if (response.IsSuccess)
             {
                 List<EvidencioniObrazac> obrasci = (List<EvidencioniObrazac>)response.Data;
-                MessageBox.Show("Sistem je našao evidencione obrasce po zadatim kriterijumima.", "Pretraga obrazaca", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                PostaviEvidencioniObrazac(obrasci);
+                if (obrasci.Count > 0)
+                {
+                    MessageBox.Show("Sistem je našao evidencione obrasce po zadatim kriterijumima.", "Pretraga obrazaca", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    PostaviEvidencioniObrazac(obrasci);
+                }
+                else MessageBox.Show("Nema obrazaca koji odgovaraju pretrazi.", "Pretraga obrazaca", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             else
                 MessageBox.Show("Sistem ne može da nađe evidencione obrasce po zadatim kriterijumima.", "Pretraga obrazaca", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -166,8 +171,8 @@ namespace Client.GuiController
                 ucObrazac.CmbAutomobil.Enabled = true;
                 ucObrazac.DtpDatumCasa.Enabled = true;
                 ucObrazac.BtnDodajCas.Enabled = true;
-                ucObrazac.CmbPolaznik.SelectedValue = obrazac.Polaznik.IdPolaznik;
-                ucObrazac.CmbInstruktor.SelectedValue = obrazac.Instruktor.IdInstruktor;
+                ucObrazac.CmbPolaznik.SelectedValue = obrazac.Polaznik?.IdPolaznik ?? -1;
+                ucObrazac.CmbInstruktor.SelectedValue = obrazac.Instruktor?.IdInstruktor ?? -1;
                 ucObrazac.TxtBrCasova.Text = obrazac.BrojCasova.ToString();
                 ucObrazac.DtpDatumPocetka.Value = obrazac.DatumPocetka;
                 PostaviCas(obrazac.Casovi);
@@ -214,10 +219,10 @@ namespace Client.GuiController
             Response response = Communication.Instance.PromeniEvidencioniObrazac(obrazac);
             if (response.IsSuccess)
             {
-                MessageBox.Show("Sistem je promenio evidencioni obrazac!", "Izmena evidencionog obrazca", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Sistem je zapamtio evidencioni obrazac!", "Izmena evidencionog obrazca", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 VratiListuSviEvidencioniObrazac();
             }
-            else MessageBox.Show("Sistem ne može da promeni evidencioni obrazac!", "Izmena evidencionog obrazca", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else MessageBox.Show("Sistem ne može da zapamti evidencioni obrazac!", "Izmena evidencionog obrazca", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         private void PostaviEvidencioniObrazac(List<EvidencioniObrazac> obrasci)
         {
@@ -245,13 +250,17 @@ namespace Client.GuiController
             ucObrazac.DgvCasovi.Columns["WhereCondition"].Visible = false;
             ucObrazac.DgvCasovi.Columns["IdColumn"].Visible = false;
             ucObrazac.DgvCasovi.Columns["Datum"].DefaultCellStyle.Format = "dd.MM.yyyy";
+            ucObrazac.DgvCasovi.Columns["ColumnName"].Visible = false;
         }
         private void DovrsiObjekte(List<EvidencioniObrazac> obrasci)
         {
             foreach (var o in obrasci)
             {
-                o.Polaznik = sviPolaznici.FirstOrDefault(p => p.IdPolaznik == o.Polaznik.IdPolaznik);
-                o.Instruktor = sviInstruktori.FirstOrDefault(i => i.IdInstruktor == o.Instruktor.IdInstruktor);
+                if (o.Polaznik != null)
+                    o.Polaznik = sviPolaznici.FirstOrDefault(p => p.IdPolaznik == o.Polaznik.IdPolaznik);
+
+                if (o.Instruktor != null)
+                    o.Instruktor = sviInstruktori.FirstOrDefault(i => i.IdInstruktor == o.Instruktor.IdInstruktor);
             }
         }
         private List<EvidencioniObrazac> VratiListuEvidencioniObrazac() {

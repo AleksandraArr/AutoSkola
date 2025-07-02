@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Client.GuiController
 {
@@ -37,7 +38,6 @@ namespace Client.GuiController
         public void PretraziPolaznika()
         {
             Response response = Communication.Instance.PretraziPolaznik(ucPolaznici.TxtImeIPrezime.Text);
-
             if (response.IsSuccess) {
                 List<Polaznik> polaznici = (List<Polaznik>)response.Data;
                 if (polaznici.Count == 0)
@@ -68,7 +68,18 @@ namespace Client.GuiController
             Polaznik polaznik = polaznici[0];
             ucPolaznici.TxtIme.Text = polaznik.Ime;
             ucPolaznici.TxtPrezime.Text = polaznik.Prezime;
-            ucPolaznici.DateTimePicker1.Value = polaznik.DatumRodjenja;
+            DateTime datum = polaznik.DatumRodjenja;
+
+            if (datum < ucPolaznici.DateTimePicker1.MinDate)
+            {
+                ucPolaznici.DateTimePicker1.Value = ucPolaznici.DateTimePicker1.MinDate;
+                ucPolaznici.DateTimePicker1.Checked = false;
+            }
+            else
+            {
+                ucPolaznici.DateTimePicker1.Value = datum;
+                ucPolaznici.DateTimePicker1.Checked = true;
+            }
             ucPolaznici.TxtKontaktTelefon.Text = polaznik.Telefon;
         }
 
@@ -84,10 +95,9 @@ namespace Client.GuiController
             polaznik.Prezime = ucPolaznici.TxtPrezime.Text;
             polaznik.DatumRodjenja = ucPolaznici.DateTimePicker1.Value;
             polaznik.Telefon = ucPolaznici.TxtKontaktTelefon.Text;
-
             Response response = Communication.Instance.PromeniPolaznik(polaznik);
-            if (response.IsSuccess) { MessageBox.Show("Sistem je promenio polaznika!", "Izmena polaznika", MessageBoxButtons.OK, MessageBoxIcon.Information); VratiListuSviPolaznik();
-            } else MessageBox.Show("Sistem ne može da promeni polaznika!", "Izmena polaznika", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (response.IsSuccess) { MessageBox.Show("Sistem je zapamtio polaznika!", "Izmena polaznika", MessageBoxButtons.OK, MessageBoxIcon.Information); VratiListuSviPolaznik();
+            } else MessageBox.Show("Sistem ne može da zapamti polaznika!", "Izmena polaznika", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
 
@@ -98,7 +108,7 @@ namespace Client.GuiController
                 return;
 
             Response response = Communication.Instance.ObrisiPolaznik(polaznici[0]);
-
+            response.IsSuccess = false;
             if (response.IsSuccess) { MessageBox.Show("Sistem je obrisao polaznika!", "Brisanje polaznika", MessageBoxButtons.OK, MessageBoxIcon.Information); VratiListuSviPolaznik(); }
             else MessageBox.Show("Sistem ne može da obriše polaznika!", "Brisanje polaznika", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
@@ -113,7 +123,7 @@ namespace Client.GuiController
             ucPolaznici.DgvPolaznici.Columns["UpdateText"].Visible = false;
             ucPolaznici.DgvPolaznici.Columns["WhereCondition"].Visible = false;
             ucPolaznici.DgvPolaznici.Columns["ImeIPrezime"].Visible = false;
-
+            ucPolaznici.DgvPolaznici.Columns["ColumnName"].Visible = false;
         }
 
         private List<Polaznik> VratiListuPolaznik()
@@ -126,7 +136,7 @@ namespace Client.GuiController
             DataGridViewRow red = ucPolaznici.DgvPolaznici.SelectedRows[0];
             Polaznik polaznik = (Polaznik)red.DataBoundItem;
             Response response = Communication.Instance.VratiListuPolaznik(polaznik);
-            if(response.IsSuccess)
+            if (response.IsSuccess)
                 return (List<Polaznik>)response.Data;
             MessageBox.Show("Sistem ne može da nađe polaznika.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return null;

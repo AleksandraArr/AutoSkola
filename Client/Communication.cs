@@ -61,7 +61,7 @@ namespace Client
         internal Response ObrisiEvidencioniObrazac(EvidencioniObrazac obrazac) => SendRequest<EvidencioniObrazac, VoidType>(Operation.ObrisiEvidencioniObrazac, obrazac);
         internal Response PretraziEvidencioniObrazac(EvidencioniObrazacKriterijumiDTO entities) => SendRequest<EvidencioniObrazacKriterijumiDTO, List<EvidencioniObrazac>>(Operation.PretraziEvidencioniObrazac, entities);
 
-        //TRequest - which type being send, TResponse - which type is receiver
+        //TRequest - which type being send, TResponse - which type is received
         private Response SendRequest<TRequest, TResponse>(Operation operation, TRequest data = default)
             where TResponse : class
         {

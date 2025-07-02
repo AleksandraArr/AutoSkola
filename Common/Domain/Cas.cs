@@ -21,6 +21,7 @@ namespace Common.Domain
         public string UpdateText => $"IdObrazac = {Obrazac.IdObrazac}, Datum = '{Datum:yyyy-MM-dd}', Trajanje = {Trajanje}, IdAutomobil = {Automobil.IdAutomobil}";
         public string WhereCondition => $"IdCas = {IdCas}";
         public string IdColumn => $"IdCas";
+        public string ColumnName => "IdCas, IdObrazac, Datum, Trajanje, IdAutomobil";
 
         public List<IEntity> GetReaderList(SqlDataReader reader)
         {

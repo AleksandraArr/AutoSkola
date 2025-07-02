@@ -23,7 +23,6 @@ namespace Client.GuiController
         internal void KreirajPolaznika()
         {
             Response response = Communication.Instance.KreirajPolaznik(new Polaznik());
-      
             if (response.IsSuccess)
             {
                 idPolaznik = ((Polaznik)response.Data).IdPolaznik;
@@ -53,9 +52,9 @@ namespace Client.GuiController
             Response response = Communication.Instance.PromeniPolaznik(polaznik);
             if (response.IsSuccess) { 
                 ZavrsenoKreiranje = true;
-                MessageBox.Show("Sistem je zapamtio polaznika!", "Izmena polaznika", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Sistem je zapamtio polaznika!", "Kreiranje polaznika", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else MessageBox.Show("Sistem ne može da zapamti polaznika.", "Izmena polaznika", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            else MessageBox.Show("Sistem ne može da zapamti polaznika.", "Kreiranje polaznika", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
         }
 

@@ -38,7 +38,7 @@ namespace Client.GuiController
                 Polaznik = null
             };
             Response response = Communication.Instance.KreirajEvidencioniObrazac(obrazac);
-            
+  
             if (response.IsSuccess)
             {
                 idObrasca = ((EvidencioniObrazac)response.Data).IdObrazac;
@@ -55,7 +55,7 @@ namespace Client.GuiController
                 ucObrazac.BtnKreiraj.Enabled = false;
                 ZavrsenoKreiranje = false;
             }
-            else MessageBox.Show("Sistem ne moze da kreira evidencioni obrazac!", "Kreiranje evidencionog obrasca", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else MessageBox.Show("Sistem ne moze da kreira evidencioni obrazac!", "Kreiranje evidencionog obrasca", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
         internal void PromeniEvidencioniObrazac()
