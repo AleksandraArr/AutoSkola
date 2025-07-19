@@ -30,7 +30,6 @@
         {
             label1 = new Label();
             dgvPolaznici = new DataGridView();
-            btnPrikaziPolaznike = new Button();
             gbPodaciPolaznika = new GroupBox();
             dtpDatumRodjenja = new DateTimePicker();
             txtKontaktTelefon = new TextBox();
@@ -46,6 +45,7 @@
             txtImeIPrezime = new TextBox();
             btnPretrazi = new Button();
             btnKreirajPolaznik = new Button();
+            btnPrikaziPolaznike = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPolaznici).BeginInit();
             gbPodaciPolaznika.SuspendLayout();
             SuspendLayout();
@@ -65,24 +65,13 @@
             dgvPolaznici.AllowUserToAddRows = false;
             dgvPolaznici.AllowUserToDeleteRows = false;
             dgvPolaznici.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPolaznici.Location = new Point(28, 220);
+            dgvPolaznici.Location = new Point(28, 235);
             dgvPolaznici.Name = "dgvPolaznici";
             dgvPolaznici.ReadOnly = true;
             dgvPolaznici.RowHeadersWidth = 62;
-            dgvPolaznici.Size = new Size(528, 411);
+            dgvPolaznici.Size = new Size(528, 396);
             dgvPolaznici.TabIndex = 2;
             dgvPolaznici.SelectionChanged += dgvPolaznici_SelectionChanged;
-            // 
-            // btnPrikaziPolaznike
-            // 
-            btnPrikaziPolaznike.ForeColor = SystemColors.ControlText;
-            btnPrikaziPolaznike.Location = new Point(28, 168);
-            btnPrikaziPolaznike.Name = "btnPrikaziPolaznike";
-            btnPrikaziPolaznike.Size = new Size(528, 45);
-            btnPrikaziPolaznike.TabIndex = 6;
-            btnPrikaziPolaznike.Text = "Prikaži sve polaznike";
-            btnPrikaziPolaznike.UseVisualStyleBackColor = true;
-            btnPrikaziPolaznike.Click += btnPrikaziPolaznike_Click;
             // 
             // gbPodaciPolaznika
             // 
@@ -207,7 +196,7 @@
             btnPretrazi.ForeColor = SystemColors.ControlText;
             btnPretrazi.Location = new Point(278, 116);
             btnPretrazi.Name = "btnPretrazi";
-            btnPretrazi.Size = new Size(278, 45);
+            btnPretrazi.Size = new Size(278, 50);
             btnPretrazi.TabIndex = 15;
             btnPretrazi.Text = "Pretraži";
             btnPretrazi.UseVisualStyleBackColor = true;
@@ -224,10 +213,22 @@
             btnKreirajPolaznik.UseVisualStyleBackColor = true;
             btnKreirajPolaznik.Click += btnKreirajPolaznik_Click;
             // 
+            // btnPrikaziPolaznike
+            // 
+            btnPrikaziPolaznike.ForeColor = SystemColors.ControlText;
+            btnPrikaziPolaznike.Location = new Point(28, 172);
+            btnPrikaziPolaznike.Name = "btnPrikaziPolaznike";
+            btnPrikaziPolaznike.Size = new Size(528, 50);
+            btnPrikaziPolaznike.TabIndex = 17;
+            btnPrikaziPolaznike.Text = "Prikaži sve polaznike";
+            btnPrikaziPolaznike.UseVisualStyleBackColor = true;
+            btnPrikaziPolaznike.Click += btnPrikaziPolaznike_Click_1;
+            // 
             // UCPolaznici
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnPrikaziPolaznike);
             Controls.Add(btnKreirajPolaznik);
             Controls.Add(btnPretrazi);
             Controls.Add(txtImeIPrezime);
@@ -235,7 +236,6 @@
             Controls.Add(btnIzmeni);
             Controls.Add(btnObrisi);
             Controls.Add(gbPodaciPolaznika);
-            Controls.Add(btnPrikaziPolaznike);
             Controls.Add(dgvPolaznici);
             Controls.Add(label1);
             Name = "UCPolaznici";
@@ -251,7 +251,6 @@
 
         private Label label1;
         private DataGridView dgvPolaznici;
-        private Button btnPrikaziPolaznike;
         private GroupBox gbPodaciPolaznika;
         private TextBox txtKontaktTelefon;
         private Label lblKontaktTelefon;
@@ -267,6 +266,7 @@
         private TextBox txtImeIPrezime;
         private Button btnPretrazi;
         private Button btnKreirajPolaznik;
+        private Button btnPrikaziPolaznike;
 
         public DataGridView DgvPolaznici { get => dgvPolaznici; set => dgvPolaznici = value; }
         public TextBox TxtKontaktTelefon { get => txtKontaktTelefon; set => txtKontaktTelefon = value; }

@@ -19,7 +19,7 @@ namespace Client.UserControls.Kategorija_vozacke
         {
             InitializeComponent();
             kategorijaVozackeController = new KategorijaVozackeController(this);
-            btnUbaci.Click += kategorijaVozackeController.UbaciKategorijaVozacke;
+            
         }
 
         public bool Validacija()
@@ -53,6 +53,12 @@ namespace Client.UserControls.Kategorija_vozacke
         {
             string lower = tekst.ToLower().Trim();
             return lower.EndsWith("kw") || lower.EndsWith("ks") || lower.EndsWith("hp");
+        }
+
+        private void btnUbaci_Click(object sender, EventArgs e)
+        {
+            if(Validacija())
+                kategorijaVozackeController.UbaciKategorijaVozacke();
         }
     }
 }

@@ -25,18 +25,13 @@ namespace Client.UserControls.EvidencioniObrazac
             obrazacController.VratiListuSviInstruktor();
             obrazacController.VratiListuSviPolaznik();
             obrazacController.VratiListuSviAutomobil();
-            gpbKriterijumi.Visible = false;
-        }
-
-        private void btnPrikaziObrasce_Click(object sender, EventArgs e)
-        {
             obrazacController.VratiListuSviEvidencioniObrazac();
+            gpbKriterijumi.Visible = false;
         }
 
         private void btnKriterijumi_Click(object sender, EventArgs e)
         {
             gpbKriterijumi.Visible = true;
-
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -74,6 +69,16 @@ namespace Client.UserControls.EvidencioniObrazac
                 MessageBox.Show("Broj časova mora biti pozitivan ceo broj.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+            if (cmbInstruktor.SelectedIndex == -1)
+            {
+                MessageBox.Show("Morate izabrati instruktora.");
+                return false;
+            }
+            if (CmbPolaznik.SelectedIndex == -1)
+            {
+                MessageBox.Show("Morate izabrati polaznika.");
+                return false;
+            }
             return true;
         }
         public bool ValidacijaCas()
@@ -96,6 +101,11 @@ namespace Client.UserControls.EvidencioniObrazac
                 MessageBox.Show("Datum časa ne može biti pre početka časova.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+            if (CmbAutomobil.SelectedIndex == -1)
+            {
+                MessageBox.Show("Morate izabrati automobil.");
+                return false;
+            }
             return true;
         }
 
@@ -109,7 +119,8 @@ namespace Client.UserControls.EvidencioniObrazac
 
         private void btnIzmeni_Click(object sender, EventArgs e)
         {
-            obrazacController.PromeniEvidencioniObrazac();
+            if(Validacija())
+                obrazacController.PromeniEvidencioniObrazac();
         }
 
         private void btnObrisi_Click(object sender, EventArgs e)
@@ -165,12 +176,14 @@ namespace Client.UserControls.EvidencioniObrazac
 
         private void btnDodajCas_Click(object sender, EventArgs e)
         {
-          obrazacController.DodajCas();
+            if(ValidacijaCas())
+                obrazacController.DodajCas();
         }
 
         private void btnIzmeniCas_Click(object sender, EventArgs e)
         {
-            obrazacController.IzmeniCas();
+            if (ValidacijaCas())
+                obrazacController.IzmeniCas();
         }
     }
 }

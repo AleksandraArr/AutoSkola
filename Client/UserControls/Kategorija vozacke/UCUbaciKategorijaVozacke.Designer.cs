@@ -76,6 +76,7 @@
             btnUbaci.TabIndex = 4;
             btnUbaci.Text = "Ubaci";
             btnUbaci.UseVisualStyleBackColor = true;
+            btnUbaci.Click += btnUbaci_Click;
             // 
             // label5
             // 

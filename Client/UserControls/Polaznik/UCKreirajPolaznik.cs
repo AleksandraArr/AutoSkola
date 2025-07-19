@@ -1,4 +1,5 @@
 ﻿using Client.GuiController;
+using Common.Domain;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,8 @@ namespace Client.UserControls.Polaznik
 
         private void btnUbaci_Click(object sender, EventArgs e)
         {
-            polaznikController.PromeniPolaznik();
+            if (Validacija())
+                polaznikController.PromeniPolaznik();
         }
 
         private void btnKreiraj_Click(object sender, EventArgs e)

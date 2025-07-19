@@ -53,7 +53,6 @@ namespace Client.UserControls.EvidencioniObrazac
             lblDatumPocetka = new Label();
             lblPolaznik = new Label();
             lblInstruktor = new Label();
-            btnPrikaziObrasce = new Button();
             dgvEvidencioniObrasci = new DataGridView();
             label1 = new Label();
             gpbKriterijumi = new GroupBox();
@@ -78,7 +77,7 @@ namespace Client.UserControls.EvidencioniObrazac
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(32, 86);
+            label2.Location = new Point(32, 111);
             label2.Name = "label2";
             label2.Size = new Size(209, 25);
             label2.TabIndex = 23;
@@ -310,27 +309,16 @@ namespace Client.UserControls.EvidencioniObrazac
             lblInstruktor.TabIndex = 0;
             lblInstruktor.Text = "Instruktor:";
             // 
-            // btnPrikaziObrasce
-            // 
-            btnPrikaziObrasce.ForeColor = SystemColors.ControlText;
-            btnPrikaziObrasce.Location = new Point(32, 147);
-            btnPrikaziObrasce.Name = "btnPrikaziObrasce";
-            btnPrikaziObrasce.Size = new Size(528, 45);
-            btnPrikaziObrasce.TabIndex = 18;
-            btnPrikaziObrasce.Text = "Prikaži sve obrasce";
-            btnPrikaziObrasce.UseVisualStyleBackColor = true;
-            btnPrikaziObrasce.Click += btnPrikaziObrasce_Click;
-            // 
             // dgvEvidencioniObrasci
             // 
             dgvEvidencioniObrasci.AllowUserToAddRows = false;
             dgvEvidencioniObrasci.AllowUserToDeleteRows = false;
             dgvEvidencioniObrasci.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEvidencioniObrasci.Location = new Point(32, 233);
+            dgvEvidencioniObrasci.Location = new Point(32, 167);
             dgvEvidencioniObrasci.Name = "dgvEvidencioniObrasci";
             dgvEvidencioniObrasci.ReadOnly = true;
             dgvEvidencioniObrasci.RowHeadersWidth = 62;
-            dgvEvidencioniObrasci.Size = new Size(657, 564);
+            dgvEvidencioniObrasci.Size = new Size(657, 630);
             dgvEvidencioniObrasci.TabIndex = 17;
             dgvEvidencioniObrasci.SelectionChanged += dgvEvidencioniObrasci_SelectionChanged;
             // 
@@ -355,7 +343,7 @@ namespace Client.UserControls.EvidencioniObrazac
             gpbKriterijumi.Controls.Add(label3);
             gpbKriterijumi.Controls.Add(label5);
             gpbKriterijumi.Controls.Add(label6);
-            gpbKriterijumi.Location = new Point(247, 81);
+            gpbKriterijumi.Location = new Point(247, 106);
             gpbKriterijumi.Name = "gpbKriterijumi";
             gpbKriterijumi.Size = new Size(583, 297);
             gpbKriterijumi.TabIndex = 24;
@@ -446,7 +434,7 @@ namespace Client.UserControls.EvidencioniObrazac
             // 
             // btnKriterijumi
             // 
-            btnKriterijumi.Location = new Point(247, 81);
+            btnKriterijumi.Location = new Point(247, 106);
             btnKriterijumi.Name = "btnKriterijumi";
             btnKriterijumi.Size = new Size(202, 45);
             btnKriterijumi.TabIndex = 25;
@@ -475,7 +463,6 @@ namespace Client.UserControls.EvidencioniObrazac
             Controls.Add(btnIzmeni);
             Controls.Add(btnObrisi);
             Controls.Add(gbPodaciObrazca);
-            Controls.Add(btnPrikaziObrasce);
             Controls.Add(dgvEvidencioniObrasci);
             Controls.Add(label1);
             Controls.Add(label2);
@@ -503,7 +490,6 @@ namespace Client.UserControls.EvidencioniObrazac
         private Label lblDatumRodjenja;
         private TextBox txtIme;
         private Label lblInstruktor;
-        private Button btnPrikaziObrasce;
         private DataGridView dgvEvidencioniObrasci;
         private Label label1;
         private Label label2;

@@ -18,10 +18,8 @@ namespace Client.GuiController
 
         private UCUbaciKategorijaVozacke ucUbaciKategorijaVozacke;
 
-        public void UbaciKategorijaVozacke(object sender, EventArgs e)
+        public void UbaciKategorijaVozacke()
         {
-            if (!ucUbaciKategorijaVozacke.Validacija())
-                return;
             KategorijaVozacke kategorija = new KategorijaVozacke
             {
                 JacinaMotora = ucUbaciKategorijaVozacke.TxtJacinaMotora.Text,

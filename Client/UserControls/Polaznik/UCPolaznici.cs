@@ -18,30 +18,13 @@ namespace Client.UserControls.Polaznik
         {
             InitializeComponent();
             polazniciController = new PolazniciController(this);
-        }
-
-        private void btnPrikaziPolaznike_Click(object sender, EventArgs e)
-        {
-            if (dgvPolaznici.DataSource != null)
-            {
-                dgvPolaznici.DataSource = null;
-                dgvPolaznici.Refresh();
-            }
-            else
-            {
-                polazniciController.VratiListuSviPolaznik();
-                dgvPolaznici.Columns["IdPolaznik"].Visible = false;
-                dgvPolaznici.Columns["TableName"].Visible = false;
-                dgvPolaznici.Columns["Values"].Visible = false;
-                dgvPolaznici.Columns["WhereCondition"].Visible = false;
-                dgvPolaznici.Columns["UpdateText"].Visible = false;
-                dgvPolaznici.Columns["IdColumn"].Visible = false;
-            }
+            polazniciController.VratiListuSviPolaznik();
         }
 
         private void btnIzmeni_Click(object sender, EventArgs e)
         {
-            polazniciController.PromeniPolaznik();
+            if (Validacija())
+                polazniciController.PromeniPolaznik();
         }
 
         private void btnObrisi_Click(object sender, EventArgs e)
@@ -99,6 +82,14 @@ namespace Client.UserControls.Polaznik
         {
             FrmKreiraj frm = new FrmKreiraj(FormType.KreirajPolaznik);
             frm.ShowDialog();
+        }
+
+        private void btnPrikaziPolaznike_Click_1(object sender, EventArgs e)
+        {
+            if (dgvPolaznici.DataSource != null)
+                dgvPolaznici.DataSource = null;
+            polazniciController.VratiListuSviPolaznik();
+
         }
     }
 }

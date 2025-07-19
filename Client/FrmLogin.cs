@@ -7,7 +7,6 @@ namespace Client
         public FrmLogin()
         {
             InitializeComponent();
-            btnLogin.Click += LoginController.Instance.Login;
             txtKorisnickoIme.Text = "jovan.jovanovic";
             txtSifra.Text = "Test123!";
 
@@ -30,7 +29,8 @@ namespace Client
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-
+            if (Validacija())
+                LoginController.Instance.Login();
         }
     }
 }

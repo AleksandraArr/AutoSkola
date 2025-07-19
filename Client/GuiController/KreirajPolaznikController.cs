@@ -40,8 +40,6 @@ namespace Client.GuiController
         }
         internal void PromeniPolaznik()
         {
-            if (!ucPolaznik.Validacija())
-                return;
             Polaznik polaznik = new Polaznik();
             polaznik.IdPolaznik = idPolaznik;
             polaznik.Ime = ucPolaznik.TxtIme.Text;
@@ -61,7 +59,6 @@ namespace Client.GuiController
         internal void ObrisiPolaznik()
         {
             Response response = Communication.Instance.ObrisiPolaznik(new Polaznik() { IdPolaznik = idPolaznik });
-
             if (response.IsSuccess) return;
             else MessageBox.Show("Sistem ne može da obriše polaznika.");
         }

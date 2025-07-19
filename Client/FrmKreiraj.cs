@@ -20,8 +20,6 @@ namespace Client
     public partial class FrmKreiraj : Form
     {
         IKreirajUC aktivniUC;
-        //UCKreirajEvidencioniObrazac ucKreirajEvidencioniObrazac;
-        //UCKreirajPolaznik ucKreirajPolaznik;
         FormType formType;
         public FrmKreiraj(FormType formType)
         {

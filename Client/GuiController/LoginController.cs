@@ -54,11 +54,8 @@ namespace Client.GuiController
             }
         }
 
-        public void Login(object sender, EventArgs e)
+        public void Login()
         {
-            if (!frmLogin.Validacija())
-                return;
-
             Instruktor instruktor = new Instruktor
             {
                 KorisnickoIme = frmLogin.TxtKorisnickoIme.Text,
@@ -68,8 +65,16 @@ namespace Client.GuiController
             if (response.IsSuccess)
             {
                 MessageBox.Show("Korisničko ime i šifra su ispravni.", "Prijava", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                frmLogin.Visible = false;
-                MainCoordinator.Instance.ShowFrmMain();
+                try
+                {
+                    MainCoordinator.Instance.ShowFrmMain();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ne može da se otvori glavna forma i meni",
+                                    "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    frmLogin.Visible = true;
+                }
             }
             else
                 MessageBox.Show("Korisničko ime i šifra nisu ispravni.", "Prijava", MessageBoxButtons.OK, MessageBoxIcon.Error);

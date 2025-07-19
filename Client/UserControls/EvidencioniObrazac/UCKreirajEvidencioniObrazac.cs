@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Client.UserControls.EvidencioniObrazac
 {
@@ -54,6 +55,16 @@ namespace Client.UserControls.EvidencioniObrazac
                 MessageBox.Show("Datum početka ne može biti u prošlosti.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+            if (cmbInstruktor.SelectedIndex == -1)
+            {
+                MessageBox.Show("Morate izabrati instruktora.");
+                return false;
+            }
+            if (CmbPolaznik.SelectedIndex == -1)
+            {
+                MessageBox.Show("Morate izabrati polaznika.");
+                return false;
+            }
             return true;
         }
         public bool ValidacijaCas()
@@ -82,6 +93,11 @@ namespace Client.UserControls.EvidencioniObrazac
                 MessageBox.Show("Datum časa ne može biti pre početka časova.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+            if (CmbAutomobil.SelectedIndex == -1)
+            {
+                MessageBox.Show("Morate izabrati automobil.");
+                return false;
+            }
             return true;
         }
         private void btnKreiraj_Click(object sender, EventArgs e)
@@ -91,7 +107,8 @@ namespace Client.UserControls.EvidencioniObrazac
 
         private void btnUbaci_Click(object sender, EventArgs e)
         {
-            obrazacController.PromeniEvidencioniObrazac();
+            if(Validacija())
+                obrazacController.PromeniEvidencioniObrazac();
         }
 
         public void OnLeave()
@@ -102,9 +119,12 @@ namespace Client.UserControls.EvidencioniObrazac
 
         private void btnDodajCas_Click(object sender, EventArgs e)
         {
-            obrazacController.DodajCas();
-            txtTrajanje.Text = "";
-            cmbAutomobil.SelectedIndex = -1;
+            if (ValidacijaCas())
+            {
+                obrazacController.DodajCas();
+                txtTrajanje.Text = "";
+                cmbAutomobil.SelectedIndex = -1;
+            }
         }
     }
 }

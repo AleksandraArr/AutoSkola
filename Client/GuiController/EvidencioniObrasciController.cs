@@ -39,14 +39,8 @@ namespace Client.GuiController
                     return;
                 }
                 sviPolaznici = polaznici;
-                ucObrazac.CmbPolaznik.DataSource = new List<Polaznik>(polaznici);
-                ucObrazac.CmbPolaznik.ValueMember = "IdPolaznik";
-                ucObrazac.CmbPolaznik.DisplayMember = "ImeIPrezime";
-                ucObrazac.CmbPolaznik.SelectedIndex = -1;
-                ucObrazac.CmbPolaznikKriterijum.DataSource = new List<Polaznik>(polaznici);
-                ucObrazac.CmbPolaznikKriterijum.ValueMember = "IdPolaznik";
-                ucObrazac.CmbPolaznikKriterijum.DisplayMember = "ImeIPrezime";
-                ucObrazac.CmbPolaznikKriterijum.SelectedIndex = -1;
+                PopuniComboBox(ucObrazac.CmbPolaznik, polaznici, "IdPolaznik", "ImeIPrezime");
+                PopuniComboBox(ucObrazac.CmbPolaznikKriterijum, polaznici, "IdPolaznik", "ImeIPrezime");
             }
             else MessageBox.Show("Sistem ne može da učita polaznike.");
 
@@ -66,14 +60,9 @@ namespace Client.GuiController
                     return;
                 }
                 sviInstruktori = instruktori;
-                ucObrazac.CmbInstruktor.DataSource = new List<Instruktor>(instruktori);
-                ucObrazac.CmbInstruktorKriterijum.DataSource = new List<Instruktor>(instruktori);
-                ucObrazac.CmbInstruktor.ValueMember = "IdInstruktor";
-                ucObrazac.CmbInstruktor.DisplayMember = "ImeIPrezime";
-                ucObrazac.CmbInstruktor.SelectedIndex = -1;
-                ucObrazac.CmbInstruktorKriterijum.ValueMember = "IdInstruktor";
-                ucObrazac.CmbInstruktorKriterijum.DisplayMember = "ImeIPrezime";
-                ucObrazac.CmbInstruktorKriterijum.SelectedIndex = -1;
+                PopuniComboBox(ucObrazac.CmbInstruktor, sviInstruktori, "IdInstruktor", "ImeIPrezime");
+                PopuniComboBox(ucObrazac.CmbInstruktorKriterijum, sviInstruktori, "IdInstruktor", "ImeIPrezime");
+
             }
             else MessageBox.Show("Sistem ne može da učita instruktore.");
         }
@@ -91,14 +80,8 @@ namespace Client.GuiController
                     return;
                 }
                 sviAutomobili = automobili;
-                ucObrazac.CmbAutomobilKriterijum.DataSource = new List<Automobil>(automobili);
-                ucObrazac.CmbAutomobilKriterijum.ValueMember = "IdAutomobil";
-                ucObrazac.CmbAutomobilKriterijum.DisplayMember = "Model";
-                ucObrazac.CmbAutomobilKriterijum.SelectedIndex = -1;
-                ucObrazac.CmbAutomobil.DataSource = new List<Automobil>(automobili);
-                ucObrazac.CmbAutomobil.ValueMember = "IdAutomobil";
-                ucObrazac.CmbAutomobil.DisplayMember = "Model";
-                ucObrazac.CmbAutomobil.SelectedIndex = -1;
+                PopuniComboBox(ucObrazac.CmbAutomobilKriterijum, automobili, "IdAutomobil", "Model");
+                PopuniComboBox(ucObrazac.CmbAutomobil, automobili, "IdAutomobil", "Model");
             }
             else MessageBox.Show("Sistem ne može da učita automobile.");
 
@@ -207,8 +190,6 @@ namespace Client.GuiController
                 MessageBox.Show("Sistem ne može da nađe evidencioni obrazac!", "Izmena evidencionog obrazca", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (!ucObrazac.Validacija())
-                return;
 
             EvidencioniObrazac obrazac = obrasci[0];
             obrazac.Polaznik = (Polaznik)ucObrazac.CmbPolaznik.SelectedItem;
@@ -235,6 +216,8 @@ namespace Client.GuiController
             ucObrazac.DgvEvidencioniObrasci.Columns["UpdateText"].Visible = false;
             ucObrazac.DgvEvidencioniObrasci.Columns["WhereCondition"].Visible = false;
             ucObrazac.DgvEvidencioniObrasci.Columns["IdColumn"].Visible = false;
+            ucObrazac.DgvEvidencioniObrasci.Columns["ColumnName"].Visible = false;
+
         }
         private void PostaviCas(List<Cas> casovi)
         {
@@ -307,8 +290,6 @@ namespace Client.GuiController
         internal void DodajCas() {
             try
             {
-                if (!ucObrazac.ValidacijaCas())
-                    return;
                 if (casovi.Count + 1 > int.Parse(ucObrazac.TxtBrCasova.Text))
                 {
                     MessageBox.Show("Ne možete dodati više časova od broja časova obrasca.", "Dodavanje časa", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -334,8 +315,6 @@ namespace Client.GuiController
         internal void IzmeniCas() {
             try
             {
-                if (!ucObrazac.ValidacijaCas())
-                    return;
                 Cas cas = (Cas)ucObrazac.DgvCasovi.SelectedRows[0].DataBoundItem;
                 int indeks = casovi.IndexOf(cas);
                 cas.Obrazac.IdObrazac = obrazac.IdObrazac;
@@ -352,5 +331,14 @@ namespace Client.GuiController
                 MessageBox.Show("Sistem ne može da izmeni čas.\n" + ex.Message);
             }
         }
+        private void PopuniComboBox<T>(ComboBox comboBox, List<T> dataSource, string valueMember, string displayMember)
+        {
+
+            comboBox.DataSource = new List<T>(dataSource);
+            comboBox.ValueMember = valueMember;
+            comboBox.DisplayMember = displayMember;
+            comboBox.SelectedIndex = -1;
+        }
+
     }
 }

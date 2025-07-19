@@ -88,8 +88,6 @@ namespace Client.GuiController
             List<Polaznik> polaznici = VratiListuPolaznik();
             if (polaznici == null || polaznici.Count == 0)
                 return;
-            if (!ucPolaznici.Validacija())
-                return;
             Polaznik polaznik = polaznici[0];
             polaznik.Ime = ucPolaznici.TxtIme.Text;
             polaznik.Prezime = ucPolaznici.TxtPrezime.Text;
@@ -108,7 +106,6 @@ namespace Client.GuiController
                 return;
 
             Response response = Communication.Instance.ObrisiPolaznik(polaznici[0]);
-            response.IsSuccess = false;
             if (response.IsSuccess) { MessageBox.Show("Sistem je obrisao polaznika!", "Brisanje polaznika", MessageBoxButtons.OK, MessageBoxIcon.Information); VratiListuSviPolaznik(); }
             else MessageBox.Show("Sistem ne može da obriše polaznika!", "Brisanje polaznika", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }

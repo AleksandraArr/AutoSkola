@@ -21,7 +21,6 @@ namespace Client.GuiController
         public KreirajEvidencioniObrazacController(UCKreirajEvidencioniObrazac ucObrazac)
         {
             this.ucObrazac = ucObrazac;
-
         }
 
         internal void KreirajEvidencioniObrazac()
@@ -60,9 +59,6 @@ namespace Client.GuiController
         }
         internal void PromeniEvidencioniObrazac()
         {
-
-            if (!ucObrazac.Validacija())
-                return;
             EvidencioniObrazac obrazac = new EvidencioniObrazac();
             obrazac.IdObrazac = idObrasca;
             obrazac.Polaznik = (Polaznik)ucObrazac.CmbPolaznik.SelectedItem;
@@ -86,16 +82,13 @@ namespace Client.GuiController
             {
                 List<Polaznik> polaznici = (List<Polaznik>)response.Data;
 
-                if (polaznici == null | polaznici.Count == 0)
+                if (polaznici == null || polaznici.Count == 0)
                 {
                     MessageBox.Show("Trenutno nema unetih korisnika.");
                     ucObrazac.CmbPolaznik.DataSource = null;
                     return;
                 }
-                ucObrazac.CmbPolaznik.DataSource = polaznici;
-                ucObrazac.CmbPolaznik.ValueMember = "IdPolaznik";
-                ucObrazac.CmbPolaznik.DisplayMember = "ImeIPrezime";
-                ucObrazac.CmbPolaznik.SelectedIndex = -1;
+                PopuniComboBox(ucObrazac.CmbPolaznik, polaznici, "IdPolaznik", "ImeIPrezime");
             }
             else MessageBox.Show("Sistem ne može da učita korisnike.");
             
@@ -114,10 +107,7 @@ namespace Client.GuiController
                     ucObrazac.CmbInstruktor.DataSource = null;
                     return;
                 }
-                ucObrazac.CmbInstruktor.DataSource = instruktori;
-                ucObrazac.CmbInstruktor.ValueMember = "IdInstruktor";
-                ucObrazac.CmbInstruktor.DisplayMember = "ImeIPrezime";
-                ucObrazac.CmbInstruktor.SelectedIndex = -1;
+                PopuniComboBox(ucObrazac.CmbInstruktor, instruktori, "IdInstruktor", "ImeIPrezime");
             }
             else MessageBox.Show("Sistem ne može da učita korisnike.");
              
@@ -137,10 +127,7 @@ namespace Client.GuiController
                     ucObrazac.CmbAutomobil.DataSource = null;
                     return;
                 }
-                ucObrazac.CmbAutomobil.DataSource = automobili;
-                ucObrazac.CmbAutomobil.ValueMember = "IdAutomobil";
-                ucObrazac.CmbAutomobil.DisplayMember = "Model";
-                ucObrazac.CmbAutomobil.SelectedIndex = -1;
+                PopuniComboBox(ucObrazac.CmbAutomobil, automobili, "IdAutomobil", "Model");
             }
             else MessageBox.Show("Sistem ne može da nađe automobile!", "Automobili", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -148,8 +135,6 @@ namespace Client.GuiController
         internal void DodajCas() {
             try
             {
-                if (!ucObrazac.ValidacijaCas())
-                    return;
                 if (casovi.Count + 1 > int.Parse(ucObrazac.TxtBrCasova.Text))
                 {
                     MessageBox.Show("Ne možete dodati više časova od broja časova obrasca.", "Dodavanje časa", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -187,6 +172,13 @@ namespace Client.GuiController
             Response response = Communication.Instance.ObrisiEvidencioniObrazac(new EvidencioniObrazac() { IdObrazac = idObrasca, Instruktor = new Instruktor(), Polaznik = new Polaznik() });
             if (response.IsSuccess) return;
             else MessageBox.Show("Sistem ne može da obriše evidencioni obrazac.");
+        }
+        private void PopuniComboBox<T>(ComboBox comboBox, List<T> dataSource, string valueMember, string displayMember)
+        {
+            comboBox.DataSource = new List<T>(dataSource);
+            comboBox.ValueMember = valueMember;
+            comboBox.DisplayMember = displayMember;
+            comboBox.SelectedIndex = -1;
         }
     }
 }
