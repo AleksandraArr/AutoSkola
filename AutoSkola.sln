@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBBroker", "Broker\DBBroker.csproj", "{EE95B8E8-2FE3-4433-B6B0-910E89A95AC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{3B491910-D72B-4303-8549-34A05A49B20A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{EE95B8E8-2FE3-4433-B6B0-910E89A95AC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE95B8E8-2FE3-4433-B6B0-910E89A95AC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE95B8E8-2FE3-4433-B6B0-910E89A95AC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B491910-D72B-4303-8549-34A05A49B20A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B491910-D72B-4303-8549-34A05A49B20A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B491910-D72B-4303-8549-34A05A49B20A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B491910-D72B-4303-8549-34A05A49B20A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

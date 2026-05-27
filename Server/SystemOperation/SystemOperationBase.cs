@@ -1,19 +1,17 @@
-﻿using DBBroker;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Common.Domain;
+using DBBroker;
 
 namespace Server.SystemOperation
 {
     public abstract class SystemOperationBase
     {
-        protected Broker broker;
+        protected IBroker broker;
 
-        public SystemOperationBase()
+        public SystemOperationBase() : this(new Broker()) { }
+
+        public SystemOperationBase(IBroker broker)
         {
-            broker = new Broker();
+            this.broker = broker;
         }
 
 

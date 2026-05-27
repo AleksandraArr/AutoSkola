@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace DBBroker
 {
-    public class Broker
+    public class Broker : IBroker
     {
         private DbConnection connection;
         public Broker()
