@@ -13,7 +13,12 @@ namespace Server.SystemOperation
     {
         private readonly Polaznik polaznik;
 
-        public ObrisiPolaznikSO(Polaznik polaznik)
+        public ObrisiPolaznikSO(Polaznik polaznik) : base()
+        {
+            this.polaznik = polaznik;
+        }
+
+        public ObrisiPolaznikSO(Polaznik polaznik, IBroker broker) : base(broker)
         {
             this.polaznik = polaznik;
         }

@@ -9,6 +9,9 @@ namespace Server.SystemOperation
 {
     public class VratiListuSviPolaznikSO : SystemOperationBase
     {
+        public VratiListuSviPolaznikSO() : base() { }
+        public VratiListuSviPolaznikSO(IBroker broker) : base(broker) { }
+
         public List<Polaznik> Result { get; set; }
         protected override void ExecuteConcreteOperation()
         {
