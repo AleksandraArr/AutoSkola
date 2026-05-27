@@ -29,7 +29,7 @@ namespace Server.SystemOperation
                 return;
             }
 
-            string condition = $"Ime LIKE '%{safeTekst}%' OR Prezime LIKE '%{safeTekst}%' OR (Ime + ' ' + Prezime) LIKE '%{safeTekst}%'";
+            string condition = $"Ime LIKE '{safeTekst}%' OR Prezime LIKE '{safeTekst}%' OR (Ime + ' ' + Prezime) LIKE '{safeTekst}%'";
             Debug.WriteLine(condition);
             List<IEntity> lista = broker.GetByCondition(polaznik, condition);
 

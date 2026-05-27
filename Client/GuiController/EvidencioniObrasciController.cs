@@ -197,6 +197,12 @@ namespace Client.GuiController
             obrazac.BrojCasova = int.Parse(ucObrazac.TxtBrCasova.Text);
             obrazac.DatumPocetka = ucObrazac.DtpDatumPocetka.Value;
             obrazac.Casovi = casovi;
+            foreach (Cas c in casovi) {
+                if (c.Datum < obrazac.DatumPocetka) {
+                    MessageBox.Show("Datum pocetka ne može biti posle održavanja časova!", "Izmena evidencionog obrazca", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
             Response response = Communication.Instance.PromeniEvidencioniObrazac(obrazac);
             if (response.IsSuccess)
             {

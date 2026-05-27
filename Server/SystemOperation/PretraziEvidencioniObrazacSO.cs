@@ -22,17 +22,16 @@ namespace Server.SystemOperation
             List<string> conditions = new List<string>();
             string join = "";
             if (objs.Polaznik != null)
-                conditions.Add($"IdPolaznik = {objs.Polaznik.IdPolaznik}");
+                conditions.Add(objs.Polaznik.WhereCondition);
 
             if (objs.Instruktor != null)
-                conditions.Add($"IdInstruktor = {objs.Instruktor.IdInstruktor}");
+                conditions.Add(objs.Instruktor.WhereCondition);
 
             if (objs.Automobil != null)
             {
                 join = $" JOIN Cas ON Cas.IdObrazac = e.IdObrazac\r\n";
-                conditions.Add($"IdAutomobil = {objs.Automobil.IdAutomobil}");
+                conditions.Add(objs.Automobil.WhereCondition);
             }
-
 
             string condition = "";
             if (conditions.Count > 0)
@@ -40,7 +39,6 @@ namespace Server.SystemOperation
             else
                 condition = "1=1";
 
-            Debug.WriteLine(condition);
             List<IEntity> lista = broker.GetByCondition(new EvidencioniObrazac(), condition, join);
 
             Result = lista.Cast<EvidencioniObrazac>().ToList();

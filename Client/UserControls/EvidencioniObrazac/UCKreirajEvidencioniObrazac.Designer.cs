@@ -238,9 +238,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(21, 49);
             label1.Name = "label1";
-            label1.Size = new Size(74, 25);
+            label1.Size = new Size(114, 25);
             label1.TabIndex = 7;
-            label1.Text = "Trajanje:";
+            label1.Text = "Trajanje(min):";
             // 
             // UCKreirajEvidencioniObrazac
             // 

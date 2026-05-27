@@ -24,7 +24,10 @@ namespace Client.UserControls.Polaznik
         private void btnUbaci_Click(object sender, EventArgs e)
         {
             if (Validacija())
+            {
                 polaznikController.PromeniPolaznik();
+                this.FindForm()?.Close();
+            }
         }
 
         private void btnKreiraj_Click(object sender, EventArgs e)

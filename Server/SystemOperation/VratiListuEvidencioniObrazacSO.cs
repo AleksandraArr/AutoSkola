@@ -19,8 +19,7 @@ namespace Server.SystemOperation
         {
             List<EvidencioniObrazac> obrasci = broker.Get(obrazac).Cast<EvidencioniObrazac>().ToList();
 
-            string condition = $"idObrazac = {obrazac.IdObrazac}";
-            List<Cas> casovi = broker.GetByCondition(new Cas(),condition).Cast<Cas>().ToList();
+            List<Cas> casovi = broker.GetByCondition(new Cas(),obrazac.WhereCondition).Cast<Cas>().ToList();
 
             foreach (EvidencioniObrazac obrazac in obrasci) 
                 obrazac.Casovi = casovi;

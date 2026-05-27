@@ -103,12 +103,17 @@ namespace Client.UserControls.EvidencioniObrazac
         private void btnKreiraj_Click(object sender, EventArgs e)
         {
             obrazacController.KreirajEvidencioniObrazac();
+
         }
 
         private void btnUbaci_Click(object sender, EventArgs e)
         {
-            if(Validacija())
+            if (Validacija())
+            {
                 obrazacController.PromeniEvidencioniObrazac();
+                this.FindForm()?.Close();
+            }
+          
         }
 
         public void OnLeave()
@@ -119,7 +124,7 @@ namespace Client.UserControls.EvidencioniObrazac
 
         private void btnDodajCas_Click(object sender, EventArgs e)
         {
-            if (ValidacijaCas())
+            if (Validacija() && ValidacijaCas())
             {
                 obrazacController.DodajCas();
                 txtTrajanje.Text = "";

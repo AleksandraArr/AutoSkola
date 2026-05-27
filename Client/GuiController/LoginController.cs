@@ -67,6 +67,7 @@ namespace Client.GuiController
                 MessageBox.Show("Korisničko ime i šifra su ispravni.", "Prijava", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 try
                 {
+                    frmLogin.Visible = false ;
                     MainCoordinator.Instance.ShowFrmMain();
                 }
                 catch (Exception ex)

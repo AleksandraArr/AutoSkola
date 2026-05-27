@@ -14,7 +14,7 @@ namespace Common.Domain
         public int BrojCasova { get; set; }
         public Instruktor? Instruktor { get; set; }
         public Polaznik? Polaznik { get; set; }
-        public List<Cas> Casovi { get; set; }
+        public List<Cas> Casovi { get; set; } = new List<Cas>();
         public string TableName => "EvidencioniObrazac";
         public string Values =>
             $"'{DatumPocetka:yyyy-MM-dd}', {BrojCasova}, " +
