@@ -9,6 +9,9 @@ namespace Server.SystemOperation
 {
     public class VratiListuSviAutomobilSO : SystemOperationBase
     {
+        public VratiListuSviAutomobilSO() : base() { }
+        public VratiListuSviAutomobilSO(IBroker broker) : base(broker) { }
+
         public List<Automobil> Result { get; set; }
 
         protected override void ExecuteConcreteOperation()

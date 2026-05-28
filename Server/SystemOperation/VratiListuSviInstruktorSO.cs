@@ -10,6 +10,9 @@ namespace Server.SystemOperation
 {
     public class VratiListuSviInstruktorSO : SystemOperationBase
     {
+        public VratiListuSviInstruktorSO() : base() { }
+        public VratiListuSviInstruktorSO(IBroker broker) : base(broker) { }
+
         public List<Instruktor> Result { get; set; }
 
         protected override void ExecuteConcreteOperation()
