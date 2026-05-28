@@ -13,7 +13,12 @@ namespace Server.SystemOperation
     {
         private readonly EvidencioniObrazac obrazac;
 
-        public ObrisiEvidencioniObrazacSO(EvidencioniObrazac obrazac)
+        public ObrisiEvidencioniObrazacSO(EvidencioniObrazac obrazac) : base()
+        {
+            this.obrazac = obrazac;
+        }
+
+        public ObrisiEvidencioniObrazacSO(EvidencioniObrazac obrazac, IBroker broker) : base(broker)
         {
             this.obrazac = obrazac;
         }

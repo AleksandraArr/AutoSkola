@@ -13,7 +13,13 @@ namespace Server.SystemOperation
     {
         private readonly EvidencioniObrazac obrazac;
         public EvidencioniObrazac Result { get; set; }
-        public KreirajEvidencioniObrazacSO(EvidencioniObrazac obrazac) {
+        public KreirajEvidencioniObrazacSO(EvidencioniObrazac obrazac) : base()
+        {
+            this.obrazac = obrazac;
+        }
+
+        public KreirajEvidencioniObrazacSO(EvidencioniObrazac obrazac, IBroker broker) : base(broker)
+        {
             this.obrazac = obrazac;
         }
         protected override void ExecuteConcreteOperation()

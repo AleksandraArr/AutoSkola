@@ -9,6 +9,9 @@ namespace Server.SystemOperation
 {
     public class VratiListuSviEvidencioniObrazacSO : SystemOperationBase
     {
+        public VratiListuSviEvidencioniObrazacSO() : base() { }
+        public VratiListuSviEvidencioniObrazacSO(IBroker broker) : base(broker) { }
+
         public List<EvidencioniObrazac> Result { get; set; }
 
         protected override void ExecuteConcreteOperation()
