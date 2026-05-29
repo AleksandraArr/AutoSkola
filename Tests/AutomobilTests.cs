@@ -28,6 +28,7 @@ namespace Tests
             Assert.Contains("2019", automobil.Values);
             Assert.Contains("NS-123-AB", automobil.Values);
         }
+        //test workflow
 
         [Fact]
         public void VratiListuSviAutomobilSO_VracaPraznoKadaNemaAutomobila()
