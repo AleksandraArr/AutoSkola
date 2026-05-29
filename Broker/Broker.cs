@@ -12,6 +12,11 @@ namespace DBBroker
             connection = new DbConnection();
         }
 
+        public Broker(string connectionString)
+        {
+            connection = new DbConnection(connectionString);
+        }
+
         public void Rollback()
         {
             connection.Rollback();
