@@ -17,5 +17,11 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
+      - name: Start SQL LocalDB
+        run: SqlLocalDB.exe start MSSQLLocalDB
+
+      - name: Kreiraj test bazu
+        run: sqlcmd -S "(localdb)\mssqllocaldb" -i AutoSkolaTest.sql
+
       - name: Pokreni testove
         run: dotnet test Tests/Tests.csproj

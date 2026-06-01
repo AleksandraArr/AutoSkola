@@ -18,6 +18,11 @@ namespace DBBroker
             connection = new SqlConnection(ConfigurationManager.ConnectionStrings["AutoSkola"].ConnectionString);
         }
 
+        public DbConnection(string connectionString)
+        {
+            connection = new SqlConnection(connectionString);
+        }
+
         public void OpenConnection()
         {
             connection?.Open();
