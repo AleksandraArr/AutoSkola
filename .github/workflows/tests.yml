@@ -23,7 +23,9 @@ jobs:
         run: dotnet tool install --global dotnet-sonarscanner
 
       - name: SonarCloud pocetak analize
-        run: dotnet sonarscanner begin /k:"AleksandraArr_AutoSkola" /o:"aleksandraarr" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: dotnet sonarscanner begin /k:"AleksandraArr_AutoSkola" /o:"aleksandraarr" /d:sonar.token="$env:SONAR_TOKEN" /d:sonar.host.url="https://sonarcloud.io"
 
       - name: Start SQL LocalDB
         run: SqlLocalDB.exe start MSSQLLocalDB
@@ -38,4 +40,6 @@ jobs:
         run: dotnet test Tests/Tests.csproj --no-build
 
       - name: SonarCloud kraj analize
-        run: dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: dotnet sonarscanner end /d:sonar.token="$env:SONAR_TOKEN"
