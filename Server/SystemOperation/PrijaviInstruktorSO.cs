@@ -26,14 +26,14 @@ namespace Server.SystemOperation
 
             
             if (lista == null || lista.Count == 0)
-                throw new Exception("Korisničko ime i šifra nisu ispravni.");
+                throw new InvalidOperationException("Korisničko ime i šifra nisu ispravni.");
 
             
             Result = lista.OfType<Instruktor>().FirstOrDefault();
 
 
             if (Result == null)
-                throw new Exception("Korisničko ime i šifra nisu ispravni.");
+                throw new InvalidOperationException("Korisničko ime i šifra nisu ispravni.");
 
         }
     }

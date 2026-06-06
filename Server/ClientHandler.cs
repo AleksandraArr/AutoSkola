@@ -8,8 +8,8 @@ namespace Server
 {
     public class ClientHandler
     {
-        private JsonNetworkSerializer serializer;
-        private Socket socket;
+        private readonly JsonNetworkSerializer serializer;
+        private readonly Socket socket;
         private readonly Server server;
 
         public ClientHandler(Socket socket, Server server)
@@ -129,7 +129,7 @@ namespace Server
                         r.IsSuccess = true;
                         break;
                     default:
-                        throw new Exception("Nepoznat zahtev");
+                        throw new NotSupportedException("Nepoznat zahtev");
                 }
 
             }

@@ -11,14 +11,12 @@ namespace Common.Communication
 {
     public class JsonNetworkSerializer
     {
-        private readonly Socket s;
-        private NetworkStream stream;
-        private StreamReader reader;
-        private StreamWriter writer;
+        private readonly NetworkStream stream;
+        private readonly StreamReader reader;
+        private readonly StreamWriter writer;
 
         public JsonNetworkSerializer(Socket s)
         {
-            this.s = s;
             stream = new NetworkStream(s);
             reader = new StreamReader(stream);
             writer = new StreamWriter(stream)

@@ -13,8 +13,6 @@ namespace Server
 {
     public class Controller
     {
-        private Broker broker;
-
         private static Controller instance;
         public static Controller Instance
         {
@@ -24,7 +22,7 @@ namespace Server
                 return instance;
             }
         }
-        private Controller() { broker = new Broker(); }
+        private Controller() { }
 
        //INSTRUKTOR
         public Instruktor PrijaviInstruktor(Instruktor instruktor)

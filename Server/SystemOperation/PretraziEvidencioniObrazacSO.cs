@@ -43,7 +43,7 @@ namespace Server.SystemOperation
 
             Result = lista.Cast<EvidencioniObrazac>().ToList();
             if (Result == null)
-                throw new Exception("Ne postoje evidencioni obrasci.");
+                throw new InvalidOperationException("Ne postoje evidencioni obrasci.");
 
         }
     }

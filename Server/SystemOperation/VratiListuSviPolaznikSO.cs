@@ -20,7 +20,7 @@ namespace Server.SystemOperation
             Result = lista.Cast<Polaznik>().ToList();
 
             if (Result == null)
-                throw new Exception("Ne postoje polaznici.");
+                throw new InvalidOperationException("Ne postoje polaznici.");
 
         }
     }

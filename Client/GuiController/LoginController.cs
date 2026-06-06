@@ -70,7 +70,7 @@ namespace Client.GuiController
                     frmLogin.Visible = false ;
                     MainCoordinator.Instance.ShowFrmMain();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Ne može da se otvori glavna forma i meni",
                                     "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);

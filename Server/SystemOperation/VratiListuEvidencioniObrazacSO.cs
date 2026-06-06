@@ -21,12 +21,12 @@ namespace Server.SystemOperation
 
             List<Cas> casovi = broker.GetByCondition(new Cas(),obrazac.WhereCondition).Cast<Cas>().ToList();
 
-            foreach (EvidencioniObrazac obrazac in obrasci) 
-                obrazac.Casovi = casovi;
+            foreach (EvidencioniObrazac o in obrasci)
+                o.Casovi = casovi;
             
             Result = obrasci;
             if (Result == null)
-                throw new Exception("Ne postoje evidencioni obrasci.");
+                throw new InvalidOperationException("Ne postoje evidencioni obrasci.");
 
         }
     }

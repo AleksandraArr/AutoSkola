@@ -6,7 +6,7 @@ namespace DBBroker
 {
     public class Broker : IBroker
     {
-        private DbConnection connection;
+        private readonly DbConnection connection;
         public Broker()
         {
             connection = new DbConnection();
@@ -52,7 +52,7 @@ namespace DBBroker
 
                     if (result == null || result == DBNull.Value)
                     {
-                        throw new Exception("Nije moguće dobiti ID nakon ubacivanja.");
+                        throw new InvalidOperationException("Nije moguće dobiti ID nakon ubacivanja.");
                     }
 
                     entity.SetId(Convert.ToInt32(result));
@@ -133,12 +133,12 @@ namespace DBBroker
             catch (SqlException ex)
             {
                 Debug.WriteLine($"SQL greška u {context}: {ex.Message}");
-                throw new Exception($"Greška u bazi ({context})", ex);
+                throw new InvalidOperationException($"Greška u bazi ({context})", ex);
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Greška u {context}: {ex.Message}");
-                throw new Exception($"Greška u {context}", ex);
+                throw new InvalidOperationException($"Greška u {context}", ex);
             }
         }
 

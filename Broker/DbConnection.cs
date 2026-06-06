@@ -10,7 +10,7 @@ namespace DBBroker
 {
     public class DbConnection
     {
-        private SqlConnection connection;
+        private readonly SqlConnection connection;
         private SqlTransaction transaction;
 
         public DbConnection()

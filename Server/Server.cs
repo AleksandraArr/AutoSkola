@@ -12,8 +12,8 @@ namespace Server
 {
     public class Server
     {
-        private Socket socket;
-        private List<ClientHandler> handlers = new List<ClientHandler>();
+        private readonly Socket socket;
+        private readonly List<ClientHandler> handlers = new List<ClientHandler>();
 
         public Server()
         {
@@ -61,7 +61,7 @@ namespace Server
             handlers.Clear();
             socket.Close();
         }
-        private object _lock = new object();
+        private readonly object _lock = new object();
 
         internal void RemoveClient(ClientHandler clientHandler)
         {

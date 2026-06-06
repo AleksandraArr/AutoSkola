@@ -17,5 +17,6 @@ namespace Common.Domain
         string ColumnName { get; }
         void SetId(int id);
         List<IEntity> GetReaderList(SqlDataReader reader);
+
     }
 }

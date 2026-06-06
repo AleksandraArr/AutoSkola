@@ -22,7 +22,7 @@ namespace Server.SystemOperation
             Result = lista.Cast<Instruktor>().ToList();
 
             if (Result == null)
-                throw new Exception("Ne postoje instruktori.");
+                throw new InvalidOperationException("Ne postoje instruktori.");
 
         }
     }

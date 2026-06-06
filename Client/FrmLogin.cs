@@ -7,9 +7,6 @@ namespace Client
         public FrmLogin()
         {
             InitializeComponent();
-            txtKorisnickoIme.Text = "jovan.jovanovic";
-            txtSifra.Text = "Test123!";
-
         }
         public bool Validacija()
         {

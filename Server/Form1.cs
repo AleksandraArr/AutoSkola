@@ -27,7 +27,7 @@ namespace Server
 
         private void FrmServer_Load(object sender, EventArgs e)
         {
-
+            // No initialization needed on load
         }
 
         private void FrmServer_FormClosed(object sender, FormClosedEventArgs e)

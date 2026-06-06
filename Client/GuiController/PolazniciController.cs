@@ -14,7 +14,7 @@ namespace Client.GuiController
 {
     public class PolazniciController
     {
-        private UCPolaznici ucPolaznici;
+        private readonly UCPolaznici ucPolaznici;
 
         public PolazniciController(UCPolaznici ucPolaznici) {
             this.ucPolaznici = ucPolaznici;
@@ -25,7 +25,7 @@ namespace Client.GuiController
             Response response = Communication.Instance.VratiListuSviPolaznik();
             if (response.IsSuccess) { 
                 List<Polaznik> polaznici = (List<Polaznik>)response.Data;
-                if (polaznici == null | polaznici.Count == 0) {
+                if (polaznici == null || polaznici.Count == 0) {
                     MessageBox.Show("Trenutno nema unetih korisnika.");
                     ucPolaznici.DgvPolaznici.DataSource = null;
                     return;
@@ -128,7 +128,7 @@ namespace Client.GuiController
             if (ucPolaznici.DgvPolaznici.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Odaberite polaznika za prikaz!");
-                return null;
+                return new List<Polaznik>();
             }
             DataGridViewRow red = ucPolaznici.DgvPolaznici.SelectedRows[0];
             Polaznik polaznik = (Polaznik)red.DataBoundItem;
@@ -136,7 +136,7 @@ namespace Client.GuiController
             if (response.IsSuccess)
                 return (List<Polaznik>)response.Data;
             MessageBox.Show("Sistem ne može da nađe polaznika.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return null;
+            return new List<Polaznik>();
         }
     }
 }
