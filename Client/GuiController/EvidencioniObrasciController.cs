@@ -140,7 +140,7 @@ namespace Client.GuiController
         internal void PrikaziEvidencioniObrazac()
         {
             List<EvidencioniObrazac> obrasci = VratiListuEvidencioniObrazac();
-            if (obrasci.Count == 0) return;
+            if (obrasci == null || obrasci.Count == 0) return;
 
             MessageBox.Show("Sistem je našao evidencioni obrazac.", "Obaveštenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.obrazac = obrasci[0];
