@@ -2,7 +2,7 @@ namespace Server
 {
     public partial class FrmServer : Form
     {
-        private Server server;
+        private Server server = null!;
         public FrmServer()
         {
             InitializeComponent();

@@ -11,7 +11,7 @@ namespace DBBroker
     public class DbConnection
     {
         private readonly SqlConnection connection;
-        private SqlTransaction transaction;
+        private SqlTransaction transaction = null!;
 
         public DbConnection()
         {

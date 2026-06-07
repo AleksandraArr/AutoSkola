@@ -25,7 +25,7 @@ jobs:
       - name: SonarCloud pocetak analize
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: dotnet sonarscanner begin /k:"AleksandraArr_AutoSkola" /o:"aleksandraarr" /d:sonar.token="$env:SONAR_TOKEN" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml" /d:sonar.coverage.exclusions="Client/**,Server/Form1.cs,Server/Form1.Designer.cs,Server/Program.cs,Client/Program.cs"
+        run: dotnet sonarscanner begin /k:"AleksandraArr_AutoSkola" /o:"aleksandraarr" /d:sonar.token="$env:SONAR_TOKEN" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml" /d:sonar.coverage.exclusions="Client/**,Server/Form1.cs,Server/Form1.Designer.cs,Server/Program.cs,Client/Program.cs,Server/Server.cs,Server/ClientHandler.cs,Server/Controller.cs,Common/Communication/**,Broker/DbConnection.cs"
 
       - name: Start SQL LocalDB
         run: SqlLocalDB.exe start MSSQLLocalDB

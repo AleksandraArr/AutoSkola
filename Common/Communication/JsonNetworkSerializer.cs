@@ -33,10 +33,10 @@ namespace Common.Communication
         public T Receive<T>()
         {
             string json = reader.ReadLine() ?? throw new IOException("Veza je zatvorena.");
-            return JsonSerializer.Deserialize<T>(json);
+            return JsonSerializer.Deserialize<T>(json)!;
         }
 
-        public T ReadType<T>(object podaci) where T : class
+        public static T? ReadType<T>(object podaci) where T : class
         {
             return podaci == null ? null : JsonSerializer.Deserialize<T>((JsonElement)podaci);
         }

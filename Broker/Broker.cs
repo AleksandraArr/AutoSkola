@@ -124,7 +124,7 @@ namespace DBBroker
             }, "GetAll");
         }
 
-        private T Execute<T>(Func<T> action, string context)
+        private static T Execute<T>(Func<T> action, string context)
         {
             try
             {

@@ -29,7 +29,7 @@ namespace Server.SystemOperation
                 throw new InvalidOperationException("Korisničko ime i šifra nisu ispravni.");
 
             
-            Result = lista.OfType<Instruktor>().FirstOrDefault();
+            Result = lista.OfType<Instruktor>().FirstOrDefault()!;
 
 
             if (Result == null)

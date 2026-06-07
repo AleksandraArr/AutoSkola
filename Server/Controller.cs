@@ -13,7 +13,7 @@ namespace Server
 {
     public class Controller
     {
-        private static Controller instance;
+        private static Controller instance = null!;
         public static Controller Instance
         {
             get
