@@ -42,8 +42,6 @@ namespace Server.SystemOperation
             List<IEntity> lista = broker.GetByCondition(new EvidencioniObrazac(), condition, join);
 
             Result = lista.Cast<EvidencioniObrazac>().ToList();
-            if (Result == null)
-                throw new InvalidOperationException("Ne postoje evidencioni obrasci.");
 
         }
     }

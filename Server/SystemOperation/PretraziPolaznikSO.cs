@@ -35,9 +35,6 @@ namespace Server.SystemOperation
 
             Result = lista.Cast<Polaznik>().ToList();
 
-            if (Result == null)
-                throw new InvalidOperationException("Ne postoje evidencioni obrasci.");
-
         }
     }
 }

@@ -20,9 +20,6 @@ namespace Server.SystemOperation
 
             Result = lista.Cast<EvidencioniObrazac>().ToList();
 
-            if (Result == null)
-                throw new InvalidOperationException("Ne postoje evidencioni obrasci.");
-
         }
     }
 }

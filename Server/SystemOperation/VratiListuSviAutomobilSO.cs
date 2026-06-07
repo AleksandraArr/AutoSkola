@@ -20,9 +20,6 @@ namespace Server.SystemOperation
 
             Result = lista.Cast<Automobil>().ToList();
 
-            if (Result == null)
-                throw new InvalidOperationException("Ne postoje automobili.");
-
         }
     }
 }
