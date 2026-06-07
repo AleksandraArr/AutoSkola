@@ -12,7 +12,7 @@ namespace Server.SystemOperation
     public class KreirajEvidencioniObrazacSO : SystemOperationBase
     {
         private readonly EvidencioniObrazac obrazac;
-        public EvidencioniObrazac Result { get; set; }
+        public EvidencioniObrazac Result { get; set; } = null!;
         public KreirajEvidencioniObrazacSO(EvidencioniObrazac obrazac) : base()
         {
             this.obrazac = obrazac;

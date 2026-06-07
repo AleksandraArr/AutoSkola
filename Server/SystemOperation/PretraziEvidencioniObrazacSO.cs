@@ -11,7 +11,7 @@ namespace Server.SystemOperation
 {
     public class PretraziEvidencioniObrazacSO : SystemOperationBase
     {
-        public List<EvidencioniObrazac> Result { get; set; }
+        public List<EvidencioniObrazac> Result { get; set; } = null!;
         public EvidencioniObrazacKriterijumiDTO objs;
         public PretraziEvidencioniObrazacSO(EvidencioniObrazacKriterijumiDTO objs) { 
             this.objs = objs;
@@ -42,8 +42,6 @@ namespace Server.SystemOperation
             List<IEntity> lista = broker.GetByCondition(new EvidencioniObrazac(), condition, join);
 
             Result = lista.Cast<EvidencioniObrazac>().ToList();
-            if (Result == null)
-                throw new Exception("Ne postoje evidencioni obrasci.");
 
         }
     }

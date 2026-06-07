@@ -12,16 +12,13 @@ namespace Server.SystemOperation
         public VratiListuSviEvidencioniObrazacSO() : base() { }
         public VratiListuSviEvidencioniObrazacSO(IBroker broker) : base(broker) { }
 
-        public List<EvidencioniObrazac> Result { get; set; }
+        public List<EvidencioniObrazac> Result { get; set; } = null!;
 
         protected override void ExecuteConcreteOperation()
         {
             List<IEntity> lista = broker.GetAll(new EvidencioniObrazac());
 
             Result = lista.Cast<EvidencioniObrazac>().ToList();
-
-            if (Result == null)
-                throw new Exception("Ne postoje evidencioni obrasci.");
 
         }
     }

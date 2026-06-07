@@ -12,16 +12,13 @@ namespace Server.SystemOperation
         public VratiListuSviAutomobilSO() : base() { }
         public VratiListuSviAutomobilSO(IBroker broker) : base(broker) { }
 
-        public List<Automobil> Result { get; set; }
+        public List<Automobil> Result { get; set; } = null!;
 
         protected override void ExecuteConcreteOperation()
         {
             List<IEntity> lista = broker.GetAll(new Automobil());
 
             Result = lista.Cast<Automobil>().ToList();
-
-            if (Result == null)
-                throw new Exception("Ne postoje automobili.");
 
         }
     }

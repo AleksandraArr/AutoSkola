@@ -11,14 +11,12 @@ namespace Common.Communication
 {
     public class JsonNetworkSerializer
     {
-        private readonly Socket s;
-        private NetworkStream stream;
-        private StreamReader reader;
-        private StreamWriter writer;
+        private readonly NetworkStream stream;
+        private readonly StreamReader reader;
+        private readonly StreamWriter writer;
 
         public JsonNetworkSerializer(Socket s)
         {
-            this.s = s;
             stream = new NetworkStream(s);
             reader = new StreamReader(stream);
             writer = new StreamWriter(stream)
@@ -34,11 +32,11 @@ namespace Common.Communication
 
         public T Receive<T>()
         {
-            string json = reader.ReadLine();
-            return JsonSerializer.Deserialize<T>(json);
+            string json = reader.ReadLine() ?? throw new IOException("Veza je zatvorena.");
+            return JsonSerializer.Deserialize<T>(json)!;
         }
 
-        public T ReadType<T>(object podaci) where T : class
+        public static T? ReadType<T>(object podaci) where T : class
         {
             return podaci == null ? null : JsonSerializer.Deserialize<T>((JsonElement)podaci);
         }

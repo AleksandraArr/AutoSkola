@@ -87,7 +87,7 @@ namespace Client
                     return new Response { IsSuccess = true };
                 }
 
-                var result = serializer.ReadType<TResponse>(response.Data);
+                var result = JsonNetworkSerializer.ReadType<TResponse>(response.Data);
                 return new Response { IsSuccess = true, Data = result };
             }
             catch (Exception ex)

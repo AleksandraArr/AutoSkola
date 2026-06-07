@@ -96,7 +96,7 @@ namespace Client.UserControls.EvidencioniObrazac
                 return false;
             }
 
-            if (DtpDatumPocetka.Value.Date < DtpDatumPocetka.Value.Date)
+            if (DtpDatumCasa.Value.Date < DtpDatumPocetka.Value.Date)
             {
                 MessageBox.Show("Datum časa ne može biti pre početka časova.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;

@@ -2,7 +2,7 @@ namespace Server
 {
     public partial class FrmServer : Form
     {
-        private Server server;
+        private Server server = null!;
         public FrmServer()
         {
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace Server
 
         private void FrmServer_Load(object sender, EventArgs e)
         {
-
+            // No initialization needed on load
         }
 
         private void FrmServer_FormClosed(object sender, FormClosedEventArgs e)

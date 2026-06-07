@@ -11,7 +11,7 @@ namespace Server.SystemOperation
     public class KreirajPolaznikSO : SystemOperationBase
     {
         private readonly Polaznik polaznik;
-        public Polaznik Result { get; set; }
+        public Polaznik Result { get; set; } = null!;
         public KreirajPolaznikSO(Polaznik polaznik) : base()
         {
             this.polaznik = polaznik;

@@ -7,9 +7,9 @@ namespace Server.SystemOperation
     {
         protected IBroker broker;
 
-        public SystemOperationBase() : this(new Broker()) { }
+        protected SystemOperationBase() : this(new Broker()) { }
 
-        public SystemOperationBase(IBroker broker)
+        protected SystemOperationBase(IBroker broker)
         {
             this.broker = broker;
         }
@@ -25,7 +25,7 @@ namespace Server.SystemOperation
                 ExecuteConcreteOperation();
 
                 broker.Commit();
-            }catch(Exception ex)
+            }catch(Exception)
             {
                 broker.Rollback();
                 throw;

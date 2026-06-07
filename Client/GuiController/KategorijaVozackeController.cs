@@ -16,7 +16,7 @@ namespace Client.GuiController
             ucUbaciKategorijaVozacke = uc;
         }
 
-        private UCUbaciKategorijaVozacke ucUbaciKategorijaVozacke;
+        private readonly UCUbaciKategorijaVozacke ucUbaciKategorijaVozacke;
 
         public void UbaciKategorijaVozacke()
         {

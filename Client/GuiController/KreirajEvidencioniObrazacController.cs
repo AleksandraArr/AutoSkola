@@ -13,9 +13,9 @@ namespace Client.GuiController
 {
     public class KreirajEvidencioniObrazacController
     {
-        private UCKreirajEvidencioniObrazac ucObrazac;
+        private readonly UCKreirajEvidencioniObrazac ucObrazac;
         private int idObrasca;
-        private List<Cas> casovi = new List<Cas>();
+        private readonly List<Cas> casovi = new List<Cas>();
         public Boolean ZavrsenoKreiranje { get; private set; } = true;
 
         public KreirajEvidencioniObrazacController(UCKreirajEvidencioniObrazac ucObrazac)

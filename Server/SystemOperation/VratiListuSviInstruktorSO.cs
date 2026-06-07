@@ -13,16 +13,13 @@ namespace Server.SystemOperation
         public VratiListuSviInstruktorSO() : base() { }
         public VratiListuSviInstruktorSO(IBroker broker) : base(broker) { }
 
-        public List<Instruktor> Result { get; set; }
+        public List<Instruktor> Result { get; set; } = null!;
 
         protected override void ExecuteConcreteOperation()
         {
             List<IEntity> lista = broker.GetAll(new Instruktor());
 
             Result = lista.Cast<Instruktor>().ToList();
-
-            if (Result == null)
-                throw new Exception("Ne postoje instruktori.");
 
         }
     }

@@ -13,9 +13,7 @@ namespace Server
 {
     public class Controller
     {
-        private Broker broker;
-
-        private static Controller instance;
+        private static Controller instance = null!;
         public static Controller Instance
         {
             get
@@ -24,100 +22,100 @@ namespace Server
                 return instance;
             }
         }
-        private Controller() { broker = new Broker(); }
+        private Controller() { }
 
        //INSTRUKTOR
-        public Instruktor PrijaviInstruktor(Instruktor instruktor)
+        public static Instruktor PrijaviInstruktor(Instruktor instruktor)
         {
             PrijaviInstruktorSO so = new PrijaviInstruktorSO(instruktor);
             so.ExecuteTemplate();
             return so.Result;
         }
-        public List<Instruktor> VratiListuSviInstruktor()
+        public static List<Instruktor> VratiListuSviInstruktor()
         {
             VratiListuSviInstruktorSO so = new VratiListuSviInstruktorSO();
             so.ExecuteTemplate();
             return so.Result;
         }
         //KATEGORIJA VOZACKE
-        public void UbaciKategorijaVozacke(KategorijaVozacke kategorija)
+        public static void UbaciKategorijaVozacke(KategorijaVozacke kategorija)
         {
             UbaciKategorijaVozackeSO so = new UbaciKategorijaVozackeSO(kategorija);
             so.ExecuteTemplate();
         }
         //POLAZNIK
-        public Polaznik KreirajPolaznik(Polaznik polaznik) {
+        public static Polaznik KreirajPolaznik(Polaznik polaznik) {
             KreirajPolaznikSO so = new KreirajPolaznikSO(polaznik);
             so.ExecuteTemplate();
             return so.Result;
         }
-        public List<Polaznik> VratiListuSviPolaznik()
+        public static List<Polaznik> VratiListuSviPolaznik()
         {
             VratiListuSviPolaznikSO so = new VratiListuSviPolaznikSO();
             so.ExecuteTemplate();
             return so.Result;
         }
-        public List<Polaznik> VratiListuPolaznik(Polaznik polaznik)
+        public static List<Polaznik> VratiListuPolaznik(Polaznik polaznik)
         {
             VratiListuPolaznikSO so = new VratiListuPolaznikSO(polaznik);
             so.ExecuteTemplate();
             return so.Result;
         }
-        public void ObrisiPolaznik(Polaznik polaznik)
+        public static void ObrisiPolaznik(Polaznik polaznik)
         {
             ObrisiPolaznikSO so = new ObrisiPolaznikSO(polaznik);
             so.ExecuteTemplate();
         }
-        public Polaznik PromeniPolaznik(Polaznik polaznik)
+        public static Polaznik PromeniPolaznik(Polaznik polaznik)
         {
             PromeniPolaznikSO so = new PromeniPolaznikSO(polaznik);
             so.ExecuteTemplate();
             return so.Result;
         }
-        public List<Polaznik> PretraziPolaznik(string tekst)
+        public static List<Polaznik> PretraziPolaznik(string tekst)
         {
             PretraziPolaznikSO so = new PretraziPolaznikSO(tekst);
             so.ExecuteTemplate();
             return so.Result;
         }
         //EVIDENCIONI OBRAZAC
-        public EvidencioniObrazac KreirajEvidencioniObrazac(EvidencioniObrazac obrazac)
+        public static EvidencioniObrazac KreirajEvidencioniObrazac(EvidencioniObrazac obrazac)
         {
             KreirajEvidencioniObrazacSO so = new KreirajEvidencioniObrazacSO(obrazac);
             so.ExecuteTemplate();
             return so.Result;
         }
-        public List<EvidencioniObrazac> VratiListuSviEvidencioniObrazac()
+        public static List<EvidencioniObrazac> VratiListuSviEvidencioniObrazac()
         {
             VratiListuSviEvidencioniObrazacSO so = new VratiListuSviEvidencioniObrazacSO();
             so.ExecuteTemplate();
             return so.Result;
         }
-        public List<EvidencioniObrazac> VratiListuEvidencioniObrazac(EvidencioniObrazac obrazac)
+        public static List<EvidencioniObrazac> VratiListuEvidencioniObrazac(EvidencioniObrazac obrazac)
         {
             VratiListuEvidencioniObrazacSO so = new VratiListuEvidencioniObrazacSO(obrazac);
             so.ExecuteTemplate();
             return so.Result;
         }
-        public List<EvidencioniObrazac> PretraziEvidencioniObrazac(EvidencioniObrazacKriterijumiDTO entities)
+        public static List<EvidencioniObrazac> PretraziEvidencioniObrazac(EvidencioniObrazacKriterijumiDTO entities)
         {
             PretraziEvidencioniObrazacSO so = new PretraziEvidencioniObrazacSO(entities);
             so.ExecuteTemplate();
             return so.Result;
         }
-        public EvidencioniObrazac PromeniEvidencioniObrazac(EvidencioniObrazac obrazac)
+        public static EvidencioniObrazac PromeniEvidencioniObrazac(EvidencioniObrazac obrazac)
         {
             PromeniEvidencioniObrazacSO so = new PromeniEvidencioniObrazacSO(obrazac);
             so.ExecuteTemplate();
             return so.Result;
         }
-        public void ObrisiEvidencioniObrazac(EvidencioniObrazac obrazac)
+        public static void ObrisiEvidencioniObrazac(EvidencioniObrazac obrazac)
         {
             ObrisiEvidencioniObrazacSO so = new ObrisiEvidencioniObrazacSO(obrazac);
             so.ExecuteTemplate();
         }
         //AUTOMOBIL
-        public List<Automobil> VratiListuSviAutomobil()
+        public static List<Automobil> VratiListuSviAutomobil()
         {
             VratiListuSviAutomobilSO so = new VratiListuSviAutomobilSO();
             so.ExecuteTemplate();

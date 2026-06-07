@@ -11,7 +11,7 @@ namespace Client.GuiController
 {
     public class KreirajPolaznikController
     {
-        private UCKreirajPolaznik ucPolaznik;
+        private readonly UCKreirajPolaznik ucPolaznik;
         private int idPolaznik;
         public Boolean ZavrsenoKreiranje { get; private set; } = true;
 

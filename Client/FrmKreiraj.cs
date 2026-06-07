@@ -20,11 +20,9 @@ namespace Client
     public partial class FrmKreiraj : Form
     {
         IKreirajUC aktivniUC;
-        FormType formType;
         public FrmKreiraj(FormType formType)
         {
             InitializeComponent();
-            this.formType = formType;
             if (formType == FormType.KreirajPolaznik)
             {
                 aktivniUC = new UCKreirajPolaznik();

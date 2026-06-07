@@ -12,15 +12,12 @@ namespace Server.SystemOperation
         public VratiListuSviPolaznikSO() : base() { }
         public VratiListuSviPolaznikSO(IBroker broker) : base(broker) { }
 
-        public List<Polaznik> Result { get; set; }
+        public List<Polaznik> Result { get; set; } = null!;
         protected override void ExecuteConcreteOperation()
         {
             List<IEntity> lista = broker.GetAll(new Polaznik());
 
             Result = lista.Cast<Polaznik>().ToList();
-
-            if (Result == null)
-                throw new Exception("Ne postoje polaznici.");
 
         }
     }

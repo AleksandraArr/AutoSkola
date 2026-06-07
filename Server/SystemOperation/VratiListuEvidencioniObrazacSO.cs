@@ -10,7 +10,7 @@ namespace Server.SystemOperation
     public class VratiListuEvidencioniObrazacSO : SystemOperationBase
     {
         private readonly EvidencioniObrazac obrazac;
-        public List<EvidencioniObrazac> Result { get; set; }
+        public List<EvidencioniObrazac> Result { get; set; } = null!;
         public VratiListuEvidencioniObrazacSO(EvidencioniObrazac obrazac)
         {
             this.obrazac = obrazac;
@@ -21,12 +21,10 @@ namespace Server.SystemOperation
 
             List<Cas> casovi = broker.GetByCondition(new Cas(),obrazac.WhereCondition).Cast<Cas>().ToList();
 
-            foreach (EvidencioniObrazac obrazac in obrasci) 
-                obrazac.Casovi = casovi;
+            foreach (EvidencioniObrazac o in obrasci)
+                o.Casovi = casovi;
             
             Result = obrasci;
-            if (Result == null)
-                throw new Exception("Ne postoje evidencioni obrasci.");
 
         }
     }

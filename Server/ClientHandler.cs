@@ -8,8 +8,8 @@ namespace Server
 {
     public class ClientHandler
     {
-        private JsonNetworkSerializer serializer;
-        private Socket socket;
+        private readonly JsonNetworkSerializer serializer;
+        private readonly Socket socket;
         private readonly Server server;
 
         public ClientHandler(Socket socket, Server server)
@@ -57,79 +57,79 @@ namespace Server
                 {
                     // Polaznik
                     case Operation.KreirajPolaznik:
-                        r.Data = Controller.Instance.KreirajPolaznik(serializer.ReadType<Polaznik>(req.Data));
+                        r.Data = Controller.KreirajPolaznik(JsonNetworkSerializer.ReadType<Polaznik>(req.Data));
                         r.IsSuccess = true;
                         break;
                     case Operation.VratiListuPolaznik:
-                        r.Data = Controller.Instance.VratiListuPolaznik(serializer.ReadType<Polaznik>(req.Data));
+                        r.Data = Controller.VratiListuPolaznik(JsonNetworkSerializer.ReadType<Polaznik>(req.Data));
                         r.IsSuccess = true;
                         break;
                     case Operation.VratiListuSviPolaznik:
-                        r.Data = Controller.Instance.VratiListuSviPolaznik();
+                        r.Data = Controller.VratiListuSviPolaznik();
                         r.IsSuccess = true;
                         break;
                     case Operation.PromeniPolaznik:
-                        r.Data = Controller.Instance.PromeniPolaznik(serializer.ReadType<Polaznik>(req.Data));
+                        r.Data = Controller.PromeniPolaznik(JsonNetworkSerializer.ReadType<Polaznik>(req.Data));
                         r.IsSuccess = true;
                         break;
                     case Operation.ObrisiPolaznik:
-                        Controller.Instance.ObrisiPolaznik(serializer.ReadType<Polaznik>(req.Data));
+                        Controller.ObrisiPolaznik(JsonNetworkSerializer.ReadType<Polaznik>(req.Data));
                         r.IsSuccess = true;
                         break;
                     case Operation.PretraziPolaznik:
-                        r.Data = Controller.Instance.PretraziPolaznik(serializer.ReadType<string>(req.Data));
+                        r.Data = Controller.PretraziPolaznik(JsonNetworkSerializer.ReadType<string>(req.Data));
                         r.IsSuccess = true;
                         break;
 
                     // Vozacka kategorija
                     case Operation.UbaciKategorijaVozacke:
-                        Controller.Instance.UbaciKategorijaVozacke(serializer.ReadType<KategorijaVozacke>(req.Data));
+                        Controller.UbaciKategorijaVozacke(JsonNetworkSerializer.ReadType<KategorijaVozacke>(req.Data));
                         r.IsSuccess = true;
                         break;
 
                     // Instruktor
                     case Operation.PrijaviInstruktor:
-                        r.Data = Controller.Instance.PrijaviInstruktor(serializer.ReadType<Instruktor>(req.Data));
+                        r.Data = Controller.PrijaviInstruktor(JsonNetworkSerializer.ReadType<Instruktor>(req.Data));
                         r.IsSuccess = true;
                         break;
                     case Operation.VratiListuSviInstruktor:
-                        r.Data = Controller.Instance.VratiListuSviInstruktor();
+                        r.Data = Controller.VratiListuSviInstruktor();
                         r.IsSuccess = true;
                         break;
 
                     // Automobil
                     case Operation.VratiListuSviAutomobil:
-                        r.Data = Controller.Instance.VratiListuSviAutomobil();
+                        r.Data = Controller.VratiListuSviAutomobil();
                         r.IsSuccess = true;
                         break;
 
                     // Evidencioni obrazac
                     case Operation.KreirajEvidencioniObrazac:
-                        r.Data = Controller.Instance.KreirajEvidencioniObrazac(serializer.ReadType<EvidencioniObrazac>(req.Data));
+                        r.Data = Controller.KreirajEvidencioniObrazac(JsonNetworkSerializer.ReadType<EvidencioniObrazac>(req.Data));
                         r.IsSuccess = true;
                         break;
                     case Operation.VratiListuEvidencioniObrazac:
-                        r.Data = Controller.Instance.VratiListuEvidencioniObrazac(serializer.ReadType<EvidencioniObrazac>(req.Data));
+                        r.Data = Controller.VratiListuEvidencioniObrazac(JsonNetworkSerializer.ReadType<EvidencioniObrazac>(req.Data));
                         r.IsSuccess = true;
                         break;
                     case Operation.VratiListuSviEvidencioniObrazac:
-                        r.Data = Controller.Instance.VratiListuSviEvidencioniObrazac();
+                        r.Data = Controller.VratiListuSviEvidencioniObrazac();
                         r.IsSuccess = true;
                         break;
                     case Operation.PromeniEvidencioniObrazac:
-                        r.Data = Controller.Instance.PromeniEvidencioniObrazac(serializer.ReadType<EvidencioniObrazac>(req.Data));
+                        r.Data = Controller.PromeniEvidencioniObrazac(JsonNetworkSerializer.ReadType<EvidencioniObrazac>(req.Data));
                         r.IsSuccess = true;
                         break;
                     case Operation.ObrisiEvidencioniObrazac:
-                        Controller.Instance.ObrisiEvidencioniObrazac(serializer.ReadType<EvidencioniObrazac>(req.Data));
+                        Controller.ObrisiEvidencioniObrazac(JsonNetworkSerializer.ReadType<EvidencioniObrazac>(req.Data));
                         r.IsSuccess = true;
                         break;
                     case Operation.PretraziEvidencioniObrazac:
-                        r.Data = Controller.Instance.PretraziEvidencioniObrazac(serializer.ReadType<EvidencioniObrazacKriterijumiDTO>(req.Data));
+                        r.Data = Controller.PretraziEvidencioniObrazac(JsonNetworkSerializer.ReadType<EvidencioniObrazacKriterijumiDTO>(req.Data));
                         r.IsSuccess = true;
                         break;
                     default:
-                        throw new Exception("Nepoznat zahtev");
+                        throw new NotSupportedException("Nepoznat zahtev");
                 }
 
             }
