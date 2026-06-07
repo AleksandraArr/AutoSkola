@@ -12,7 +12,7 @@ namespace Server.SystemOperation
         public VratiListuSviAutomobilSO() : base() { }
         public VratiListuSviAutomobilSO(IBroker broker) : base(broker) { }
 
-        public List<Automobil> Result { get; set; }
+        public List<Automobil> Result { get; set; } = null!;
 
         protected override void ExecuteConcreteOperation()
         {

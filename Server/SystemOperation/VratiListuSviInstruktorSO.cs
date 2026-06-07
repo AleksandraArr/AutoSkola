@@ -13,7 +13,7 @@ namespace Server.SystemOperation
         public VratiListuSviInstruktorSO() : base() { }
         public VratiListuSviInstruktorSO(IBroker broker) : base(broker) { }
 
-        public List<Instruktor> Result { get; set; }
+        public List<Instruktor> Result { get; set; } = null!;
 
         protected override void ExecuteConcreteOperation()
         {

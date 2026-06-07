@@ -10,7 +10,7 @@ namespace Server.SystemOperation
     public class PrijaviInstruktorSO : SystemOperationBase
     {
         private readonly Instruktor instruktor;
-        public Instruktor Result { get; set; }
+        public Instruktor Result { get; set; } = null!;
 
         public PrijaviInstruktorSO(Instruktor instruktor)
         {

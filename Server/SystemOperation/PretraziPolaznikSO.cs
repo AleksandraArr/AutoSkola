@@ -11,7 +11,7 @@ namespace Server.SystemOperation
 {
     public class PretraziPolaznikSO : SystemOperationBase
     {
-        public List<Polaznik> Result { get; set; }
+        public List<Polaznik> Result { get; set; } = null!;
         public string tekst;
         public PretraziPolaznikSO(string tekst) { 
             this.tekst = tekst;

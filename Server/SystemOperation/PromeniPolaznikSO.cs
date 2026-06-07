@@ -12,7 +12,7 @@ namespace Server.SystemOperation
         public class PromeniPolaznikSO : SystemOperationBase
         {
             private readonly Polaznik polaznik;
-            public Polaznik Result { get; set; }
+            public Polaznik Result { get; set; } = null!;
 
             public PromeniPolaznikSO(Polaznik polaznik) : base()
             {

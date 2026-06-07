@@ -97,17 +97,17 @@ namespace DBBroker
                 return list;
             }, "Get");
         }
-        public IEntity Update(IEntity obj)
+        public IEntity Update(IEntity entity)
         {
             return Execute(() =>
             {
                 SqlCommand cmd = connection.CreateCommand();
-                cmd.CommandText = $"UPDATE {obj.TableName} SET {obj.UpdateText} WHERE {obj.WhereCondition}";
+                cmd.CommandText = $"UPDATE {entity.TableName} SET {entity.UpdateText} WHERE {entity.WhereCondition}";
                 int affectedRows = cmd.ExecuteNonQuery();
                 if (affectedRows == 0)
-                    throw new InvalidOperationException($"Update error - no rows updaated in '{obj.TableName}'.");
+                    throw new InvalidOperationException($"Update error - no rows updaated in '{entity.TableName}'.");
                 cmd.Dispose();
-                return obj;
+                return entity;
             }, "Update");
         }
 

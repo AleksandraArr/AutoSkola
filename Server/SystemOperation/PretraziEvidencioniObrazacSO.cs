@@ -11,7 +11,7 @@ namespace Server.SystemOperation
 {
     public class PretraziEvidencioniObrazacSO : SystemOperationBase
     {
-        public List<EvidencioniObrazac> Result { get; set; }
+        public List<EvidencioniObrazac> Result { get; set; } = null!;
         public EvidencioniObrazacKriterijumiDTO objs;
         public PretraziEvidencioniObrazacSO(EvidencioniObrazacKriterijumiDTO objs) { 
             this.objs = objs;

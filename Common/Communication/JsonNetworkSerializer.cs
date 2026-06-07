@@ -32,7 +32,7 @@ namespace Common.Communication
 
         public T Receive<T>()
         {
-            string json = reader.ReadLine();
+            string json = reader.ReadLine() ?? throw new IOException("Veza je zatvorena.");
             return JsonSerializer.Deserialize<T>(json);
         }
 

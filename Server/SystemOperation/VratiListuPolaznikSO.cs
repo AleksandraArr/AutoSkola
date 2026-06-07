@@ -15,7 +15,7 @@ namespace Server.SystemOperation
         {
             this.polaznik = polaznik;
         }
-        public List<Polaznik> Result { get; set; }
+        public List<Polaznik> Result { get; set; } = null!;
         protected override void ExecuteConcreteOperation()
         {
             List<IEntity> lista = broker.Get(polaznik);

@@ -12,7 +12,7 @@ namespace Server.SystemOperation
         public VratiListuSviEvidencioniObrazacSO() : base() { }
         public VratiListuSviEvidencioniObrazacSO(IBroker broker) : base(broker) { }
 
-        public List<EvidencioniObrazac> Result { get; set; }
+        public List<EvidencioniObrazac> Result { get; set; } = null!;
 
         protected override void ExecuteConcreteOperation()
         {

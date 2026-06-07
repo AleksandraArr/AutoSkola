@@ -22,7 +22,9 @@ namespace Server
 
         public void Start()
         {
-            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ConfigurationManager.AppSettings["ip"]), int.Parse(ConfigurationManager.AppSettings["port"]));
+            string ip = ConfigurationManager.AppSettings["ip"] ?? throw new InvalidOperationException("IP adresa nije konfigurisana.");
+            string port = ConfigurationManager.AppSettings["port"] ?? throw new InvalidOperationException("Port nije konfigurisan.");
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(ip), int.Parse(port));
 
             socket.Bind(endPoint);
             socket.Listen(5);

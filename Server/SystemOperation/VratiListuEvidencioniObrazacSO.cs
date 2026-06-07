@@ -10,7 +10,7 @@ namespace Server.SystemOperation
     public class VratiListuEvidencioniObrazacSO : SystemOperationBase
     {
         private readonly EvidencioniObrazac obrazac;
-        public List<EvidencioniObrazac> Result { get; set; }
+        public List<EvidencioniObrazac> Result { get; set; } = null!;
         public VratiListuEvidencioniObrazacSO(EvidencioniObrazac obrazac)
         {
             this.obrazac = obrazac;
@@ -25,8 +25,6 @@ namespace Server.SystemOperation
                 o.Casovi = casovi;
             
             Result = obrasci;
-            if (Result == null)
-                throw new InvalidOperationException("Ne postoje evidencioni obrasci.");
 
         }
     }

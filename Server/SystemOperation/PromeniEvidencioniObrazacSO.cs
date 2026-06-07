@@ -13,7 +13,7 @@ namespace Server.SystemOperation
     public class PromeniEvidencioniObrazacSO : SystemOperationBase
     {
         private readonly EvidencioniObrazac obrazac;
-        public EvidencioniObrazac Result { get; set; }
+        public EvidencioniObrazac Result { get; set; } = null!;
 
         public PromeniEvidencioniObrazacSO(EvidencioniObrazac obrazac) : base()
         {
