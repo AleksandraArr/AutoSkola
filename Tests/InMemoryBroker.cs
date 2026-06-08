@@ -4,6 +4,7 @@ namespace Tests
 {
     public class InMemoryBroker : IBroker
     {
+        //Dictionary sa parovima {nazivTabele} i {redUBazi}
         private readonly Dictionary<string, List<IEntity>> store = new();
         private int nextId = 1;
 
